@@ -10,8 +10,12 @@ public:
 	list <cVikingo*> listaDeVikingos;
 	list <cJinete*> listaDeJinetes;
 	list <cDragon*> listaDeDragones;
+	list <cVikingo*> listaDeEnemigos;
+
+	int CantidadEnemigos();
 
 	int CantidadVikingos();
+
 	void llamarATribu(cDragon* dragonAAtacar);
 
 	void combate(cDragon* dragon, cVikingo* vikingo);

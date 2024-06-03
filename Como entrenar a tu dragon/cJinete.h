@@ -2,18 +2,14 @@
 #ifndef CJINETE_H
 #define CJINETE_H
 
-#include "cDragon.h"
+#include "cVikingo.h"
 
 //defino mi enum:
 typedef enum { noAsistio = 0, aprobado = 4, desaprobado = 3, primero = 10, ultimo = 1 } resultado;//por entrenamiento con Bocon
 
-class cJinete
-{
+class cJinete : public cVikingo{
 private:
-    string nombre;
-    string apellido;
-    string apodo;
-    string fecha_nac;
+   
     string caracteristicaFisica;//sólo una, la que le da el apodo a la persona.
     cDragon* MiDragon; //por relación
     resultado result;
@@ -27,7 +23,8 @@ public:
 
 
 
-    cJinete(string nombre, string apellido, string apodo, string fecha_nac,
+    cJinete(string nombre, string apellido, string posicion, string apodo, string fecha_nac,
+        int contadorDragonesTerminados, cHabilidades& habilidades,
         string caracteristicaFisica, resultado result);
 
     void IncorporarDragon(cDragon* nuevoDragon);

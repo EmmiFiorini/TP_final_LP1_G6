@@ -1,13 +1,9 @@
 #include "cJinete.h"
 #include "cJinete.h"
 
-cJinete::cJinete() {//constructor nulo
-    this->nombre = "";
-    this->apellido = "";
-    this->apodo = "";
+cJinete::cJinete() : cVikingo() {//constructor nulo
     this->caracteristicaFisica = "";
     this->result = resultado::noAsistio;//inicializo en 0
-    this->fecha_nac = "";
     // Inicialización de MiDragon (requiere un constructor adecuado para cDragon)
     this->MiDragon = NULL;
 }
@@ -34,15 +30,12 @@ tm cJinete::convertirFecha()
     return fnac;
 }
 
-cJinete::cJinete(string nombre, string apellido, string apodo, string fecha_nac, string caracteristicaFisica, resultado result)
-{//constructor x parametros
-    this->nombre = nombre;
-    this->apellido = apellido;
-    this->apodo = apodo;
+
+cJinete:: cJinete(string nombre, string apellido, string posicion, string apodo, string fecha_nac, int contadorDragonesTerminados, cHabilidades& habilidades, string caracteristicaFisica, resultado result) : cVikingo(string nombre, string apellido, string posicion, string apodo, string fecha_nac, int contadorDragonesTerminados, cHabilidades& habilidades)
+{
     this->caracteristicaFisica = caracteristicaFisica;
     this->MiDragon = NULL;
     this->result = result;
-    this->fecha_nac = fecha_nac;
 }
 
 void cJinete::IncorporarDragon(cDragon* nuevoDragon) {

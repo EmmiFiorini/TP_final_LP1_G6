@@ -4,7 +4,7 @@
 #define CVIKINGO_H
 
 #include "cDragon.h"//cDragon tiene a cHabilidades, para q no nos pase como en IRI JAJAJ
-typedef enum { nada = 0, Vpunyo = 1, Varco = 2, Vhacha = 3 } VformaDeAtaque;
+//typedef enum { nada = 0, Vpunyo = 1, Varco = 2, Vhacha = 3 } VformaDeAtaque;
 
 
 class cVikingo
@@ -13,7 +13,11 @@ class cVikingo
     string nombre;
     string apellido;
     string posicion;
-    VformaDeAtaque nivel;
+    string apodo;
+    string fecha_nac;
+   // string nivel;
+
+    //VformaDeAtaque nivel;
     int contadorDragonesTerminados;//Cuenta la cantidad de veces que se ejecutó la funcion "combate" de la clase cHabilidades y ganó
    
 
@@ -25,8 +29,11 @@ class cVikingo
         this->nombre = "";
         this->apellido = "";
         this->posicion = "";
+        this->apodo = "";
+        this->fecha_nac = "";
+        //this->nivel = ;
         this->contadorDragonesTerminados = 0;
-        this->nivel = VformaDeAtaque::nada;
+        //this->nivel = VformaDeAtaque::nada;
         this->habilidades = new cHabilidades(); //me creo un objeto dinámico de habilidades
         contVikingos++;
     }
@@ -39,7 +46,7 @@ class cVikingo
     }
 
 
-    cVikingo(string nombre, string apellido, string posicion, int contadorDragonesTerminados, cHabilidades& habilidades, VformaDeAtaque nivel);
+    cVikingo(string nombre, string apellido, string posicion, string apodo, string fecha_nac, int contadorDragonesTerminados, cHabilidades& habilidades);//falta nivel
 
     string to_string();
     void print();
@@ -58,7 +65,7 @@ class cVikingo
     // ACLARACIÓN: nuestra idea es que actualizarFormaAtaque sea una sola función, útil tanto para dragón como para vikingo(debería ser virtual y, por lo tanto,
     // cHabilidades sería una clase abstracta).Lo vamos a modificar cuando entendamos mejor el tema!!!
 
-    void V_actualizarFormaDeAtaque();
+    //void V_actualizarFormaDeAtaque();
 
     void AnularVikingo();
 

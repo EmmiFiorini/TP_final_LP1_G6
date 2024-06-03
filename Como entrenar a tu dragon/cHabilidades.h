@@ -40,6 +40,8 @@ public:
     void set_salud(unsigned int nuevaSalud) {
         this->salud = nuevaSalud;
     }
+
+    virtual void nivel() = 0;//funcion virtual pura
 };
 
 #endif

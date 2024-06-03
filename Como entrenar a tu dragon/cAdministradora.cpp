@@ -4,15 +4,20 @@
 }
 */
 
+int cAdministradora::CantidadEnemigos()
+{
+	return listaDeEnemigos.size();
+}
+
 int cAdministradora::CantidadVikingos()
 {
-	return listaDeVikingos.size();
+    return listaDeVikingos.size();
 }
 
 void cAdministradora::llamarATribu(cDragon* dragonAAtacar) //recorre la lista de vikingos y genera un combate con el mismo dragón (un combate para c/vikingo)
 {
-	list <cVikingo*>::iterator it = this->listaDeVikingos.begin();
-	while (it != listaDeVikingos.end()) {
+	list <cVikingo*>::iterator it = this->listaDeEnemigos.begin();
+	while (it != listaDeEnemigos.end()) {
         combate(dragonAAtacar, (*it));
         it++;
 	}
