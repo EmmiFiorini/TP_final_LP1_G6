@@ -9,7 +9,7 @@ cJinete::cJinete() {//constructor nulo
     this->result = resultado::noAsistio;//inicializo en 0
     this->fecha_nac = "";
     // Inicialización de MiDragon (requiere un constructor adecuado para cDragon)
-    this->MiDragon = new cDragon();
+    this->MiDragon = NULL;
 }
 
 cJinete::~cJinete() {
@@ -34,13 +34,13 @@ tm cJinete::convertirFecha()
     return fnac;
 }
 
-cJinete::cJinete(string nombre, string apellido, string apodo, string fecha_nac, string caracteristicaFisica, cDragon* MiDragon, resultado result)
+cJinete::cJinete(string nombre, string apellido, string apodo, string fecha_nac, string caracteristicaFisica, resultado result)
 {//constructor x parametros
     this->nombre = nombre;
     this->apellido = apellido;
     this->apodo = apodo;
     this->caracteristicaFisica = caracteristicaFisica;
-    this->MiDragon = MiDragon;
+    this->MiDragon = NULL;
     this->result = result;
     this->fecha_nac = fecha_nac;
 }

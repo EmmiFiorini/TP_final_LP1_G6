@@ -20,9 +20,14 @@ cHabilidades::cHabilidades(unsigned int ataque, unsigned int defensa, unsigned i
 }
 
 
-void cHabilidades::entrenar(combate habilidadaAentrenar)
+void cHabilidades::entrenar(bool habilidadaAentrenar)
 {
-    if()
+    if (habilidadaAentrenar == true) {
+        ataque += 10;
+    }
+    else {
+        defensa += 10;
+    }
 }
 
 void cHabilidades::combate(cHabilidades h_dragon, cHabilidades hab_vikingo) {// hacelo recibir la referencia sino vas a modificar la copia
@@ -43,4 +48,16 @@ void cHabilidades::combate(cHabilidades h_dragon, cHabilidades hab_vikingo) {// 
         throw new exception("muerte de dragon");
     }
 
+}
+
+void cHabilidades::curandero()
+{
+    if (salud > 0 && salud < 100) {
+        if (salud + 30 >= 100) {
+            salud = 100;
+        }
+        else {
+            salud += 30;
+        }
+    }
 }

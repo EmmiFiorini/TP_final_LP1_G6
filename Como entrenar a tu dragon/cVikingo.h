@@ -43,6 +43,7 @@ class cVikingo
 
     string to_string();
     void print();
+    
     void set_trabajar(string posicion) {
         this->posicion = posicion;
     }

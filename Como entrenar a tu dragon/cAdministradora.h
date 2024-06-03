@@ -11,7 +11,7 @@ public:
 	list <cJinete> listaDeJinetes;
 	list <cDragon> listaDeDragones;
 
-	//void cVikingo::atacarDragones(cDragon* dragon, cVikingo* vikingo) {
+	//atacarDragones(cDragon* dragon, cVikingo* vikingo) {
 	//vikingo->get_habilidades()->combate(dragon->get_habilidades(), vikingo->get_habilidades()); //no sabemos por qué nos marca error!!!
 	//void atacarDragon();
 };

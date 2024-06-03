@@ -5,7 +5,7 @@
 #include "cDragon.h"
 
 //defino mi enum:
-enum class resultado { noAsistio = 0, aprobado = 4, desaprobado = 3, primero = 10, ultimo = 10 };//por entrenamiento con Bocon
+typedef enum { noAsistio = 0, aprobado = 4, desaprobado = 3, primero = 10, ultimo = 1 } resultado;//por entrenamiento con Bocon
 
 class cJinete
 {
@@ -28,7 +28,7 @@ public:
 
 
     cJinete(string nombre, string apellido, string apodo, string fecha_nac,
-        string caracteristicaFisica, cDragon* MiDragon, resultado result);
+        string caracteristicaFisica, resultado result);
 
     void IncorporarDragon(cDragon* nuevoDragon);
 
@@ -39,5 +39,12 @@ public:
 
     string to_string();
     void print();
+
+  
+    void controlarDragon() {
+        if (MiDragon->get_habilidades()->get_salud() == 0) {
+            throw new exception("Muerte del dragón. Busca uno nuevo!"); // poner MiDragon en null 
+        }
+    }
 };
 #endif
