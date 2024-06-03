@@ -11,10 +11,11 @@ int main()
     cDragon miDragon("Nombre del dragón", "Característica del dragón", tamanio::chico, "Rojo", true, piliDragona, formaDeAtaque::Dalas);
     cVikingo miVikingo("Emma", "Fiorini", "jefa", 5, emmaVikinga, VformaDeAtaque::Vpunyo);
 
+    miDragon.to_string();
 
     miDragon.print();
 
-   
+    cVikingo vikingo1();
     
 
     

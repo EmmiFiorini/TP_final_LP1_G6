@@ -1,5 +1,5 @@
 #include "cAdministradora.h"
-void cAdministradora::atacarDragon()
+/*void cAdministradora::atacarDragon()
 {
 }
-
+*/

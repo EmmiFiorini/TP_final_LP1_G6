@@ -13,5 +13,5 @@ public:
 
 	//void cVikingo::atacarDragones(cDragon* dragon, cVikingo* vikingo) {
 	//vikingo->get_habilidades()->combate(dragon->get_habilidades(), vikingo->get_habilidades()); //no sabemos por qué nos marca error!!!
-	void atacarDragon();
+	//void atacarDragon();
 };

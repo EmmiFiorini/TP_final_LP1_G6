@@ -7,23 +7,21 @@ cDragon::~cDragon() {
 cDragon::cDragon() {//constructor nulo
     this->nombre = "";
     this->caracteristica = "";
-    this->claseDragon = clase::Desconocida;
-    this->tam = tamanyo::desconocido;
+    this->tam = tamanio::desconocido;
     this->color = "";
     this->estado = false;
     this->habilidades = new cHabilidades(); //me creo un objeto dinámico de habilidades
     this->nivel = formaDeAtaque::nulo;
 }
 
-cDragon::cDragon(string nombre, string caracteristica, tamanyo tamanyoDragon, string color, bool estado, clase claseDragon, cHabilidades* habilidades, formaDeAtaque nivel)
+cDragon::cDragon(string nombre, string caracteristica, tamanio tamanyoDragon, string color, bool estado, cHabilidades& habilidades, formaDeAtaque nivel)
 {
     this->nombre = nombre;
     this->caracteristica = caracteristica;
     this->tam = tamanyoDragon;
     this->color = color;
     this->estado = estado;
-    this->claseDragon = claseDragon;
-    this->habilidades = habilidades; // si recibe un puntero nulo se va a romper todo tenes que hacer el control afuera de si esto es nulo y tiene que recibir una referencia sino el delete no tiene sentido.
+    this->habilidades = &habilidades; // si recibe un puntero nulo se va a romper todo tenes que hacer el control afuera de si esto es nulo y tiene que recibir una referencia sino el delete no tiene sentido.
     this->nivel = nivel;
 }
 
@@ -52,8 +50,7 @@ void cDragon::D_actualizarFormaDeAtaque()
 void cDragon::AnularDragon() {
     this->nombre = "";
     this->caracteristica = "";
-    this->claseDragon = clase::Desconocida;
-    this->tam = tamanyo::desconocido;
+    this->tam = tamanio::desconocido;
     this->color = "";
     this->estado = false;
     this->habilidades = NULL;

@@ -4,27 +4,29 @@
 #define CVIKINGO_H
 
 #include "cDragon.h"//cDragon tiene a cHabilidades, para q no nos pase como en IRI JAJAJ
-enum class VformaDeAtaque { nulo = 0, Vpunyo = 1, Varco = 2, Vhacha = 3 };
+typedef enum { nada = 0, Vpunyo = 1, Varco = 2, Vhacha = 3 } VformaDeAtaque;
 
 
 class cVikingo
 {
    private:
     string nombre;
-    const string apellido;
+    string apellido;
     string posicion;
     VformaDeAtaque nivel;
     int contadorDragonesTerminados;//Cuenta la cantidad de veces que se ejecutó la funcion "combate" de la clase cHabilidades y ganó
-    cHabilidades* habilidades;
+   
 
    public:
     static int contVikingos;
+    cHabilidades* habilidades;
 
-    cVikingo() : apellido("") { //constructor nulo
+    cVikingo(){ //constructor nulo
         this->nombre = "";
+        this->apellido = "";
         this->posicion = "";
         this->contadorDragonesTerminados = 0;
-        this->nivel = VformaDeAtaque::nulo;
+        this->nivel = VformaDeAtaque::nada;
         this->habilidades = new cHabilidades(); //me creo un objeto dinámico de habilidades
         contVikingos++;
     }
@@ -37,7 +39,7 @@ class cVikingo
     }
 
 
-    cVikingo(string nombre, string apellido, string posicion, int contadorDragonesTerminados, cHabilidades* habilidades, VformaDeAtaque nivel);
+    cVikingo(string nombre, string apellido, string posicion, int contadorDragonesTerminados, cHabilidades& habilidades, VformaDeAtaque nivel);
 
     string to_string();
     void print();
@@ -63,4 +65,7 @@ class cVikingo
 };
 
 #endif
+
+
+
 
