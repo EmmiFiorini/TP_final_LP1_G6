@@ -13,30 +13,19 @@ cJinete::~cJinete() {
     delete MiDragon;//y la pedida en dragon!
 }
 
-tm cJinete::convertirFecha()
-{
-    int anio_nacimiento, mes_nacimiento, dia_nacimiento;
-
-    stringstream ss(this->fecha_nac);
-
-    char delim;
-    ss >> anio_nacimiento >> delim >> mes_nacimiento >> delim >> dia_nacimiento;
-
-    tm fnac;
-    fnac.tm_year = anio_nacimiento;
-    fnac.tm_mon = mes_nacimiento;
-    fnac.tm_mday = dia_nacimiento;
-
-    return fnac;
-}
 
 
-cJinete:: cJinete(string nombre, string apellido, string posicion, string apodo, string fecha_nac, int contadorDragonesTerminados, cHabilidades& habilidades, string caracteristicaFisica, resultado result) : cVikingo(string nombre, string apellido, string posicion, string apodo, string fecha_nac, int contadorDragonesTerminados, cHabilidades& habilidades)
+cJinete::cJinete(string nombre, string apellido, string posicion, string apodo, string fecha_nac,
+    int contadorDragonesTerminados, cHabilidades& habilidades,
+    string caracteristicaFisica, resultado result)
+    : cVikingo(nombre, apellido, posicion, apodo, fecha_nac, contadorDragonesTerminados, habilidades)
 {
     this->caracteristicaFisica = caracteristicaFisica;
     this->MiDragon = NULL;
-    this->result = result;
+    this->result = result;// Inicializa los miembros específicos de cJinete aquí, si es necesario
 }
+
+
 
 void cJinete::IncorporarDragon(cDragon* nuevoDragon) {
     this->MiDragon = nuevoDragon;

@@ -12,7 +12,7 @@ using namespace std;
 
 class cHabilidades
 {
-private:
+protected:
     unsigned int ataque;
     unsigned int defensa; //valor del 0 al 100, se obtiene con el método entrenar habilidades
     unsigned int salud;//valor del 0 al 100. por cada combate perdido baja 50 puntos. Al llegar al 0 se llama a funcion baja en la clase correspondiente
@@ -25,7 +25,7 @@ public:
 
     cHabilidades(unsigned int ataque, unsigned int defensa, unsigned int salud);
 
-    ~cHabilidades() {};
+    virtual ~cHabilidades() {}; //destructor virtual xq es una clase virtual pura
 
     /*El usuario elige si entrenar defensa o ataque, dependiendo lo que elija se le suma +10 puntos por cada entrenamiento.
     Sirve para dragon y/o vikingo*/

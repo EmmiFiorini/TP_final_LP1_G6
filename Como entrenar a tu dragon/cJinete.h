@@ -19,7 +19,6 @@ public:
 
     ~cJinete();
 
-    tm convertirFecha();
 
 
 

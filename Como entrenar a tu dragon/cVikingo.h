@@ -9,7 +9,7 @@
 
 class cVikingo
 {
-   private:
+   protected:
     string nombre;
     string apellido;
     string posicion;
