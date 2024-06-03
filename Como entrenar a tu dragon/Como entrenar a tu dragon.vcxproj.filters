@@ -18,5 +18,37 @@
     <ClCompile Include="Como entrenar a tu dragon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cVikingo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cJinete.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cHabilidades.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cDragon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cAdministradora.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cVikingo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cJinete.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cHabilidades.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cDragon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cAdministradora.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

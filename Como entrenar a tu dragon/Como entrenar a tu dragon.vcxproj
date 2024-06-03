@@ -139,7 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cAdministradora.cpp" />
+    <ClCompile Include="cDragon.cpp" />
+    <ClCompile Include="cHabilidades.cpp" />
+    <ClCompile Include="cJinete.cpp" />
     <ClCompile Include="Como entrenar a tu dragon.cpp" />
+    <ClCompile Include="cVikingo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cAdministradora.h" />
+    <ClInclude Include="cDragon.h" />
+    <ClInclude Include="cHabilidades.h" />
+    <ClInclude Include="cJinete.h" />
+    <ClInclude Include="cVikingo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
