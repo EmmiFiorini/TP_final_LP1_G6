@@ -47,19 +47,9 @@ void cDragon::D_actualizarFormaDeAtaque()
     }
 }
 
-void cDragon::AnularDragon() {
-    this->nombre = "";
-    this->caracteristica = "";
-    this->tam = tamanio::desconocido;
-    this->color = "";
-    this->estado = false;
-    this->habilidades = NULL;
-    this->nivel = formaDeAtaque::nulo;
-}
-
 void cDragon::D_baja() {
     if (habilidades->get_salud() == 0) {
-        AnularDragon();
+        cout << "El dragon murió" << endl;
     }
 }
 

@@ -48,7 +48,6 @@ public:
 
     void D_actualizarFormaDeAtaque();
 
-    void AnularDragon();
 
     void D_baja();
 

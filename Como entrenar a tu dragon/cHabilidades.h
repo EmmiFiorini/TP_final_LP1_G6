@@ -8,7 +8,7 @@
 #include <sstream>
 using namespace std;
 
-enum combate { defensa = 0, ataque = 1 };//declaro mi enum de combate, para utilizarlo en mi funcion entrenar
+typedef enum { defensa = 0, ataque = 1 } combate;//declaro mi enum de combate, para utilizarlo en mi funcion entrenar
 
 class cHabilidades
 {
@@ -29,7 +29,7 @@ public:
 
     /*El usuario elige si entrenar defensa o ataque, dependiendo lo que elija se le suma +3 puntos por cada entrenamiento.
     Sirve para dragon y/o vikingo*/
-    //void entrenar(combate habilidadaAentrenar);
+    void entrenar(combate habilidadaAentrenar);
 
     void combate(cHabilidades h_dragon, cHabilidades hab_vikingo); //en cpp
 

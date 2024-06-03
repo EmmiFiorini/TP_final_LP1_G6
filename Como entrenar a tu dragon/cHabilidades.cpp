@@ -20,6 +20,11 @@ cHabilidades::cHabilidades(unsigned int ataque, unsigned int defensa, unsigned i
 }
 
 
+void cHabilidades::entrenar(combate habilidadaAentrenar)
+{
+    if()
+}
+
 void cHabilidades::combate(cHabilidades h_dragon, cHabilidades hab_vikingo) {// hacelo recibir la referencia sino vas a modificar la copia
     if (h_dragon.defensa > hab_vikingo.ataque && h_dragon.ataque > hab_vikingo.defensa) {
         hab_vikingo.salud = hab_vikingo.salud - 50;
@@ -32,10 +37,10 @@ void cHabilidades::combate(cHabilidades h_dragon, cHabilidades hab_vikingo) {// 
         hab_vikingo.salud = hab_vikingo.salud - 25;
     }
     if (hab_vikingo.salud <= 0) {
-        throw new exception("Error: muerte de vikingo"); //el try catch se hace en el main. Se llama en el main a la funcion "baja"
+        throw new exception("muerte de vikingo"); //el try catch se hace en el main. Se llama en el main a la funcion "baja"
     }
     if (hab_vikingo.salud <= 0) {
-        throw new exception("Error: muerte de dragon");
+        throw new exception("muerte de dragon");
     }
 
 }

@@ -14,6 +14,8 @@ int main()
 
     miDragon.print();
 
+    miVikingo.V_actualizarFormaDeAtaque();
+    miVikingo.print();
    
     
 
