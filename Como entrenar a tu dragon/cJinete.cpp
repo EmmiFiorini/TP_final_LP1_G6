@@ -49,14 +49,15 @@ void cJinete::IncorporarDragon(cDragon* nuevoDragon) {
     this->MiDragon = nuevoDragon;
 }
 
-/*void cJinete::entrenarDragon(combate habilidadAEntrenar) {//manda a un dragón a que mejore sus habilidades (función dentro de cHabilidades)
+void cJinete::entrenarDragon(bool habilidadAEntrenar)
+{
     MiDragon->get_habilidades()->entrenar(habilidadAEntrenar);
 }
 
 void cJinete::curarDragon() {
     MiDragon->get_habilidades()->curandero();
 }
-*/
+
 string cJinete::to_string() {
     stringstream ss;
     ss << "El nombre del Jinete es: " << nombre << endl;

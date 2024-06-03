@@ -31,13 +31,15 @@ public:
     Sirve para dragon y/o vikingo*/
     void entrenar(bool habilidadaAentrenar);
 
-    void combate(cHabilidades h_dragon, cHabilidades hab_vikingo); //en cpp
-
     void curandero();
 
     unsigned int get_salud() { return this->salud; }
     unsigned int get_ataque() { return this->ataque; }
     unsigned int get_defensa() { return this->defensa; }
+
+    void set_salud(unsigned int nuevaSalud) {
+        this->salud = nuevaSalud;
+    }
 };
 
 #endif

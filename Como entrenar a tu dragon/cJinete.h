@@ -32,9 +32,8 @@ public:
 
     void IncorporarDragon(cDragon* nuevoDragon);
 
-    void entrenarDragon(combate habilidadAEntrenar);
-    //accedo a mi dragon (objeto dinamico) para, a su vez, acceder a sus habilidades (otro objeto dinámico de él). Dentro de habilidades, llamo al método entrenar
-
+    void entrenarDragon(bool habilidadAEntrenar);
+  
     void curarDragon();
 
     string to_string();

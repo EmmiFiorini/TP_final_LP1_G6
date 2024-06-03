@@ -7,11 +7,13 @@
 class cAdministradora {
 public:
 	//agrego una lista de cjinete, una lista de cvikingo, una lista de cdragon
-	list <cVikingo> listaDeVikingos;
-	list <cJinete> listaDeJinetes;
-	list <cDragon> listaDeDragones;
+	list <cVikingo*> listaDeVikingos;
+	list <cJinete*> listaDeJinetes;
+	list <cDragon*> listaDeDragones;
 
-	//atacarDragones(cDragon* dragon, cVikingo* vikingo) {
-	//vikingo->get_habilidades()->combate(dragon->get_habilidades(), vikingo->get_habilidades()); //no sabemos por qué nos marca error!!!
-	//void atacarDragon();
+	int CantidadVikingos();
+	void llamarATribu(cDragon* dragonAAtacar);
+
+	void combate(cDragon* dragon, cVikingo* vikingo);
+	
 };
