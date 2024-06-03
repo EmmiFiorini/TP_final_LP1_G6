@@ -24,7 +24,7 @@ void cDragon::nivel()
     if (ataque > 30 && ataque <= 60) {
         this->level = "Alas";
     }
-    if (ataque > 60) {
+    if (ataque > 60 && ataque<100) {
         this->level = "Garras";
     }
     if (ataque >= 100)

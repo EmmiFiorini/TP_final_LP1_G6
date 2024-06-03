@@ -5,26 +5,27 @@ cVikingo::~cVikingo()
 {
 }
 
-
-
-cVikingo::cVikingo(string nombre, string apellido, string posicion, 
-    string apodo, string fecha_nac, int contadorDragonesTerminados, cHabilidades& habilidades){
+cVikingo::cVikingo(string nombre, string apellido, string posicion, string apodo, string fecha_nac, 
+    int contadorDragonesTerminados, string level, unsigned int ataque, unsigned int defensa, 
+    unsigned int salud) : cHabilidades(ataque,defensa,salud)
+{
     this->nombre = nombre;
     this->apellido = apellido;
     this->posicion = posicion;
     this->apodo = apodo;
     this->fecha_nac = fecha_nac;
     this->contadorDragonesTerminados = contadorDragonesTerminados;
-    this->habilidades = &habilidades;//desreferencio mi clase y la copio
-    //this->nivel = nivel; falta nivel!
+    this->level = level;
     contVikingos++;
 }
 
 string cVikingo::to_string() {
     stringstream ss;
     ss << "El nombre del Vikingo es: " << nombre << endl;
-    ss << "El apellido del Vikingo es: " << apellido << endl;
-    ss << "La posicion del Vikingo es: " << posicion << endl;
+    ss << "Su apellido es: " << apellido << endl;
+    ss << "Su apodo es: " << apodo << endl;
+    ss << "Su posicion es: " << posicion << endl;
+    ss << "El nivel del Vikingo es: " << level << endl;
     return ss.str();
 }
 void cVikingo::print() {
@@ -37,27 +38,25 @@ bool cVikingo::dragonesTerminados() {
         return false;
     }
 }
-/*void cVikingo::V_actualizarFormaDeAtaque() {
-    if (habilidades->get_ataque() <= 30) {
-        this->nivel = VformaDeAtaque::Vpunyo;
+void cVikingo::nivel()
+{
+    if (ataque <= 30) {
+        this->level = "Puños";
     }
-    if (habilidades->get_ataque() > 30 && habilidades->get_ataque() <= 60) {
-        this->nivel = VformaDeAtaque::Varco;
+    if (ataque > 30 && ataque <= 60) {
+        this->level = "Arco y Flecha";
     }
-    if (habilidades->get_ataque() > 60) {
-        this->nivel = VformaDeAtaque::Vhacha;
+    if (ataque > 60 && ataque<100) {
+        this->level = "Hacha";
     }
-}*/
-void cVikingo::AnularVikingo() {
-    this->habilidades = NULL;
+    if (ataque >= 100) {
+        this->level = "Espada";
+    }
 }
 
-void cVikingo::V_baja() {
-    if (habilidades->get_salud() == 0) {
-        AnularVikingo();
-        contVikingos--;
-    }
-}
+
+
+
 
 
 

@@ -7,7 +7,7 @@
 //typedef enum { nada = 0, Vpunyo = 1, Varco = 2, Vhacha = 3 } VformaDeAtaque;
 
 
-class cVikingo
+class cVikingo : public cHabilidades
 {
    protected:
     string nombre;
@@ -15,7 +15,7 @@ class cVikingo
     string posicion;
     string apodo;
     string fecha_nac;
-   // string nivel;
+    string level;
 
     //VformaDeAtaque nivel;
     int contadorDragonesTerminados;//Cuenta la cantidad de veces que se ejecutó la funcion "combate" de la clase cHabilidades y ganó
@@ -23,30 +23,29 @@ class cVikingo
 
    public:
     static int contVikingos;
-    cHabilidades* habilidades;
 
-    cVikingo(){ //constructor nulo
+    cVikingo() : cHabilidades(){ //constructor nulo
         this->nombre = "";
         this->apellido = "";
         this->posicion = "";
         this->apodo = "";
         this->fecha_nac = "";
+        this->level = "";
         //this->nivel = ;
         this->contadorDragonesTerminados = 0;
         //this->nivel = VformaDeAtaque::nada;
-        this->habilidades = new cHabilidades(); //me creo un objeto dinámico de habilidades
         contVikingos++;
     }
 
     ~cVikingo(); //en cpp
 
 
-    cHabilidades* get_habilidades() {
-        return this->habilidades;
-    }
+   
 
 
-    cVikingo(string nombre, string apellido, string posicion, string apodo, string fecha_nac, int contadorDragonesTerminados, cHabilidades& habilidades);//falta nivel
+    cVikingo(string nombre, string apellido, string posicion, string apodo, string fecha_nac, 
+        int contadorDragonesTerminados,string level, unsigned int ataque, unsigned int defensa, 
+        unsigned int salud);
 
     string to_string();
     void print();
@@ -61,15 +60,7 @@ class cVikingo
 
     bool dragonesTerminados(); //true si mató a más de 1 dragón. false si no mato ninguno
 
-
-    // ACLARACIÓN: nuestra idea es que actualizarFormaAtaque sea una sola función, útil tanto para dragón como para vikingo(debería ser virtual y, por lo tanto,
-    // cHabilidades sería una clase abstracta).Lo vamos a modificar cuando entendamos mejor el tema!!!
-
-    //void V_actualizarFormaDeAtaque();
-
-    void AnularVikingo();
-
-    void V_baja();
+    void nivel();
 };
 
 #endif
