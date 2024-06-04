@@ -50,6 +50,8 @@ public:
 
     string get_nombre() { return this->nombre; }
 
+    void faltanteNuevoNivel();
+
 };
 
 #endif

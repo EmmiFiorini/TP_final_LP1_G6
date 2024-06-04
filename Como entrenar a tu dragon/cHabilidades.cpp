@@ -20,6 +20,8 @@ cHabilidades::cHabilidades(unsigned int ataque, unsigned int defensa, unsigned i
 }
 
 
+
+
 void cHabilidades::entrenar(bool habilidadaAentrenar)
 {
     if (habilidadaAentrenar == true) {

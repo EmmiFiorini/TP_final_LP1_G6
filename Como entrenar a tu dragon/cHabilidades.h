@@ -42,6 +42,7 @@ public:
     }
 
     virtual void nivel() = 0;//funcion virtual pura
+    virtual void faltanteNuevoNivel() = 0;
 };
 
 #endif
