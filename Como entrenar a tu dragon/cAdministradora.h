@@ -20,4 +20,16 @@ public:
 
 	void combate(cDragon* dragon, cVikingo* vikingo);
 	
+	void historia();
+
+    void dragonEliminado(cDragon* dragon_muerto);
+
+    //en clase cAdministradora: se usa cuando se llama la excepción de combate de muerte de dragon
+    void baja_dragon(cDragon* dragon);
+
+    void enemigoEliminado(cVikingo* enemigo);
+
+	void vikingoEliminado(cVikingo* vikingo);
+
+
 };

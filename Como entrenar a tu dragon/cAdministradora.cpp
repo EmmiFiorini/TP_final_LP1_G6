@@ -39,3 +39,64 @@ void cAdministradora::combate(cDragon* dragon, cVikingo* vikingo)
         throw new exception("muerte de dragon"); //se cae el jinte de arriba del dragon y pierde 70 de vida, si sigue vivo tiene q peliar el solo contra los vikingos malos
     }
 }
+
+void cAdministradora::historia()
+{
+    std::cout << "                                             _______________________" << std::endl;
+    std::cout<<"   _______________________-------------------                         |" << std::endl;
+}
+
+void cAdministradora::dragonEliminado(cDragon* dragon_muerto) {
+    list<cDragon*> ::iterator it = this->listaDeDragones.begin();
+    bool encontrado = false;
+    while (it != this->listaDeDragones.end()) {
+        if ((*it)->get_nombre() == dragon_muerto->get_nombre()) {
+            this->listaDeDragones.erase(it);
+            encontrado = true;
+            break;
+        }
+        it++;
+    }
+    if (!encontrado) {
+        throw new exception("Error, no se encontró el dragón");
+    }
+}
+
+void cAdministradora::baja_dragon(cDragon* dragon) {
+    if (dragon->get_salud() == 0) {
+        cout << "El dragón murió" << endl;
+        dragonEliminado(dragon);
+    }
+}
+
+void cAdministradora::enemigoEliminado(cVikingo* enemigo) { // va para listaDeEnemigos
+    list<cVikingo*> ::iterator it = this->listaDeEnemigos.begin();
+    bool encontrado = false;
+    while (it != this->listaDeEnemigos.end()) {
+        if ((*it)->get_nombre() == enemigo->get_nombre()) {
+            this->listaDeEnemigos.erase(it);
+            encontrado = true;
+            break;
+        }
+        it++;
+    }
+    if (!encontrado) {
+        throw new exception("Error, no se encontró al enemigo");
+    }
+}
+
+void cAdministradora::vikingoEliminado(cVikingo* vikingo) { // va para listaDeVikingos
+    list<cVikingo*> ::iterator it = this->listaDeVikingos.begin();
+    bool encontrado = false;
+    while (it != this->listaDeVikingos.end()) {
+        if ((*it)->get_nombre() == vikingo->get_nombre()) {
+            this->listaDeVikingos.erase(it);
+            encontrado = true;
+            break;
+        }
+        it++;
+    }
+    if (!encontrado) {
+        throw new exception("Error, no se encontró al vikingo");
+    }
+}
