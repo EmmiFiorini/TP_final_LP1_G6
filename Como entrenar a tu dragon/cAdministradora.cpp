@@ -1,8 +1,5 @@
 #include "cAdministradora.h"
-/*void cAdministradora::atacarDragon()
-{
-}
-*/
+
 
 int cAdministradora::CantidadEnemigos()
 {
@@ -25,20 +22,20 @@ void cAdministradora::llamarATribu(cDragon* dragonAAtacar) //recorre la lista de
 
 void cAdministradora::combate(cDragon* dragon, cVikingo* vikingo)
 {
-    if (dragon->get_habilidades()->get_defensa() > vikingo->get_habilidades()->get_ataque() && dragon->get_habilidades()->get_ataque() > vikingo->get_habilidades()->get_defensa()) {
-        vikingo->get_habilidades()->set_salud(vikingo->get_habilidades()->get_salud() - 50);
+    if (dragon->get_defensa() > vikingo->get_ataque() && dragon->get_ataque() > vikingo->get_defensa()) {
+        vikingo->set_salud(vikingo->get_salud() - 50);
     }
-    else if (dragon->get_habilidades()->get_defensa() < vikingo->get_habilidades()->get_ataque() && dragon->get_habilidades()->get_ataque() < vikingo->get_habilidades()->get_defensa()) {
-        dragon->get_habilidades()->set_salud(dragon->get_habilidades()->get_salud() - 50);
+    else if (dragon->get_defensa() < vikingo->get_ataque() && dragon->get_ataque() < vikingo->get_defensa()) {
+        dragon->set_salud(dragon->get_salud() - 50);
     }
     else {
-        dragon->get_habilidades()->set_salud(dragon->get_habilidades()->get_salud() - 25);
-        vikingo->get_habilidades()->set_salud(vikingo->get_habilidades()->get_salud() - 25);
+        dragon->set_salud(dragon->get_salud() - 25);
+        vikingo->set_salud(vikingo->get_salud() - 25);
     }
-    if (vikingo->get_habilidades()->get_salud() <= 0)
+    if (vikingo->get_salud() <= 0)
         throw new exception("muerte de vikingo"); //el try catch se hace en el main. Se llama en el main a la funcion "baja"
 
-    if (dragon->get_habilidades()->get_salud() <= 0) {
+    if (dragon->get_salud() <= 0) {
         throw new exception("muerte de dragon"); //se cae el jinte de arriba del dragon y pierde 70 de vida, si sigue vivo tiene q peliar el solo contra los vikingos malos
     }
 }
