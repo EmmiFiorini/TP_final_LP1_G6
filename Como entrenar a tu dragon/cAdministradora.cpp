@@ -39,6 +39,6 @@ void cAdministradora::combate(cDragon* dragon, cVikingo* vikingo)
         throw new exception("muerte de vikingo"); //el try catch se hace en el main. Se llama en el main a la funcion "baja"
 
     if (dragon->get_habilidades()->get_salud() <= 0) {
-        throw new exception("muerte de dragon");
+        throw new exception("muerte de dragon"); //se cae el jinte de arriba del dragon y pierde 70 de vida, si sigue vivo tiene q peliar el solo contra los vikingos malos
     }
 }
