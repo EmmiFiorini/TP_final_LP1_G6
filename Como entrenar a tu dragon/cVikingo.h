@@ -61,6 +61,8 @@ class cVikingo : public cHabilidades
     bool dragonesTerminados(); //true si mató a más de 1 dragón. false si no mato ninguno
 
     void nivel();
+
+    string get_nombre() { return this->nombre; }
 };
 
 #endif

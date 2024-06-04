@@ -23,7 +23,8 @@ public:
 
 
     cJinete(string nombre, string apellido, string posicion, string apodo, string fecha_nac,
-        int contadorDragonesTerminados, cHabilidades& habilidades,
+        int contadorDragonesTerminados, string level, unsigned int ataque, unsigned int defensa,
+        unsigned int salud,
         string caracteristicaFisica, resultado result);
 
     void IncorporarDragon(cDragon* nuevoDragon);
@@ -37,7 +38,7 @@ public:
 
   
     void controlarDragon() {
-        if (MiDragon->get_habilidades()->get_salud() == 0) {
+        if (MiDragon->get_salud() == 0) {
             throw new exception("Muerte del dragón. Busca uno nuevo!"); // poner MiDragon en null 
         }
     }

@@ -14,18 +14,16 @@ cJinete::~cJinete() {
 }
 
 
-
-cJinete::cJinete(string nombre, string apellido, string posicion, string apodo, string fecha_nac,
-    int contadorDragonesTerminados, cHabilidades& habilidades,
-    string caracteristicaFisica, resultado result)
-    : cVikingo(nombre, apellido, posicion, apodo, fecha_nac, contadorDragonesTerminados, habilidades)
+cJinete::cJinete(string nombre, string apellido, string posicion, string apodo, 
+    string fecha_nac, int contadorDragonesTerminados, string level,
+    unsigned int ataque, unsigned int defensa, unsigned int salud, 
+    string caracteristicaFisica, resultado result) : cVikingo(nombre, apellido, posicion, apodo, fecha_nac,
+        contadorDragonesTerminados, level, ataque, defensa, salud)
 {
     this->caracteristicaFisica = caracteristicaFisica;
     this->MiDragon = NULL;
     this->result = result;// Inicializa los miembros específicos de cJinete aquí, si es necesario
 }
-
-
 
 void cJinete::IncorporarDragon(cDragon* nuevoDragon) {
     this->MiDragon = nuevoDragon;
@@ -33,11 +31,11 @@ void cJinete::IncorporarDragon(cDragon* nuevoDragon) {
 
 void cJinete::entrenarDragon(bool habilidadAEntrenar)
 {
-    MiDragon->get_habilidades()->entrenar(habilidadAEntrenar);
+    MiDragon->entrenar(habilidadAEntrenar);
 }
 
 void cJinete::curarDragon() {
-    MiDragon->get_habilidades()->curandero();
+    MiDragon->curandero();
 }
 
 string cJinete::to_string() {
