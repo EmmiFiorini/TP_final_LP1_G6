@@ -56,6 +56,23 @@ void cVikingo::nivel()
 
 void cVikingo::faltanteNuevoNivel()
 {
+    std::cout << "Tu nivel actual es: " << level << std::endl;
+    int n = 0;
+    if (ataque < 100) {
+        if (ataque <= 30) {
+            n = 31 - ataque;
+        }
+        if (ataque > 30 && ataque <= 60) {
+            n = 61 - ataque;
+        }
+        if (ataque > 60 && ataque < 100) {
+            n = 100 - ataque;
+        }
+        std::cout << "Te faltan: " << n << " para llegar al nivel!" << std::endl;
+    }
+    else {
+        std::cout << "Ya estas en el maximo nivel!" << std::endl;
+    }
 }
 
 
