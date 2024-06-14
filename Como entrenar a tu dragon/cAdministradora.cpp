@@ -50,27 +50,49 @@ void cAdministradora::combate(cDragon* dragon, cVikingo* vikingo)
 
 void cAdministradora::historia()
 {
-    cout << " _______  _______  _______  _______    _______  _       _________ _______  _______  _        _______  _______    _______   _________            ______   _______  _______  _______  _______  _       " << endl;
-    cout << "(  ____ \(  ___  )(       )(  ___  )  (  ____ \( (    /|\__   __/(  ____ )(  ____ \( (    /|(  ___  )(  ____ )  (  ___  )  \__   __/|\     /|  (  __  \ (  ____ )(  ___  )(  ____ \(  ___  )( (    /|" << endl;
-    cout << "| (    \/| (   ) || () () || (   ) |  | (    \/|  \  ( |   ) (   | (    )|| (    \/|  \  ( || (   ) || (    )|  | (   ) |     ) (   | )   ( |  | (  \  )| (    )|| (   ) || (    \/| (   ) ||  \  ( |" << endl;
-    cout << "| |      | |   | || || || || |   | |  | (__    |   \ | |   | |   | (____)|| (__    |   \ | || (___) || (____)|  | (___) |     | |   | |   | |  | |   ) || (____)|| (___) || |      | |   | ||   \ | |" << endl;
-    cout << "| |      | |   | || |(_)| || |   | |  |  __)   | (\ \) |   | |   |     __)|  __)   | (\ \) ||  ___  ||     __)  |  ___  |     | |   | |   | |  | |   | ||     __)|  ___  || | ____ | |   | || (\ \) |" << endl;
-    cout << "| |      | |   | || |   | || |   | |  | (      | | \   |   | |   | (\ (   | (      | | \   || (   ) || (\ (     | (   ) |     | |   | |   | |  | |   ) || (\ (   | (   ) || | \_  )| |   | || | \   |" << endl;
-    cout << "| (____/\| (___) || )   ( || (___) |  | (____/\| )  \  |   | |   | ) \ \__| (____/\| )  \  || )   ( || ) \ \__  | )   ( |     | |   | (___) |  | (__/  )| ) \ \__| )   ( || (___) || (___) || )  \  |" << endl;
-    cout << "(_______/(_______)|/     \|(_______)  (_______/|/    )_)   )_(   |/   \__/(_______/|/    )_)|/     \||/   \__/  |/     \|     )_(   (_______)  (______/ |/   \__/|/     \|(_______)(_______)|/    )_)" << endl;
+    cout << "COMO ENTRENAR A TU DRAGON" << endl;
+    getchar();
 
-    cout << "     _.-^^---....,,--       " << endl;
-    cout << " _--                  --_  " << endl;
-    cout << "<                        >)" << endl;
-    cout << "|                         | " << endl;
-    cout << " \._                   _./  " << endl;
-    cout << "    ```--. . , ; .--'''       " << endl;
-    cout << "         | |   |             " << endl;
-    cout << "      .-=||  | |=-.   " << endl;
-    cout << "      `-=#$%&%$#=-'   " << endl;
-    cout << "         | ;  :|     " << endl;
-    cout << "_____.,-#%&$@%#&#~,._____" << endl;
+    cout << "En el año 1010, la isla de Berk vivía en paz y armonía." << endl;
+    cout << "Hasta que un día aparecieron los malvados vikingo de la tribu Draugr que atacaron la aldea y asesinaron a muchos aldeanos." << endl;
+    cout << "\t" << "     _.-^^---....,,--       " << endl;
+    cout << "\t" << " _--                  --_  " << endl;
+    cout << "\t" << "<                        >)" << endl;
+    cout << "\t" << "|                         | " << endl;
+    cout << "\t" << " \._                   _./  " << endl;
+    cout << "\t" << "    ```--. . , ; .--'''       " << endl;
+    cout << "\t" << "         | |   |             " << endl;
+    cout << "\t" << "      .-=||  | |=-.   " << endl;
+    cout << "\t" << "      `-=#$%&%$#=-'   " << endl;
+    cout << "\t" << "         | ;  :|     " << endl;
+    cout << "\t" << "_____.,-#%&$@%#&#~,._____" << endl << endl;
+    getchar();
 
+
+    cout << "Ese mismo dia  Estoico el Vasto, el jefe de la aldea, designo un grupo de jóvenes valientes vikingos que domarian dragones" << endl;
+    cout << "y si pasan la prueba del jefe de seguridad Bocon, serían parte de un grupo de élite encargado de defender a la aldea de los enemigos." << endl << endl;
+    
+    cout << "\t" << " <>=======() " << endl;
+    cout << "\t" << "(/\___   /|\\          ()==========<>_" << endl;
+    cout << "\t" << "      \_/ | \\        //|\   ______/ \)" << endl;
+    cout << "\t" << "        \_|  \\      // | \_/" << endl;
+    cout << "\t" << "          \|\/|\_   //  /\/" << endl;
+    cout << "\t" << "           (oo)\ \_//  /" << endl;
+    cout << "\t" << "          //_/\_\/ /  |" << endl;
+    cout << "\t" << "         @@/  |=\  \  |" << endl;
+    cout << "\t" << "              \_=\_ \ |" << endl;
+    cout << "\t" << "                \==\ \|\_ " << endl;
+    cout << "\t" << "             __(\===\(  )\ " << endl;
+    cout << "\t" << "            (((~) __(_/   |" << endl;
+    cout << "\t" << "                 (((~) \  /" << endl;
+    cout << "\t" << "                 ______/ /" << endl;
+    cout << "\t" << "                 '------'" << endl;
+    getchar();
+    cout << "Desde ese día tú, decidiste  que el querías formar parte de aquel grupo, para vengar aquellos hermanos Bercianos muertos en manos de la despiadada Ulf y sus guerreros. " << endl;
+    cout << "Comienza tu aventura, domando a un dragon, pasando la prueba de Bocon y luego enfrentarse a todos los vikingos enemigos!" << endl << endl<<endl;
+    
+    cout << "Presiona enter para comenzar tu aventura:" << endl;
+    getchar();
 }
 
 void cAdministradora::dragonEliminado(cDragon* dragon_muerto) {
