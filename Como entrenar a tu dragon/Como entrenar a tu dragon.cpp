@@ -10,11 +10,11 @@ int main()
     /*string nombre, string apellido, string posicion, string apodo, string fecha_nac, 
     int contadorDragonesTerminados, string level, unsigned int ataque, unsigned int defensa, 
     unsigned int salud) */
-    cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", "2", "", 10, 20, 100);
-    //Administradora.AgregarVikingo;
-    std::cout << "hola :)" << std::endl;
-   
-    
+    cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", 2, "", 10, 20, 100);
+    Administradora.AgregarVikingo(viki1);
+    viki1->nivel();
+    viki1->faltanteNuevoNivel();
+    //Administradora.AgregarVikingo;    
 
     
 }

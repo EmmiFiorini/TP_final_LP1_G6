@@ -1,12 +1,12 @@
 #include "cJinete.h"
 #include "cJinete.h"
 
-cJinete::cJinete() : cVikingo() {//constructor nulo
+/*cJinete::cJinete() : cVikingo() {//constructor nulo
     this->caracteristicaFisica = "";
     this->result = resultado::noAsistio;//inicializo en 0
     // Inicialización de MiDragon (requiere un constructor adecuado para cDragon)
     this->MiDragon = NULL;
-}
+}*/
 
 cJinete::~cJinete() {
 
