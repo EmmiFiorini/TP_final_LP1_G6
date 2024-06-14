@@ -30,7 +30,7 @@ public:
     cDragon(string nombre, string caracteristica, tamanio tamanyoDragon, string color, bool estado,
         string level, unsigned int ataque, unsigned int defensa, unsigned int salud); //constructor por parametros
 
-    void nivel();
+    void nivel() override;
 
     void set_nombre(string nombre) { //se modifica el nombre del dragón
         this->nombre = nombre;
@@ -50,7 +50,7 @@ public:
 
     string get_nombre() { return this->nombre; }
 
-    void faltanteNuevoNivel();
+    void faltanteNuevoNivel() override;
 
 };
 
