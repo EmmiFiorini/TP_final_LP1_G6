@@ -52,6 +52,9 @@ public:
 	void PruebaBocon(cJinete* jinete);
 
 	void PrintPeleaImagen() const;
+	
+	void buscarDragon(cJinete* jinete);
+
 
 };
 #endif

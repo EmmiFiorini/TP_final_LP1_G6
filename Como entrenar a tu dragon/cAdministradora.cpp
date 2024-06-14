@@ -314,3 +314,66 @@ void cAdministradora::PrintPeleaImagen() const
     cout << "Imprimir un dibujo!" << endl;
 }
 
+
+
+void cAdministradora::buscarDragon(cJinete* jinete) {
+    cout << "Con el primer rayo de sol, me adentré al bosque de los Susurros.Caminé con cautela, siguiendo el camino que mis ancestros me habían indicado, hasta que se bifurcó en dos: uno mostraba huellas peculiares… no podría decir de qué animal en específico.El otro era un camino llano, no mostraba signos de que habia sido recorrido ¿Cuál voy a elegir ?" << endl;
+    cout << "\t" << "Ingrese A si quiere ir por el camino con huellas; ingrese B si quiere ir por el camino llano" << endl;
+    // la respuesta incorrecta es la 2
+    char respuesta1;
+    cin >> respuesta1;
+    getchar();
+    if (respuesta1 == 'B'|| respuesta1 == 'b') {
+        cout << "Me adentré por el camino llano, confiado en que mis ancestros me guiarian.Sin embargo, apareció una niebla densa y el paisaje se tornó confuso.Me encontré desorientado, rodeado por la niebla" << endl;
+        cout << "\t" << "¡No llegaste a ningún dragón!Presiona enter para volver a la aldea y volver a intentarlo" << endl;
+        getchar();
+        return;
+    }
+    else {
+        cout << "Decidí seguir las huellas, sin saber a qué criatura pertenecían.Caminé durante horas siguiendo este rastro.La vegetación se hacía más densa.De repente, las huellas desaparecieron en una zona pantanosa, y frente a mí el camino se dividía en dos; uno llevaba hacia una colina empinada, cubierta de espinas, y el otro descendía hacia un valle oscuro.Debía decidir : ¿subir la colina espinosa o descender al valle sombrío ? " << endl;
+
+        cout << "\t" << "Ingrese “1” si quiere ir subir por la colina espinosa; ingrese “2” si quiere descender por el valle sombrio" << endl;
+        // la respuesta incorrecta es la 1
+        char respuesta2;
+        cin >> respuesta2;
+        if (respuesta2 == '1') {
+            cout << "Decidí enfrentar la colina espinosa.Sin embargo, las espinas eran más traicioneras de lo que imaginé.Cada paso era una lucha, y pronto me encontré atrapado, con las espinas rasgando mi ropa.Perdí mucho tiempo y, finalmente, tuve que retroceder, herido y frustrado" << endl;
+            cout << "\t" << "¡No llegaste a ningún dragón!Presiona enter para volver a la aldea y volver a intentarlo" << endl;
+            getchar();
+            return;
+        }
+        else {
+            cout << "Tome el camino hacia el valle sombrío.La oscuridad era densa.Sin embargo, segui avanzando, sintiendo que estaba en el camino correcto.De repente, el valle se abrió en un claro iluminado por una luz azulada" << endl;
+            cout << "En el centro, descansando majestuosamente, estaba el dragón.Me acerqué con cautela, recitando las palabras que mis ancestros me habian enseñado.El dragon levantó su cabeza y se quedó observandome.Debia tomar una decision final: mostrarme respetuoso, esperando que el dragon aceptara mi presencia, o intentar imponerme, demostrando mi fuerza.Sabia que solo una opcion me llevaria a ganarme su confianza" << endl;
+            cout << "\t" << "Ingrese “1” si quiere mostrarse respetuoso con el dragon; ingrese “2” si quiere imponerse ante al dragon" << endl;
+            // la respuesta incorrecta es la 2
+            char respuesta3;
+            cin >> respuesta3;
+            if (respuesta3 == '2') {
+                cout << "Opte por imponer mi fuerza.Me acerque al dragon con firmeza, levantando mi voz y mostrando una postura desafiante.Sin embargo, el dragon no se impresiono.Rugio de tal forma que el suelo temblo bajo mis pies.Luego, lanzo una rafaga de fuego que me obligo a retroceder rapidamente.Tropece y cai al suelo, comprendiendo mi error.La fuerza bruta no era el camino para ganar el respeto de una criatura tan majestuosa.Me retiré hacia mi aldea, sabiendo la oportunidad que habia perdido" << endl;
+                cout << "\t" << "¡No llegaste a ningún dragón!Presiona enter para volver a la aldea y volver a intentarlo" << endl;
+                getchar();
+                return;
+            }
+            else {
+                cout << "Me incliné ante el dragon, mostrando respeto y humildad.El dragon, sorprendentemente, bajo su cabeza y me permitio tocar sus escamas.Con cuidado, subi a su lomo.Juntos, volamos hacia la aldea.Oficialmente, habia domado a mi primer dragon" << endl;
+                cout << "\t" << "¡Felicitaciones!Domaste a tu dragon.A continuación, ingresa el nombre de tu nuevo dragon : " << endl;
+                string nombreD;
+                cin >> nombreD;
+                cout << "\t" << "¿Que caracteristica fisica tiene ?" << endl;
+                string caractD;
+                cin >> caractD;
+                cout << "\t" << "¿Qué color tiene ?" << endl;
+                string colorD;
+                cin >> colorD;
+
+                cDragon* tuDragon = new cDragon(nombreD, caractD, mediano, colorD, true, "", 0, 0, 100);
+                jinete->IncorporarDragon(tuDragon);
+
+                cout << "\t" << "¡Dragon creado!Ingresa “enter” para volver a la aldea y seguir con tu aventura " << endl;
+                getchar();
+            }
+        }
+    }
+}
+

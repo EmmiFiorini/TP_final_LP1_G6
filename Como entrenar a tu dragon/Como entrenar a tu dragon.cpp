@@ -7,8 +7,35 @@
 int main()
 {
     cAdministradora Administradora;//me creo una clase administradora
-    Administradora.PrintPeleaImagen();
-   // Administradora.historia();
+ 
+   Administradora.historia();
+
+   string nombre, apellido, apodo, fecha, caract;
+   cout << "\t" << "Creemos a tu jinete!Presiona enter para continuar" << endl;
+   getchar();
+   cout << "Ingresa el nombre de tu jinete : " << endl;
+   cin >> nombre;
+   getchar();
+   cout << "Ingresa el apellido de tu jinete : " << endl;
+   cin >> apellido;
+   getchar();
+   cout << "¿Cual es su apodo ? " << endl;
+   cin >> apodo;
+   getchar();
+   cout << "Ingresá la fecha en la que nacio(dia de mes de anio) " << endl;
+   cin >> fecha;
+   getchar();
+   cout << "¿Cual es la caracteristica fisica que lo representa ? " << endl;
+   cin >> caract;
+   getchar();
+   cJinete* tuPersonaje = new cJinete(nombre, apellido, "jinete", apodo, fecha, 0, "", 0, 0, 100, caract, noAsistio);
+   cout << "\t" << "¡Todo listo!Ahora, a buscar tu dragon!" << endl << endl << endl;
+   getchar();
+   getchar();
+   Administradora.buscarDragon(tuPersonaje);
+   getchar();
+   Administradora.PruebaBocon(tuPersonaje);
+
 
     cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", 2, "", 10, 20, 100);
     cVikingo* enemigo1 = new cVikingo("Ulf", "Iversen", "Jefa de la tribu Draugr","Ulf", "14 de junio de 990", 5, "", 100, 70, 100);
@@ -21,14 +48,16 @@ int main()
     Administradora.NuevoVikingoM(enemigo2);
     Administradora.NuevoVikingoM(enemigo3);
 
-    viki1->nivel();
-    viki1->faltanteNuevoNivel();
+   
+
+
     //Administradora.AgregarVikingo;    
 
     delete viki1;
     delete enemigo1;
     delete enemigo2;
     delete enemigo3;
+    delete tuPersonaje;
     return 0;
 }
 
