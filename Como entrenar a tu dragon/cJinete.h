@@ -43,5 +43,9 @@ public:
             throw new exception("Muerte del dragón. Busca uno nuevo!"); // poner MiDragon en null 
         }
     }
+
+    cDragon* get_MiDragon() {
+        return this->MiDragon;
+    }
 };
 #endif

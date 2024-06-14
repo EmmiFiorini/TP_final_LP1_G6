@@ -32,9 +32,18 @@ int main()
    cout << "\t" << "¡Todo listo!Ahora, a buscar tu dragon!" << endl << endl << endl;
    getchar();
    getchar();
-   Administradora.buscarDragon(tuPersonaje);
+
+//ya creado el personaje:
+   try {
+       Administradora.buscarDragon(tuPersonaje);
+   }
+   catch (exception* e) {
+       cout << "Vuelve a intentarlo!" << endl;
+       Administradora.menu(tuPersonaje);
+   }
+
    getchar();
-   Administradora.PruebaBocon(tuPersonaje);
+   //Administradora.PruebaBocon(tuPersonaje);
 
 
     cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", 2, "", 10, 20, 100);
