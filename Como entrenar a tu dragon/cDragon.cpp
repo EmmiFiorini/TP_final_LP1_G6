@@ -55,6 +55,9 @@ string cDragon::to_string() {
 void cDragon::faltanteNuevoNivel()
 {
     int n = 0; //hacer bieennn
+    if (ataque <= 30) {
+   
+    }
     std::cout << "Tu nivel actual es: " << level << std::endl;
     std::cout << "Te faltan: " << n << " para llegar al nivel!" << std::endl;
 }

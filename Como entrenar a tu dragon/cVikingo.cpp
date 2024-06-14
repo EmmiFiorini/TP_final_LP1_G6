@@ -54,6 +54,10 @@ void cVikingo::nivel()
     }
 }
 
+void cVikingo::faltanteNuevoNivel()
+{
+}
+
 
 
 

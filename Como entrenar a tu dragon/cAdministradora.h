@@ -12,6 +12,10 @@ public:
 	list <cDragon*> listaDeDragones;
 	list <cVikingo*> listaDeEnemigos;
 
+	cAdministradora();//constructor
+
+	~cAdministradora();//destructor
+
 	int CantidadEnemigos();
 
 	int CantidadVikingos();
@@ -31,5 +35,6 @@ public:
 
 	void vikingoEliminado(cVikingo* vikingo);
 
+	void AgregarVikingo(cVikingo* vikingo);
 
 };

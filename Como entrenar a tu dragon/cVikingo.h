@@ -24,7 +24,7 @@ class cVikingo : public cHabilidades
    public:
     static int contVikingos;
 
-    cVikingo() : cHabilidades(){ //constructor nulo
+   /* cVikingo() : cHabilidades(){ //constructor nulo
         this->nombre = "";
         this->apellido = "";
         this->posicion = "";
@@ -35,13 +35,9 @@ class cVikingo : public cHabilidades
         this->contadorDragonesTerminados = 0;
         //this->nivel = VformaDeAtaque::nada;
         contVikingos++;
-    }
+    }*/
 
     ~cVikingo(); //en cpp
-
-
-   
-
 
     cVikingo(string nombre, string apellido, string posicion, string apodo, string fecha_nac, 
         int contadorDragonesTerminados,string level, unsigned int ataque, unsigned int defensa, 
@@ -63,6 +59,8 @@ class cVikingo : public cHabilidades
     void nivel();
 
     string get_nombre() { return this->nombre; }
+
+    void faltanteNuevoNivel();
 };
 
 #endif

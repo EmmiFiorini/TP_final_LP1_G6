@@ -2,10 +2,16 @@
 //
 
 #include <iostream>
-#include "cDragon.h"
-#include "cVikingo.h"
+#include "cAdministradora.h"
+
 int main()
 {
+    cAdministradora Administradora;//me creo una clase administradora
+    /*string nombre, string apellido, string posicion, string apodo, string fecha_nac, 
+    int contadorDragonesTerminados, string level, unsigned int ataque, unsigned int defensa, 
+    unsigned int salud) */
+    cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", "2", "", 10, 20, 100);
+    //Administradora.AgregarVikingo;
     std::cout << "hola :)" << std::endl;
    
     

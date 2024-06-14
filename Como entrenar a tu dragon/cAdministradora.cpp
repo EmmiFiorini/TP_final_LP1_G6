@@ -1,6 +1,14 @@
 #include "cAdministradora.h"
 
 
+cAdministradora::cAdministradora()
+{
+}
+
+cAdministradora::~cAdministradora()
+{
+}
+
 int cAdministradora::CantidadEnemigos()
 {
 	return listaDeEnemigos.size();
@@ -118,4 +126,10 @@ void cAdministradora::vikingoEliminado(cVikingo* vikingo) { // va para listaDeVi
     if (!encontrado) {
         throw new exception("Error, no se encontró al vikingo");
     }
+}
+
+void cAdministradora::AgregarVikingo(cVikingo* vikingo)
+{
+    this->listaDeVikingos.push_back(vikingo);
+
 }
