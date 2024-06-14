@@ -52,6 +52,7 @@ public:
 
     void faltanteNuevoNivel() override;
 
+    string get_level() { return this->level; }
 };
 
 #endif

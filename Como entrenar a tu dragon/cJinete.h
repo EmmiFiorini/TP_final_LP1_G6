@@ -15,11 +15,12 @@ private:
     resultado result;
 
 public:
-    cJinete();
+    //cJinete();
 
     ~cJinete();
 
-
+    void set_result(resultado result);
+    void printResultado() const;
 
 
     cJinete(string nombre, string apellido, string posicion, string apodo, string fecha_nac,

@@ -7,14 +7,29 @@
 int main()
 {
     cAdministradora Administradora;//me creo una clase administradora
-    Administradora.historia();
+    Administradora.PrintPeleaImagen();
+   // Administradora.historia();
+
     cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", 2, "", 10, 20, 100);
+    cVikingo* enemigo1 = new cVikingo("Ulf", "Iversen", "Jefa de la tribu Draugr","Ulf", "14 de junio de 990", 5, "", 100, 70, 100);
+    cVikingo* enemigo2 = new cVikingo("Ari", "Iversen", "Sub-Jefa de la tribu Draugr", "Ari", "14 de junio de 990", 3, "", 60, 99, 100);
+    cVikingo* enemigo3 = new cVikingo("Birger", "Nielsen", "Guerrero de la tribu Draugr", "carnicero", "30 de octubre de 988", 4, "", 80, 20, 100);
+    
     Administradora.AgregarVikingo(viki1);
+
+    Administradora.NuevoVikingoM(enemigo1);
+    Administradora.NuevoVikingoM(enemigo2);
+    Administradora.NuevoVikingoM(enemigo3);
+
     viki1->nivel();
     viki1->faltanteNuevoNivel();
     //Administradora.AgregarVikingo;    
 
-    
+    delete viki1;
+    delete enemigo1;
+    delete enemigo2;
+    delete enemigo3;
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

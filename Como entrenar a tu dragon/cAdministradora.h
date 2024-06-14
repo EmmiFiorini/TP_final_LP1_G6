@@ -1,5 +1,7 @@
 
 #pragma once
+#ifndef CADMINISTRADORA_H
+#define CADMINISTRADORA_H
 #include "cVikingo.h"
 #include "cJinete.h"
 
@@ -37,4 +39,19 @@ public:
 
 	void AgregarVikingo(cVikingo* vikingo);
 
+	void operator+=(cDragon* drago);
+
+	friend ostream& operator <<(ostream& os, cDragon& dragon);
+
+	int buscarDragon(string nombre);
+
+	void operator-=(string nombre);
+
+	void NuevoVikingoM(cVikingo* nuevoVikM);
+
+	void PruebaBocon(cJinete* jinete);
+
+	void PrintPeleaImagen() const;
+
 };
+#endif

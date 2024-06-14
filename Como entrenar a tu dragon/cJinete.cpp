@@ -13,6 +13,25 @@ cJinete::~cJinete() {
     delete MiDragon;//y la pedida en dragon!
 }
 
+void cJinete::set_result(resultado result)
+{
+    this->result = result;
+}
+
+void cJinete::printResultado() const
+{// noAsistio = 0, aprobado = 4, desaprobado = 3, primero = 10, ultimo = 1
+    if (this->result == 0)
+        cout << "No Asistio" << endl;
+    if (this->result == 4) 
+        cout << "Aprobado" << endl;
+    if (this->result == 3)
+        cout << "Desaprobado" << endl;
+    if (this->result == 10)
+        cout << "Primero: aprobado con nota maxima" << endl;
+    if (this->result == 1)
+        cout << "Ultimo: desaprobado y con la peor nota" << endl;
+}
+
 
 cJinete::cJinete(string nombre, string apellido, string posicion, string apodo, 
     string fecha_nac, int contadorDragonesTerminados, string level,

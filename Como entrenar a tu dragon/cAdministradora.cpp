@@ -155,3 +155,162 @@ void cAdministradora::AgregarVikingo(cVikingo* vikingo)
     this->listaDeVikingos.push_back(vikingo);
 
 }
+
+void cAdministradora :: operator+=(cDragon *drago) {
+    listaDeDragones.push_back(drago);
+}
+
+ostream&  operator<<(ostream& os, cDragon& dragon) {
+    os << "Dragon eliminado : "<< "nombre : "<<dragon.get_nombre() << ", nivel : " << dragon.get_level()<< endl;
+    return os;
+}
+
+int cAdministradora::buscarDragon(string nombre) {
+    int pos = 0;
+    bool flag = false;
+    list<cDragon*> ::iterator it = this->listaDeDragones.begin();
+    while (it != listaDeDragones.end()) {
+        if ((*it)->get_nombre() == nombre) {
+            flag = true;
+            return pos;
+        }
+        it++;
+        pos++;
+    }
+    if (!flag){
+        throw new exception("No se encontró al dragon");
+        return -1;
+       }
+}
+
+
+void cAdministradora:: operator-=(string nombre) {
+    try {
+        list<cDragon*> ::iterator it = this->listaDeDragones.begin();
+        int pos = buscarDragon(nombre);
+        advance(it, pos);
+        listaDeDragones.erase(it);
+    }
+    catch (const exception* e) {
+        cout << e->what() << endl;
+    }
+}
+
+
+void cAdministradora::NuevoVikingoM(cVikingo* nuevoVikM)
+{
+    this->listaDeEnemigos.push_back(nuevoVikM);
+
+}
+
+void cAdministradora::PruebaBocon(cJinete* jinete)
+{
+    cout << "Bienvenido " << jinete->get_nombre() << " a mi prueba, soy Bocon." << endl;
+    cout << "Buen dragon el tuyo camarada" << endl << endl;
+    cout << "Estas listo para la prueba?" << endl;
+    cout << "Recuerda el futuro de nuestra tribu esta en tus manos...." << endl;
+    cout << "Solo te lo recuerdo, sin presion..." << endl << endl << endl;
+
+    cout << "\t" << "LA PRUEBA DE BOCON:" << endl << endl << endl;
+    char rta;
+    float nota = 0;
+
+    cout << "\t" << "¿Quien es el novio de la dragona en Shrek?" << endl;
+    cout << "\t a) Burro\n \tb)Shrek\n \tc)El Gato con Botas" << endl;
+    cout << "Ingresa la letra de tu respuesta: ";
+    cin >> rta;
+    switch (rta) //donde opción es la variable a comparar
+    {
+    case 'a' || 'A': {
+        nota = nota + 10;
+        break;
+    }
+    case 'b': //Bloque de instrucciones 2;
+        nota = nota + 0;
+        break;
+    case 'B': //Bloque de instrucciones 3;
+        nota = nota + 0;
+        break;
+    case 'c': //Bloque de instrucciones 3;
+        nota = nota + 0;
+        break;
+    case 'C': //Bloque de instrucciones 3;
+        nota = nota + 0;
+        break;
+    default: 
+        nota = nota + 0;
+        break;
+    }
+
+    cout <<endl<< "\t" << "¿Cuantos dragones tiene Daenerys?" << endl;
+    cout << "\t a) 0\n \tb)2\n \tc)3" << endl;
+    cout << "Ingresa la letra de tu respuesta: ";
+    cin >> rta;
+    switch (rta) //donde opción es la variable a comparar
+    {
+    case 'c' || 'C': {
+        nota = nota + 10;
+        break;
+    }
+    case 'b': //Bloque de instrucciones 2;
+        nota = nota + 0;
+        break;
+    case 'B': //Bloque de instrucciones 3;
+        nota = nota + 0;
+        break;
+    case 'a': //Bloque de instrucciones 3;
+        nota = nota + 0;
+        break;
+    case 'A': //Bloque de instrucciones 3;
+        nota = nota + 0;
+        break;
+    default:
+        nota = nota + 0;
+        break;
+    }
+    cout << endl << "\t" << "En la Bella Durmiente, ¿Quien se trasforma en dragon?" << endl;
+    cout << "\t a) Aurora\n \tb)Malefica\n \tc)Nadie" << endl;
+    cout << "Ingresa la letra de tu respuesta: ";
+    cin >> rta;
+    switch (rta) //donde opción es la variable a comparar
+    {
+    case 'b' || 'B': {
+        nota = nota + 10;
+        break;
+    }
+    case 'c': //Bloque de instrucciones 2;
+        nota = nota + 0;
+        break;
+    case 'C': //Bloque de instrucciones 3;
+        nota = nota + 0;
+        break;
+    case 'a': //Bloque de instrucciones 3;
+        nota = nota + 0;
+        break;
+    case 'A': //Bloque de instrucciones 3;
+        nota = nota + 0;
+        break;
+    default:
+        nota = nota + 0;
+        break;
+    }
+    cout << endl << endl << "Ya terminaste la prueba" << endl << "\tTu nota es: " << nota << "/30" << endl << "Tu resultado es: " << endl;
+    if (nota == 30)//noAsistio = 0, aprobado = 4, desaprobado = 3, primero = 10, ultimo = 1
+        jinete->set_result(primero);
+    if (nota == 10)
+        jinete->set_result(desaprobado);
+    if (nota == 0)
+        jinete->set_result(ultimo);
+    if (nota == 20)
+        jinete->set_result(aprobado);
+    jinete->printResultado();
+    if (nota == 10 || nota == 0) {
+        throw new exception("Prueba desaprobada");
+    }
+}
+
+void cAdministradora::PrintPeleaImagen() const
+{
+    cout << "Imprimir un dibujo!" << endl;
+}
+
