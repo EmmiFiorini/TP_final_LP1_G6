@@ -1,4 +1,4 @@
-#include "cAdministradora.h"
+ï»¿#include "cAdministradora.h"
 
 
 cAdministradora::cAdministradora()
@@ -19,7 +19,7 @@ int cAdministradora::CantidadVikingos()
     return listaDeVikingos.size();
 }
 
-void cAdministradora::llamarATribu(cDragon* dragonAAtacar) //recorre la lista de vikingos y genera un combate con el mismo dragón (un combate para c/vikingo)
+void cAdministradora::llamarATribu(cDragon* dragonAAtacar) //recorre la lista de vikingos y genera un combate con el mismo dragÃ³n (un combate para c/vikingo)
 {
 	list <cVikingo*>::iterator it = this->listaDeEnemigos.begin();
 	while (it != listaDeEnemigos.end()) {
@@ -50,11 +50,16 @@ void cAdministradora::combate(cDragon* dragon, cVikingo* vikingo)
 
 void cAdministradora::historia()
 {
-    cout << "COMO ENTRENAR A TU DRAGON" << endl;
-    getchar();
+    cout << "COMO ENTRENAR A TU DRAGON 2.0, version de Pili y Emma" << endl;
+    cout << "Presiona 'enter' para empezar!" << endl;
+    cin.get();
 
-    cout << "En el año 1010, la isla de Berk vivía en paz y armonía." << endl;
-    cout << "Hasta que un día aparecieron los malvados vikingo de la tribu Draugr que atacaron la aldea y asesinaron a muchos aldeanos." << endl;
+    cout << "En el anio 1010, la isla de Berk vivia en paz y armonia." << endl;
+    cout << "Hasta que un dia aparecieron los malvados vikingos de la tribu Draugr, que atacaron la aldea" << endl;
+    cout << "y asesinaron a muchos de sus aldeanos." << endl;
+    cin.get();
+
+    cout << "\n" << endl;
     cout << "\t" << "     _.-^^---....,,--       " << endl;
     cout << "\t" << " _--                  --_  " << endl;
     cout << "\t" << "<                        >)" << endl;
@@ -66,12 +71,17 @@ void cAdministradora::historia()
     cout << "\t" << "      `-=#$%&%$#=-'   " << endl;
     cout << "\t" << "         | ;  :|     " << endl;
     cout << "\t" << "_____.,-#%&$@%#&#~,._____" << endl << endl;
-    getchar();
+   
+    cin.get();
+    cout << "\n" << endl;
+    cout << "\n" << endl;
 
+    cout << "Ese mismo dia, Estoico el Vasto, el jefe de la aldea, designo un grupo de jovenes valientes vikingos" << endl;
+    cout << "que domarian dragones." << endl;
+    cout << "Si logran pasar la prueba del jefe de seguridad Bocon, formaran parte de un grupo de elite encargado" << endl;
+    cout << "de defender a la aldea de las tribus enemigas." << endl;
+    cout << "\n" << endl;
 
-    cout << "Ese mismo dia  Estoico el Vasto, el jefe de la aldea, designo un grupo de jóvenes valientes vikingos que domarian dragones" << endl;
-    cout << "y si pasan la prueba del jefe de seguridad Bocon, serían parte de un grupo de élite encargado de defender a la aldea de los enemigos." << endl << endl;
-    
     cout << "\t" << " <>=======() " << endl;
     cout << "\t" << "(/\___   /|\\          ()==========<>_" << endl;
     cout << "\t" << "      \_/ | \\        //|\   ______/ \)" << endl;
@@ -87,12 +97,18 @@ void cAdministradora::historia()
     cout << "\t" << "                 (((~) \  /" << endl;
     cout << "\t" << "                 ______/ /" << endl;
     cout << "\t" << "                 '------'" << endl;
-    getchar();
-    cout << "Desde ese día tú, decidiste  que el querías formar parte de aquel grupo, para vengar aquellos hermanos Bercianos muertos en manos de la despiadada Ulf y sus guerreros. " << endl;
-    cout << "Comienza tu aventura, domando a un dragon, pasando la prueba de Bocon y luego enfrentarse a todos los vikingos enemigos!" << endl << endl<<endl;
+   
+    cin.get();
+    cout << "\n" << endl;
     
-    cout << "Presiona enter para comenzar tu aventura:" << endl;
-    getchar();
+    
+    cout << "Desde ese dia, decidiste que querias formar parte de aquel grupo, para vengar a aquellos hermanos Bercianos" << endl;
+    cout << "muertos en manos de la despiadada Ulf y sus guerreros. " << endl;
+    cout << "\n" << endl;
+    cout << "Comenza tu aventura domando a un dragon, pasando la prueba de Bocon y luego enfrentandote a todos los vikingos enemigos." << endl;
+    cout << "Presiona 'enter' para comenzar" << endl;
+    cin.get();
+    system("cls");
 }
 
 void cAdministradora::dragonEliminado(cDragon* dragon_muerto) {
@@ -107,13 +123,13 @@ void cAdministradora::dragonEliminado(cDragon* dragon_muerto) {
         it++;
     }
     if (!encontrado) {
-        throw new exception("Error, no se encontró el dragón");
+        throw new exception("Error, no se encontrÃ³ el dragÃ³n");
     }
 }
 
 void cAdministradora::baja_dragon(cDragon* dragon) {
     if (dragon->get_salud() == 0) {
-        cout << "El dragón murió" << endl;
+        cout << "El dragÃ³n muriÃ³" << endl;
         dragonEliminado(dragon);
     }
 }
@@ -130,7 +146,7 @@ void cAdministradora::enemigoEliminado(cVikingo* enemigo) { // va para listaDeEn
         it++;
     }
     if (!encontrado) {
-        throw new exception("Error, no se encontró al enemigo");
+        throw new exception("Error, no se encontrÃ³ al enemigo");
     }
 }
 
@@ -146,7 +162,7 @@ void cAdministradora::vikingoEliminado(cVikingo* vikingo) { // va para listaDeVi
         it++;
     }
     if (!encontrado) {
-        throw new exception("Error, no se encontró al vikingo");
+        throw new exception("Error, no se encontrÃ³ al vikingo");
     }
 }
 
@@ -178,7 +194,7 @@ int cAdministradora::buscarDragon(string nombre) {
         pos++;
     }
     if (!flag){
-        throw new exception("No se encontró al dragon");
+        throw new exception("No se encontrÃ³ al dragon");
         return -1;
        }
 }
@@ -203,77 +219,58 @@ void cAdministradora::NuevoVikingoM(cVikingo* nuevoVikM)
 
 }
 void cAdministradora::PruebaBocon(cJinete* jinete) {
-    cout << "Bienvenido " << jinete->get_nombre() << " a mi prueba, soy Bocon." << endl;
-    cout << "Buen dragon el tuyo camarada" << endl << endl;
-    cout << "Estas listo para la prueba?" << endl;
-    cout << "Recuerda el futuro de nuestra tribu esta en tus manos...." << endl;
-    cout << "Solo te lo recuerdo, sin presion..." << endl << endl << endl;
-
-    cout << "\t" << "LA PRUEBA DE BOCON:" << endl << endl << endl;
-    char rta;
+    cout << "'Bienvenido " << jinete->get_nombre() << " a mi prueba, soy Bocon. Buen dragon el tuyo, camarada!'" << endl << endl;
+    cout << "'Estas listo para la prueba?'" << endl;
+    cout << "'Recuerda: el futuro de nuestra tribu esta en tus manos... Solo te lo recuerdo, sin presion!'" << endl;
+    cout << "\n" << endl;
+    cout << "\t" << "LA PRUEBA DE BOCON:" << endl;
+    cout << "\t" << "Responde las preguntas correctamente para tener la mejor nota de la clase!" << endl;
+    cin.get();
+    
     float nota = 0;
 
-    cout << "\t" << "Quien es el novio de la dragona en Shrek?" << endl;
-    cout << "a) Burro\n \tb)Shrek\n \tc)El Gato con Botas" << endl;
-    cout << "Ingresa la letra de tu respuesta: ";
-    cin >> rta;
-    switch (rta) {
-    case 'a':
-        nota += 10;
-        break;
-    case 'A':
-        nota += 10;
-        break;
-    case 'b':
-    case 'B':
-    case 'c':
-    case 'C':
-    default:
-        nota += 0;
-        break;
-    }
+    
 
-    cout << endl << "\t" << "Cuantos dragones tiene Daenerys?" << endl;
-    cout << " a) 0\n \tb)2\n \tc)3" << endl;
-    cout << "Ingresa la letra de tu respuesta: ";
-    cin >> rta;
-    switch (rta) {
-    case 'c':
+    cout << "\t" << "Quien es el novio de la dragona en la pelicula 'Shrek'?" << endl;
+    cout << "\t1)Burro\n \t2)Shrek\n \t3)El Gato con Botas" << endl;
+    cout << "Ingresa el numero de tu respuesta: ";
+    cin.get();
+    int respuesta1 = 0;
+    cin >> respuesta1;
+    if (respuesta1 == 1) {
         nota += 10;
-        break;
-    case 'C':
-        nota += 10;
-        break;
-    case 'b':
-    case 'B':
-    case 'a':
-    case 'A':
-    default:
-        nota += 0;
-        break;
     }
+    cout << "\n" << endl;
+    cout << "\n" << endl;
 
-    cout << endl << "\t" << "En la Bella Durmiente, Quien se trasforma en dragon?" << endl;
-    cout << "a) Aurora\n \tb)Malefica\n \tc)Nadie" << endl;
-    cout << "Ingresa la letra de tu respuesta: ";
-    cin >> rta;
-    switch (rta) {
-    case 'b':
+    cout << endl << "\t" << "Cuantos dragones tiene la protagonista Daenerys de la serie 'Games of thrones'?" << endl;
+    cout << "\t1)0\n \t2)2\n \t3)3" << endl;
+    cout << "Ingresa el numero de tu respuesta: ";
+    cin.get();
+    int resp2;
+    cin >> resp2;
+    if (resp2 == 3) {
         nota += 10;
-        break;
-    case 'B':
-        nota += 10;
-        break;
-    case 'c':
-    case 'C':
-    case 'a':
-    case 'A':
-    default:
-        nota += 0;
-        break;
     }
+    
+    cout << "\n" << endl;
+    cout << "\n" << endl;
 
-    cout << endl << endl << "Ya terminaste la prueba" << endl << "\tTu nota es: " << nota << "/30" << endl << "Tu resultado es: " << endl;
+    cout << endl << "\t" << "En la pelicula 'La Bella Durmiente', quien se trasforma en dragon?" << endl;
+    cout << "\t1) Aurora\n \t2)Malefica\n \t3)Ningun personaje" << endl;
+    cout << "Ingresa el numero de tu respuesta: ";
+    cin.get();
+    int resp3;
+    cin >> resp3;
+    
+    if (resp3 == 2) {
+        nota += 10;
+    }
+    
+    cout << "\n" << endl;
+    cout << "\n" << endl;
+    
+    cout << endl << endl << "Ya terminaste la prueba!" << endl << "\tTu nota es: " << nota << "/30" << endl << "Tu resultado es: " << endl;
     if (nota == 30) // noAsistio = 0, aprobado = 4, desaprobado = 3, primero = 10, ultimo = 1
         jinete->set_result(primero);
     else if (nota == 20)
@@ -308,7 +305,7 @@ void cAdministradora::menu(cJinete* jinete)
     int option;
     cout << "Ingrese la opcion:" << endl;
     cin >> option;
-    getchar();
+    cin.get();
 
     do {
         switch (option) {
@@ -360,61 +357,78 @@ void cAdministradora::menu(cJinete* jinete)
 
 void cAdministradora::buscarDragon(cJinete* jinete) {
     bool flag = false;
-    cout << "Con el primer rayo de sol, me adentre al bosque de los Susurros.Camine con cautela, siguiendo el camino que mis ancestros me habian indicado, hasta que se bifurco en dos: uno mostraba huellas peculiares… no podria decir de que animal en especifico.El otro era un camino llano, no mostraba signos de que habia sido recorrido ¿Cuál voy a elegir ?" << endl;
+    
+    cin.get();
+    cout << "Con el primer rayo de sol, me adentre al bosque de los Susurros. Camine con cautela, siguiendo el camino que mis ancestros me habian indicado, hasta que se bifurco en dos:" << endl;
+    cout << "uno mostraba huellas peculiaresâ€¦ no podria decir de que animal en especifico. El otro era un camino llano, no mostraba signos de que habia sido recorrido. Cual voy a elegir? " << endl;
+    cout << "\n" << endl;
     cout << "\t" << "Ingrese A si quiere ir por el camino con huellas; ingrese B si quiere ir por el camino llano" << endl;
-    // la respuesta incorrecta es la 2
+    // la respuesta incorrecta es la A
     char respuesta1;
+    cin.get();
+    
     cin >> respuesta1;
-    getchar();
-    if (respuesta1 == 'B'|| respuesta1 == 'b') {
-        cout << "Me adentré por el camino llano, confiado en que mis ancestros me guiarian.Sin embargo, apareció una niebla densa y el paisaje se tornó confuso.Me encontré desorientado, rodeado por la niebla" << endl;
-        cout << "\t" << "¡No llegaste a ningún dragón!Presiona enter para volver a la aldea y volver a intentarlo" << endl;
-        getchar();
-    }
-    else {
-        cout << "Decidí seguir las huellas, sin saber a qué criatura pertenecían.Caminé durante horas siguiendo este rastro.La vegetación se hacía más densa.De repente, las huellas desaparecieron en una zona pantanosa, y frente a mí el camino se dividía en dos; uno llevaba hacia una colina empinada, cubierta de espinas, y el otro descendía hacia un valle oscuro.Debía decidir : ¿subir la colina espinosa o descender al valle sombrío ? " << endl;
 
+    if (respuesta1 == 'B'|| respuesta1 == 'b') {
+        cout << "Me adentre por el camino llano, confiado en que mis ancestros me guiarian. Sin embargo, aparecio una niebla densa y el paisaje se torno confuso. Me encontre desorientado, rodeado por la niebla" << endl;
+        cout << "\t" << "No llegaste a ningun dragon! Presiona 'enter' para volver a la aldea y volver a intentarlo" << endl;
+        return;
+    } else {
+        cout << "Decidi seguir las huellas, sin saber a que criatura pertenecian. Camine durante horas siguiendo este rastro. La vegetaciÃ³n se hacia mas densa" << endl;
+        cout << "De repente, las huellas desaparecieron en una zona pantanosa, y frente a mi el camino se dividio en dos:" << endl;
+        cout << "uno llevaba hacia una colina empinada, cubierta de espinas, y el otro descendia hacia un valle oscuro. DebÃ­a decidir: subir la colina espinosa o descender al valle sombrio?" << endl;
+        cout << "\n" << endl;
         cout << "\t" << "Ingrese A si quiere ir subir por la colina espinosa; ingrese B si quiere descender por el valle sombrio" << endl;
         // la respuesta incorrecta es la 1
         char respuesta2;
+        cin.get();
         cin >> respuesta2;
         if (respuesta2 == 'A' || respuesta2 == 'a') {
-            cout << "Decidí enfrentar la colina espinosa.Sin embargo, las espinas eran más traicioneras de lo que imaginé.Cada paso era una lucha, y pronto me encontré atrapado, con las espinas rasgando mi ropa.Perdí mucho tiempo y, finalmente, tuve que retroceder, herido y frustrado" << endl;
-            cout << "\t" << "¡No llegaste a ningún dragón!Presiona enter para volver a la aldea y volver a intentarlo" << endl;
-            getchar();
+            cout << "Decidi enfrentar la colina espinosa. Sin embargo, las espinas eran mas traicioneras de lo que imagine. Cada paso era una lucha, y pronto me encontre atrapado, con las espinas rasgando mi ropa" << endl;
+            cout << "Perdi mucho tiempo y, finalmente, tuve que retroceder, herido y frustrado" << endl;
+            cout << "\t" << "No llegaste a ningÃºn dragon! Presiona 'enter' para volver a la aldea y volver a intentarlo" << endl;
             return;
         }
         else {
-            cout << "Tome el camino hacia el valle sombrío.La oscuridad era densa.Sin embargo, segui avanzando, sintiendo que estaba en el camino correcto.De repente, el valle se abrió en un claro iluminado por una luz azulada" << endl;
-            cout << "En el centro, descansando majestuosamente, estaba el dragón.Me acerqué con cautela, recitando las palabras que mis ancestros me habian enseñado.El dragon levantó su cabeza y se quedó observandome.Debia tomar una decision final: mostrarme respetuoso, esperando que el dragon aceptara mi presencia, o intentar imponerme, demostrando mi fuerza.Sabia que solo una opcion me llevaria a ganarme su confianza" << endl;
+            cout << "Tome el camino hacia el valle sombrio. La oscuridad era densa. Sin embargo, segui avanzando, sintiendo que estaba en el camino correcto. De repente, el valle se abrio en un claro iluminado por una luz azulada" << endl;
+            cout << "En el centro, descansando majestuosamente, estaba el dragon. Me acerque con cautela, recitando las palabras que mis ancestros me habian enseÃ±ado. El dragon levanto su cabeza y se quedo observandome" << endl;
+            cout <<"Debia tomar una decision final: mostrarme respetuoso, esperando que el dragon aceptara mi presencia, o intentar imponerme, demostrando mi fuerza. Sabia que solo una opcion me llevaria a ganarme su confianza" << endl;
+            cout << "\n" << endl;
             cout << "\t" << "Ingrese A si quiere mostrarse respetuoso con el dragon; ingrese B si quiere imponerse ante al dragon" << endl;
             // la respuesta incorrecta es la 2
             char respuesta3;
+            cin.get();
             cin >> respuesta3;
             if (respuesta3 == 'B' || respuesta3 == 'b') {
-                cout << "Opte por imponer mi fuerza.Me acerque al dragon con firmeza, levantando mi voz y mostrando una postura desafiante.Sin embargo, el dragon no se impresiono.Rugio de tal forma que el suelo temblo bajo mis pies.Luego, lanzo una rafaga de fuego que me obligo a retroceder rapidamente.Tropece y cai al suelo, comprendiendo mi error.La fuerza bruta no era el camino para ganar el respeto de una criatura tan majestuosa.Me retiré hacia mi aldea, sabiendo la oportunidad que habia perdido" << endl;
-                cout << "\t" << "¡No llegaste a ningún dragón!Presiona enter para volver a la aldea y volver a intentarlo" << endl;
-                getchar();
+                cout << "Opte por imponer mi fuerza. Me acerque al dragon con firmeza, levantando mi voz y mostrando una postura desafiante. Sin embargo, el dragon no se impresiono. Rugio de tal forma que el suelo temblo bajo mis pies." << endl;
+                cout << "Luego, lanzo una rafaga de fuego que me obligo a retroceder rapidamente. Tropece y cai al suelo, comprendiendo mi error.La fuerza bruta no era el camino para ganar su respeto. Me retire hacia la aldea, sabiendo la oportunidad que habia perdido" << endl;
+                cout << "\t" << "No llegaste a ningun dragon! Presiona 'enter' para volver a la aldea y volver a intentarlo" << endl;
                 return;
             }
             else {
                 flag = true;
-                cout << "Me incliné ante el dragon, mostrando respeto y humildad.El dragon, sorprendentemente, bajo su cabeza y me permitio tocar sus escamas.Con cuidado, subi a su lomo.Juntos, volamos hacia la aldea.Oficialmente, habia domado a mi primer dragon" << endl;
-                cout << "\t" << "¡Felicitaciones!Domaste a tu dragon.A continuación, ingresa el nombre de tu nuevo dragon : " << endl;
+                cout << "Me incline ante el dragon, mostrando respeto y humildad. El dragon, sorprendentemente, bajo su cabeza y me permitio tocar sus escamas.Con cuidado, subi a su lomo. Juntos, volamos hacia la aldea. Habia domado a mi primer dragon" << endl;
+                cout << "\n" << endl;
+                system("cls");
+                cin.get();
+                cout << "\t" << "Felicitaciones! Domaste a tu dragon. A continuacion, ingresa el nombre de tu nuevo dragon: " << endl;
                 string nombreD;
                 cin >> nombreD;
-                cout << "\t" << "¿Que caracteristica fisica tiene ?" << endl;
+                cin.get();
+                cout << "\t" << "Que caracteristica fisica tiene?" << endl;
                 string caractD;
                 cin >> caractD;
-                cout << "\t" << "¿Qué color tiene ?" << endl;
+                cin.get();
+                cout << "\t" << "Que color tiene ?" << endl;
                 string colorD;
+                cin.get();
                 cin >> colorD;
 
                 cDragon* tuDragon = new cDragon(nombreD, caractD, mediano, colorD, true, "", 0, 0, 100);
                 jinete->IncorporarDragon(tuDragon);
-
-                cout << "\t" << "¡Dragon creado!Ingresa “enter” para volver a la aldea y seguir con tu aventura " << endl;
-                getchar();
+                cout << "\n" << endl;
+                cout << "\t" << "Dragon creado! Ingresa 'enter' para volver a la aldea y seguir con tu aventura " << endl;
+                cin.get();
             }
         }
     }

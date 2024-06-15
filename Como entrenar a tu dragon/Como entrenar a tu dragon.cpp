@@ -11,30 +11,43 @@ int main()
    Administradora.historia();
 
    string nombre, apellido, apodo, fecha, caract;
-   cout << "\t" << "Creemos a tu jinete!Presiona enter para continuar" << endl;
-   getchar();
-   cout << "Ingresa el nombre de tu jinete : " << endl;
+   cout << "\t" << "Creemos a tu jinete!" << endl;
+   cout << "\n" << endl;
+  
+   cout << "Ingresa el nombre de tu jinete: " << endl;
+   cin.get();
    cin >> nombre;
-   getchar();
-   cout << "Ingresa el apellido de tu jinete : " << endl;
+   
+   
+   cout << "Ingresa el apellido de tu jinete: " << endl;
+   cin.get();
    cin >> apellido;
-   getchar();
-   cout << "¿Cual es su apodo ? " << endl;
+   cin.get();
+  
+   cout << "Cual es su apodo? " << endl;
+   cin.get();
    cin >> apodo;
-   getchar();
-   cout << "Ingresá la fecha en la que nacio(dia de mes de anio) " << endl;
+   cin.get();
+   
+   cout << "Ingresa la fecha en la que nacio (dia de mes de anio): " << endl;
+   cin.get();
    cin >> fecha;
-   getchar();
-   cout << "¿Cual es la caracteristica fisica que lo representa ? " << endl;
+   cin.get();
+   
+   cout << "Cual es la caracteristica fisica que lo representa? " << endl;
+   
+   cin.get();
    cin >> caract;
-   getchar();
+   cin.get();
    cJinete* tuPersonaje = new cJinete(nombre, apellido, "jinete", apodo, fecha, 0, "", 0, 0, 100, caract, noAsistio);
    cout << "\t" << "¡Todo listo!Ahora, a buscar tu dragon!" << endl << endl << endl;
-   getchar();
-   getchar();
+   system("cls");
+   cin.get();
+   cin.get();
 
 //ya creado el personaje:
    try {
+       cin.get();
        Administradora.buscarDragon(tuPersonaje);
    }
    catch (exception* e) {
@@ -42,8 +55,11 @@ int main()
        Administradora.menu(tuPersonaje);
    }
 
-   getchar();
-   //Administradora.PruebaBocon(tuPersonaje);
+   cin.get();
+   cin.get();
+   Administradora.PruebaBocon(tuPersonaje);
+   cin.get();
+   cin.get();
 
 
     cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", 2, "", 10, 20, 100);
