@@ -43,7 +43,6 @@ int main()
    cout << "\t" << "¡Todo listo!Ahora, a buscar tu dragon!" << endl << endl << endl;
    system("cls");
    cin.get();
-   cin.get();
 
    //me creo algunos personajes
     cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", 2, "", 10, 20, 100);
@@ -58,15 +57,14 @@ int main()
     Administradora.NuevoVikingoM(enemigo3);
     
     int option=Administradora.menu(tuPersonaje);//llamo a la funcion menu, y ahora hago los try y catch
-   
-    cin.get();
+    system("cls");
     do {
         switch (option) {
         case 1: {
             try {
                 Administradora.buscarDragon(tuPersonaje);
             }
-            catch (exception* e) {
+            catch (exception* e) {//NUNCA ENTRA ACA!!
                 cout << "Vuelve a intentarlo!" << endl;
                 Administradora.menu(tuPersonaje);
             }
@@ -138,7 +136,7 @@ int main()
                 else {
                     cout << "te mataron." << endl << endl << "GAME OVER" << endl;
                     cin.get();
-                    //manejar aca si es fin del juego o si quiere volver a empezar
+                    option = 6;
                 }
                 
                
