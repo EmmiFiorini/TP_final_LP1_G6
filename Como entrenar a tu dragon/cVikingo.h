@@ -59,6 +59,7 @@ class cVikingo : public cHabilidades
     void nivel() override;
 
     string get_nombre() { return this->nombre; }
+    string get_level() { return this->level; }
 
     void faltanteNuevoNivel() override;
 };

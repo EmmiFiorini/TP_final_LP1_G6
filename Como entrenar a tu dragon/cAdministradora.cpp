@@ -22,14 +22,16 @@ int cAdministradora::CantidadVikingos()
 void cAdministradora::llamarATribu(cDragon* dragonAAtacar) //recorre la lista de vikingos y genera un combate con el mismo dragón (un combate para c/vikingo)
 {
 	list <cVikingo*>::iterator it = this->listaDeEnemigos.begin();
-	while (it != listaDeEnemigos.end()) {
+	while (it != listaDeEnemigos.end() && (*it)->get_salud()!=0 || dragonAAtacar->get_salud()!=0) {
         combate(dragonAAtacar, (*it));
         it++;
 	}
 }
 
-void cAdministradora::combate(cDragon* dragon, cVikingo* vikingo)
+
+void cAdministradora::combate(cDragon* dragon, cVikingo* vikingo)//hay q re pensarla
 {
+    PrintPeleaImagen(dragon, vikingo);
     if (dragon->get_defensa() > vikingo->get_ataque() && dragon->get_ataque() > vikingo->get_defensa()) {
         vikingo->set_salud(vikingo->get_salud() - 50);
     }
@@ -40,8 +42,12 @@ void cAdministradora::combate(cDragon* dragon, cVikingo* vikingo)
         dragon->set_salud(dragon->get_salud() - 25);
         vikingo->set_salud(vikingo->get_salud() - 25);
     }
-    if (vikingo->get_salud() <= 0)
-        throw new exception("muerte de vikingo"); //el try catch se hace en el main. Se llama en el main a la funcion "baja"
+    //ya habiendo sido la pelea, vuelvo a imprimir los datos de cada uno
+    PrintPeleaImagen(dragon, vikingo);
+
+    if (vikingo->get_salud() <= 0) {
+        cout << "Felicidades! acabaste con el vikingo: " << vikingo->get_nombre() << endl;//Se llama a la funcion "baja"
+    }
 
     if (dragon->get_salud() <= 0) {
         throw new exception("muerte de dragon"); //se cae el jinte de arriba del dragon y pierde 70 de vida, si sigue vivo tiene q peliar el solo contra los vikingos malos
@@ -288,9 +294,11 @@ void cAdministradora::PruebaBocon(cJinete* jinete) {
 }
 
 
-void cAdministradora::PrintPeleaImagen() const
+void cAdministradora::PrintPeleaImagen(cDragon* dragon, cVikingo* vikingo) const
 {
-    cout << "Imprimir un dibujo!" << endl;
+    cout << dragon->get_nombre() << ":\tsalud: " << dragon->get_salud() << "\tnivel: " << dragon->get_level() << "\tataque: " << dragon->get_ataque() << "\tdefensa: " << dragon->get_defensa() << endl;
+    cout << "\t vs" << endl;
+    cout << vikingo->get_nombre() << ":\tsalud: " << vikingo->get_salud() << "\tnivel: " << vikingo->get_level() << "\tataque: " << vikingo->get_ataque() << "\tdefensa: " << vikingo->get_defensa() << endl;
 }
 
 int cAdministradora::menu(cJinete* jinete)

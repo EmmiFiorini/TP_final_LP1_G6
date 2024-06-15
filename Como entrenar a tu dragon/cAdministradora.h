@@ -51,10 +51,11 @@ public:
 
 	void PruebaBocon(cJinete* jinete);
 
-	void PrintPeleaImagen() const;
+	void PrintPeleaImagen(cDragon* dragon, cVikingo* vikingo) const;
 	
 	void buscarDragon(cJinete* jinete);
 
 	int menu(cJinete* jinete);
+
 };
 #endif

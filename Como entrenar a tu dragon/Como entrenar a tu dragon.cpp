@@ -56,10 +56,9 @@ int main()
     Administradora.NuevoVikingoM(enemigo1);
     Administradora.NuevoVikingoM(enemigo2);
     Administradora.NuevoVikingoM(enemigo3);
-    /*
-     option=Administradora.menu(tuPersonaje);//llamo a la funcion menu, y ahora hago los try y catch
+    
+    int option=Administradora.menu(tuPersonaje);//llamo a la funcion menu, y ahora hago los try y catch
    
-
     cin.get();
     do {
         switch (option) {
@@ -118,40 +117,40 @@ int main()
             break;
         }
 
-        case 5://llamarATribu(cDragon* dragonAAtacar)
-            llamarATribu(jinete->get_MiDragon());
+        case 5: {
+            try {
+                //llamarATribu(cDragon* dragonAAtacar)
+                Administradora.llamarATribu(tuPersonaje->get_MiDragon());
+              
+            }
+            catch (exception* e) {
+                cout << tuPersonaje->get_MiDragon()->get_nombre() << " ha muerto." << endl << "La tribu Draugr comenzo una pelea contigo, tras unas golpizas " << endl;
+                
+                tuPersonaje->IncorporarDragon(nullptr);//cambio el dragon a nullo
+                tuPersonaje->set_salud(tuPersonaje->get_salud() - 50);//disminuyo la salud
+                tuPersonaje->set_result(noAsistio);//desparobada la prueba
+
+                if (tuPersonaje->get_salud() > 0) {
+                    cout << "tuvieron piedad contigo, y tan solo te dejaron con " << tuPersonaje->get_salud()<<
+                        "de vida y te dejaron volver a tu aldea." <<endl<< endl << "Comienza nuevamente la historia con un nuevo dragon!" << endl;
+                    Administradora.menu(tuPersonaje);
+                }
+                else {
+                    cout << "te mataron." << endl << endl << "GAME OVER" << endl;
+                    cin.get();
+                    //manejar aca si es fin del juego o si quiere volver a empezar
+                }
+                
+               
+            }
             break;
+        }
         default:
-            return; //palabra q te cierra el programa
+            cin.get();
 
         }
     } while (option != 6);
     
-    */
-    Administradora.menu(tuPersonaje);//llamo al menu
-//ya creado el personaje:
-   try {
-       cin.get();
-       Administradora.buscarDragon(tuPersonaje);
-   }
-   catch (exception* e) {
-       cout << "Vuelve a intentarlo!" << endl;
-       Administradora.menu(tuPersonaje);
-   }
-
-   cin.get();
-   cin.get();
-   Administradora.PruebaBocon(tuPersonaje);
-   cin.get();
-   cin.get();
-
-
-   
-
-   
-
-
-    //Administradora.AgregarVikingo;    
 
     delete viki1;
     delete enemigo1;
