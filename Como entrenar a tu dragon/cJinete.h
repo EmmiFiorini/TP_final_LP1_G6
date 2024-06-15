@@ -21,7 +21,7 @@ public:
 
     void set_result(resultado result);
     void printResultado() const;
-
+    resultado get_Result() const;
 
     cJinete(string nombre, string apellido, string posicion, string apodo, string fecha_nac,
         int contadorDragonesTerminados, string level, unsigned int ataque, unsigned int defensa,

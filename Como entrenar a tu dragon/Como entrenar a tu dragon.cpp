@@ -7,10 +7,10 @@
 int main()
 {
     cAdministradora Administradora;//me creo una clase administradora
- 
-   Administradora.historia();
 
-   string nombre, apellido, apodo, fecha, caract;
+   Administradora.historia();//se imprime la historia de nuestro juego
+
+   string nombre, apellido, apodo, fecha, caract;//comienza la aventura creando a su personaje 
    cout << "\t" << "Creemos a tu jinete!" << endl;
    cout << "\n" << endl;
   
@@ -45,6 +45,90 @@ int main()
    cin.get();
    cin.get();
 
+   //me creo algunos personajes
+    cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", 2, "", 10, 20, 100);
+    cVikingo* enemigo1 = new cVikingo("Ulf", "Iversen", "Jefa de la tribu Draugr","Ulf", "14 de junio de 990", 5, "", 100, 70, 100);
+    cVikingo* enemigo2 = new cVikingo("Ari", "Iversen", "Sub-Jefa de la tribu Draugr", "Ari", "14 de junio de 990", 3, "", 60, 99, 100);
+    cVikingo* enemigo3 = new cVikingo("Birger", "Nielsen", "Guerrero de la tribu Draugr", "carnicero", "30 de octubre de 988", 4, "", 80, 20, 100);
+    
+    Administradora.AgregarVikingo(viki1);
+
+    Administradora.NuevoVikingoM(enemigo1);
+    Administradora.NuevoVikingoM(enemigo2);
+    Administradora.NuevoVikingoM(enemigo3);
+    /*
+     option=Administradora.menu(tuPersonaje);//llamo a la funcion menu, y ahora hago los try y catch
+   
+
+    cin.get();
+    do {
+        switch (option) {
+        case 1: {
+            try {
+                Administradora.buscarDragon(tuPersonaje);
+            }
+            catch (exception* e) {
+                cout << "Vuelve a intentarlo!" << endl;
+                Administradora.menu(tuPersonaje);
+            }
+            break;
+        }
+        case 2: {
+            try {
+                Administradora.PruebaBocon(tuPersonaje);
+            }
+            catch (exception* e) {
+                cout << "Vuelve a intentarlo!" << endl;
+                Administradora.menu(tuPersonaje);
+            }
+            break;
+        }
+        case 3: {
+            //entrenarDragon(bool habilidadAEntrenar)
+            cout << "Ingrese A si quiere entrenar ataque y B si quiere entrenar defensa" << endl;
+            char c;
+            cin >> c;
+            if (c == 'A' || c == 'a') {
+                tuPersonaje->entrenarDragon(true);
+            }
+            else if (c == 'B' || c == 'b') {
+                tuPersonaje->entrenarDragon(false);
+            }
+            else {
+                cout << "Opcion ingresada no valida" << endl;
+                Administradora.menu(tuPersonaje);
+            }
+
+            break;
+        }
+        case 4: {
+            cout << "Ingrese A si quiere curar tu dragon y B si quiere curarse a uno mismo" << endl;
+            char f;
+            cin >> f;
+            if (f == 'A' || f == 'a') {
+                tuPersonaje->curarDragon();
+            }
+            else if (f == 'B' || f == 'b') {
+                tuPersonaje->curandero();
+            }
+            else {
+                cout << "Opcion ingresada no valida" << endl;
+                Administradora.menu(tuPersonaje);
+            }
+            break;
+        }
+
+        case 5://llamarATribu(cDragon* dragonAAtacar)
+            llamarATribu(jinete->get_MiDragon());
+            break;
+        default:
+            return; //palabra q te cierra el programa
+
+        }
+    } while (option != 6);
+    
+    */
+    Administradora.menu(tuPersonaje);//llamo al menu
 //ya creado el personaje:
    try {
        cin.get();
@@ -62,16 +146,7 @@ int main()
    cin.get();
 
 
-    cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", 2, "", 10, 20, 100);
-    cVikingo* enemigo1 = new cVikingo("Ulf", "Iversen", "Jefa de la tribu Draugr","Ulf", "14 de junio de 990", 5, "", 100, 70, 100);
-    cVikingo* enemigo2 = new cVikingo("Ari", "Iversen", "Sub-Jefa de la tribu Draugr", "Ari", "14 de junio de 990", 3, "", 60, 99, 100);
-    cVikingo* enemigo3 = new cVikingo("Birger", "Nielsen", "Guerrero de la tribu Draugr", "carnicero", "30 de octubre de 988", 4, "", 80, 20, 100);
-    
-    Administradora.AgregarVikingo(viki1);
-
-    Administradora.NuevoVikingoM(enemigo1);
-    Administradora.NuevoVikingoM(enemigo2);
-    Administradora.NuevoVikingoM(enemigo3);
+   
 
    
 

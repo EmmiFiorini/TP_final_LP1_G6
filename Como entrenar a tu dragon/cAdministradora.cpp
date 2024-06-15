@@ -293,64 +293,31 @@ void cAdministradora::PrintPeleaImagen() const
     cout << "Imprimir un dibujo!" << endl;
 }
 
-void cAdministradora::menu(cJinete* jinete)
+int cAdministradora::menu(cJinete* jinete)
 {
-    cout << "\t MENU:" << endl;
-    cout << "1) Buscar Dragon" << endl;
-    cout << "2) Prueba Bocon" << endl;
-    cout << "3) Entrenar Dragon" << endl;
-    cout << "4) Curandero" << endl;
-    cout << "5) Pelea contra todos los enemigos" << endl;
-    cout << "6) Salir" << endl;
-    int option;
+    int option;//creo la opcion q va a elegir el usuario
+    if (jinete->get_MiDragon() == nullptr) {//si no tiene dragon, solamente le aparece asi
+        cout << "\t MENU:" << endl;
+        cout << "1) Buscar Dragon" << endl;
+        cout << "6) Salir" << endl;
+    }
+    else if (jinete->get_Result() == noAsistio || jinete->get_Result() == desaprobado) {
+        cout << "\t MENU:" << endl;
+        cout << "2) Prueba Bocon" << endl;
+        cout << "6) Salir" << endl;
+    }
+    else {
+        cout << "\t MENU:" << endl;
+        cout << "3) Entrenar Dragon" << endl;
+        cout << "4) Curandero" << endl;
+        cout << "5) Pelea contra todos los enemigos" << endl;
+        cout << "6) Salir" << endl;
+    }
     cout << "Ingrese la opcion:" << endl;
     cin >> option;
     cin.get();
+    return option;
 
-    do {
-        switch (option) {
-        case 1: buscarDragon(jinete);
-            break;
-        case 2: PruebaBocon(jinete);
-            break;
-        case 3://entrenarDragon(bool habilidadAEntrenar)
-            cout << "Ingrese A si quiere entrenar ataque y B si quiere entrenar defensa" << endl;
-            char c;
-            cin >> c;
-            if (c == 'A' || c == 'a') {
-                jinete->entrenarDragon(true);
-            }
-            else if(c == 'B' || c == 'b'){
-                jinete->entrenarDragon(false);
-            }
-            else {
-                cout << "Ingrese una opcion valida" << endl; //poner aca palabra q te cierre el programas
-            }
-                
-            break;
-        case 4:
-            cout << "Ingrese A si quiere curar tu dragon y B si quiere curarse a uno mismo" << endl;
-            char f;
-            cin >> f;
-            if (f == 'A' || f == 'a') {
-                jinete->curarDragon();
-            }
-            else if (f == 'B' || f == 'b') {
-                jinete->curandero();
-            }
-            else {
-                cout << "Ingrese una opcion valida" << endl; //poner aca palabra q te cierre el programas
-            }
-
-            break;
-        case 5://llamarATribu(cDragon* dragonAAtacar)
-            llamarATribu(jinete->get_MiDragon());
-            break;
-        default:
-            return; //palabra q te cierra el programa
-        
-        }
-    } while (option != 6);
 }
 
 

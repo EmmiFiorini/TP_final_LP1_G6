@@ -55,6 +55,6 @@ public:
 	
 	void buscarDragon(cJinete* jinete);
 
-	void menu(cJinete* jinete);
+	int menu(cJinete* jinete);
 };
 #endif

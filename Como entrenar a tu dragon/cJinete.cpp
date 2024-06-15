@@ -32,6 +32,11 @@ void cJinete::printResultado() const
         cout << "Ultimo: desaprobado y con la peor nota" << endl;
 }
 
+resultado cJinete::get_Result() const
+{
+    return result;
+}
+
 
 cJinete::cJinete(string nombre, string apellido, string posicion, string apodo, 
     string fecha_nac, int contadorDragonesTerminados, string level,
