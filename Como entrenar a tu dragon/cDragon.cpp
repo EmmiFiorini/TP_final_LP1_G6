@@ -44,11 +44,9 @@ cDragon::cDragon() : cHabilidades() {//constructor nulo
 
 string cDragon::to_string() {
     stringstream ss;
-    ss << "El nombre del dragon es: " << nombre << endl;
-    ss << "La caracteristica es: " << caracteristica << endl;
-    ss << "Su estado: " << estado << endl;
-    ss << "El color es: " << color << endl;
-    ss << "Su nivel es:" << level << endl;
+    ss << "Tu personaje: " <<nombre << "\t Salud: " << salud << 
+        "\t Ataque: " << ataque << "\t Defensa: " << defensa << endl;
+    faltanteNuevoNivel();
     return ss.str();
 }
 

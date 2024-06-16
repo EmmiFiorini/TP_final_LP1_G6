@@ -59,5 +59,6 @@ public:
 
 	void switch_menu(int opcion, cJinete* jinete);
 
+
 };
 #endif

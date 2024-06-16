@@ -65,10 +65,7 @@ void cJinete::curarDragon() {
 
 string cJinete::to_string() {
     stringstream ss;
-    ss << "El nombre del Jinete es: " << nombre << endl;
-    ss << "El apellido del Jinete es: " << apellido << endl;
-    ss << "El apodo del Jinete es: " << apodo << endl;
-    ss << "La caracteristica fisica del Jinete es: " << caracteristicaFisica << endl;
+    ss << "Tu personaje: " << apodo << "\t Salud: " << salud << "\t Ataque: " << ataque << "\t Defensa: " << defensa << endl << endl;
     return ss.str();
 }
 

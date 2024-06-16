@@ -16,10 +16,9 @@ int main()
     cVikingo* enemigo3 = new cVikingo("Birger", "Nielsen", "Guerrero de la tribu Draugr", "carnicero", "30 de octubre de 988", 4, "", 80, 20, 100);
 
     //Administradora.AgregarVikingo(viki1);
-
-    Administradora.NuevoVikingoM(enemigo1);
-    Administradora.NuevoVikingoM(enemigo2);
     Administradora.NuevoVikingoM(enemigo3);
+    Administradora.NuevoVikingoM(enemigo2);
+    Administradora.NuevoVikingoM(enemigo1);
 
 
    Administradora.historia();//se imprime la historia de nuestro juego

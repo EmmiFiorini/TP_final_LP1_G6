@@ -311,6 +311,8 @@ void cAdministradora::PruebaBocon(cJinete* jinete) {
 
 void cAdministradora::PrintPeleaImagen(cDragon* dragon, cVikingo* vikingo) const
 {
+    cin.get();
+    cout<< "\t PELEA" << endl;
     cout << dragon->get_nombre() << ":\tsalud: " << dragon->get_salud() << "\tnivel: " << dragon->get_level() << "\tataque: " << dragon->get_ataque() << "\tdefensa: " << dragon->get_defensa() << endl;
     cout << "\t vs" << endl;
     cout << vikingo->get_nombre() << ":\tsalud: " << vikingo->get_salud() << "\tnivel: " << vikingo->get_level() << "\tataque: " << vikingo->get_ataque() << "\tdefensa: " << vikingo->get_defensa() << endl;
@@ -371,7 +373,9 @@ void cAdministradora::switch_menu(int opcion, cJinete* tuPersonaje)
         }
         case 3: {
             //entrenarDragon(bool habilidadAEntrenar)
-            cout << "Ingrese A si quiere entrenar ataque y B si quiere entrenar defensa" << endl;
+            tuPersonaje->print();
+            tuPersonaje->get_MiDragon()->print();
+            cout << endl << endl << "Ingrese A si quiere entrenar ataque y B si quiere entrenar defensa" << endl;
             char c;
             cin >> c;
             if (c == 'A' || c == 'a') {
@@ -395,7 +399,9 @@ void cAdministradora::switch_menu(int opcion, cJinete* tuPersonaje)
 
         }
         case 4: {
-            cout << "Ingrese A si quiere curar tu dragon y B si quiere curarse a uno mismo" << endl;
+            tuPersonaje->print();
+            tuPersonaje->get_MiDragon()->print();
+            cout <<endl<<endl<< "Ingrese A si quiere curar tu dragon y B si quiere curarse a uno mismo" << endl;
             char f;
             cin >> f;
             if (f == 'A' || f == 'a') {
