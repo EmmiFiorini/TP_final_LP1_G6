@@ -55,7 +55,9 @@ public:
 	
 	void buscarDragon(cJinete* jinete);
 
-	int menu(cJinete* jinete);
+	int print_menu(cJinete* jinete);
+
+	void switch_menu(int opcion, cJinete* jinete);
 
 };
 #endif

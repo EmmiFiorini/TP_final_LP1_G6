@@ -66,10 +66,10 @@ void cDragon::faltanteNuevoNivel()
         if (ataque > 60 && ataque < 100) {
             n = 100 - ataque;
         }
-        std::cout << "Te faltan aumentar tu ataque  " << n << " puntos para llegar al nuevo nivel " << std::endl;
+        cout << "Te faltan aumentar tu ataque  " << n << " puntos para llegar al nuevo nivel " << endl;
     }
     else {
-        std::cout << "Ya estas en el maximo nivel!" << std::endl;
+        cout << "Ya estas en el maximo nivel!" << endl;
     }
 }
 

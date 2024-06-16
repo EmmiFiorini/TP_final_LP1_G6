@@ -25,10 +25,10 @@ cHabilidades::cHabilidades(unsigned int ataque, unsigned int defensa, unsigned i
 void cHabilidades::entrenar(bool habilidadaAentrenar)
 {
     if (habilidadaAentrenar == true) {
-        ataque += 10;
+        ataque += 30;
     }
     else {
-        defensa += 10;
+        defensa += 30;
     }
 }
 

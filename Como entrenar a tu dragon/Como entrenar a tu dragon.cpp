@@ -6,12 +6,26 @@
 
 int main()
 {
+
     cAdministradora Administradora;//me creo una clase administradora
+
+    //me creo algunos personajes
+  // cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", 2, "", 10, 20, 100);
+    cVikingo* enemigo1 = new cVikingo("Ulf", "Iversen", "Jefa de la tribu Draugr", "Ulf", "14 de junio de 990", 5, "", 100, 70, 100);
+    cVikingo* enemigo2 = new cVikingo("Ari", "Iversen", "Sub-Jefa de la tribu Draugr", "Ari", "14 de junio de 990", 3, "", 60, 99, 100);
+    cVikingo* enemigo3 = new cVikingo("Birger", "Nielsen", "Guerrero de la tribu Draugr", "carnicero", "30 de octubre de 988", 4, "", 80, 20, 100);
+
+    //Administradora.AgregarVikingo(viki1);
+
+    Administradora.NuevoVikingoM(enemigo1);
+    Administradora.NuevoVikingoM(enemigo2);
+    Administradora.NuevoVikingoM(enemigo3);
+
 
    Administradora.historia();//se imprime la historia de nuestro juego
 
    string nombre, apellido, apodo, fecha, caract;//comienza la aventura creando a su personaje 
-   cout << "\t" << "Creemos a tu jinete!" << endl;
+   cout << "Para empezar a jugar, creemos a tu jinete:" << endl;
    cout << "\n" << endl;
   
    cout << "Ingresa el nombre de tu jinete: " << endl;
@@ -29,128 +43,40 @@ int main()
    cin >> apodo;
    cin.get();
    
-   cout << "Ingresa la fecha en la que nacio (dia de mes de anio): " << endl;
+   cout << "Ingresa la fecha en la que nacio (dia/mes/anio): " << endl;
    cin.get();
    cin >> fecha;
    cin.get();
    
    cout << "Cual es la caracteristica fisica que lo representa? " << endl;
-   
    cin.get();
    cin >> caract;
    cin.get();
+
    cJinete* tuPersonaje = new cJinete(nombre, apellido, "jinete", apodo, fecha, 0, "", 0, 0, 100, caract, noAsistio);
    cout << "\t" << "¡Todo listo!Ahora, a buscar tu dragon!" << endl << endl << endl;
-   system("cls");
    cin.get();
+   cin.get();
+   system("cls");
 
-   //me creo algunos personajes
-    cVikingo* viki1 = new cVikingo("Pedro", "Delgado", "Jefe", "Pepe", "6 de julio de 1000", 2, "", 10, 20, 100);
-    cVikingo* enemigo1 = new cVikingo("Ulf", "Iversen", "Jefa de la tribu Draugr","Ulf", "14 de junio de 990", 5, "", 100, 70, 100);
-    cVikingo* enemigo2 = new cVikingo("Ari", "Iversen", "Sub-Jefa de la tribu Draugr", "Ari", "14 de junio de 990", 3, "", 60, 99, 100);
-    cVikingo* enemigo3 = new cVikingo("Birger", "Nielsen", "Guerrero de la tribu Draugr", "carnicero", "30 de octubre de 988", 4, "", 80, 20, 100);
+
+   int opcion =Administradora.print_menu(tuPersonaje);
+   Administradora.switch_menu(opcion, tuPersonaje);
+
+
+
+
+
+
+
+
+
+
+
+  
+   
     
-    Administradora.AgregarVikingo(viki1);
-
-    Administradora.NuevoVikingoM(enemigo1);
-    Administradora.NuevoVikingoM(enemigo2);
-    Administradora.NuevoVikingoM(enemigo3);
-    
-    int option=Administradora.menu(tuPersonaje);//llamo a la funcion menu, y ahora hago los try y catch
-    system("cls");
-    do {
-        switch (option) {
-        case 1: {
-            try {
-                Administradora.buscarDragon(tuPersonaje);
-            }
-            catch (exception* e) {//NUNCA ENTRA ACA!!
-                cout << "Vuelve a intentarlo!" << endl;
-                Administradora.menu(tuPersonaje);
-            }
-            break;
-        }
-        case 2: {
-            try {
-                Administradora.PruebaBocon(tuPersonaje);
-            }
-            catch (exception* e) {
-                cout << "Vuelve a intentarlo!" << endl;
-                Administradora.menu(tuPersonaje);
-            }
-            break;
-        }
-        case 3: {
-            //entrenarDragon(bool habilidadAEntrenar)
-            cout << "Ingrese A si quiere entrenar ataque y B si quiere entrenar defensa" << endl;
-            char c;
-            cin >> c;
-            if (c == 'A' || c == 'a') {
-                tuPersonaje->entrenarDragon(true);
-            }
-            else if (c == 'B' || c == 'b') {
-                tuPersonaje->entrenarDragon(false);
-            }
-            else {
-                cout << "Opcion ingresada no valida" << endl;
-                Administradora.menu(tuPersonaje);
-            }
-
-            break;
-        }
-        case 4: {
-            cout << "Ingrese A si quiere curar tu dragon y B si quiere curarse a uno mismo" << endl;
-            char f;
-            cin >> f;
-            if (f == 'A' || f == 'a') {
-                tuPersonaje->curarDragon();
-            }
-            else if (f == 'B' || f == 'b') {
-                tuPersonaje->curandero();
-            }
-            else {
-                cout << "Opcion ingresada no valida" << endl;
-                Administradora.menu(tuPersonaje);
-            }
-            break;
-        }
-
-        case 5: {
-            try {
-                //llamarATribu(cDragon* dragonAAtacar)
-                Administradora.llamarATribu(tuPersonaje->get_MiDragon());
-              
-            }
-            catch (exception* e) {
-                cout << tuPersonaje->get_MiDragon()->get_nombre() << " ha muerto." << endl << "La tribu Draugr comenzo una pelea contigo, tras unas golpizas " << endl;
-                
-                tuPersonaje->IncorporarDragon(nullptr);//cambio el dragon a nullo
-                tuPersonaje->set_salud(tuPersonaje->get_salud() - 50);//disminuyo la salud
-                tuPersonaje->set_result(noAsistio);//desparobada la prueba
-
-                if (tuPersonaje->get_salud() > 0) {
-                    cout << "tuvieron piedad contigo, y tan solo te dejaron con " << tuPersonaje->get_salud()<<
-                        "de vida y te dejaron volver a tu aldea." <<endl<< endl << "Comienza nuevamente la historia con un nuevo dragon!" << endl;
-                    Administradora.menu(tuPersonaje);
-                }
-                else {
-                    cout << "te mataron." << endl << endl << "GAME OVER" << endl;
-                    cin.get();
-                    option = 6;
-                }
-                
-               
-            }
-            break;
-        }
-        default:
-            cin.get();
-
-        }
-    } while (option != 6);
-    
-
-    delete viki1;
+    //delete viki1;
     delete enemigo1;
     delete enemigo2;
     delete enemigo3;

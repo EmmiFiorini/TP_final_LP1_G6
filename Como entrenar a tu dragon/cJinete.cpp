@@ -56,6 +56,7 @@ void cJinete::IncorporarDragon(cDragon* nuevoDragon) {
 void cJinete::entrenarDragon(bool habilidadAEntrenar)
 {
     MiDragon->entrenar(habilidadAEntrenar);
+    cout << "Dragon entrenado con exito";
 }
 
 void cJinete::curarDragon() {
