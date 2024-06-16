@@ -41,15 +41,15 @@ bool cVikingo::dragonesTerminados() {
 void cVikingo::nivel()
 {
     if (ataque <= 30) {
-        this->level = "Punyos";
+        this->level = "golpes"; //1) golpes
     }
     if (ataque > 30 && ataque <= 60) {
-        this->level = "Arco y Flecha";
+        this->level = "Arco y Flecha"; //1) golpes, 2) arco y flecha
     }
-    if (ataque > 60 && ataque<100) {
+    if (ataque > 60 && ataque<100) { //1) golpes, 2)arco y flecha, 3)hacha
         this->level = "Hacha";
     }
-    if (ataque >= 100) {
+    if (ataque >= 100) { //1) golpes, 2)arco y flecha, 3) flecha, 4) espada
         this->level = "Espada";
     }
 }
@@ -74,6 +74,7 @@ void cVikingo::faltanteNuevoNivel()
         std::cout << "Ya estas en el maximo nivel!" << std::endl;
     }
 }
+
 
 
 

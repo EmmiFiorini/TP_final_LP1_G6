@@ -53,11 +53,10 @@ int main()
    cin.get();
 
    cJinete* tuPersonaje = new cJinete(nombre, apellido, "jinete", apodo, fecha, 0, "", 0, 0, 100, caract, noAsistio);
-   cout << "\t" << "¡Todo listo!Ahora, a buscar tu dragon!" << endl << endl << endl;
+   cout << "\t" << "Todo listo! Ahora vamos a buscar a tu dragon!" << endl << "Presiona 'enter' para ir a la aldea." << endl << endl;
    cin.get();
    cin.get();
    system("cls");
-
 
    int opcion =Administradora.print_menu(tuPersonaje);
    Administradora.switch_menu(opcion, tuPersonaje);

@@ -43,3 +43,22 @@ void cHabilidades::curandero()
         }
     }
 }
+
+int cHabilidades::formaDeAtaque()
+{
+    if (ataque <= 30) { //1: morder
+        return 1;
+    }
+    if (ataque > 30 && ataque <= 60) { //1: morder, 2: alas
+        int ataque = 1 + rand() % 2;
+        return ataque;
+    }
+    if (ataque > 60 && ataque < 100) { //1: morder, 2: alas, 3: garras
+        int ataque = 1 + rand() % 3;
+        return ataque;
+    }
+    if (ataque >= 100) {
+        int ataque = 1 + rand() % 4; //1: morder, 2: alas, 3: garras, 4: fuego
+        return ataque;
+    }
+}

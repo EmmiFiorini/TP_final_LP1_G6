@@ -20,7 +20,7 @@ protected:
     tamanio tam;
     string color;
     bool estado;
-    string level; 
+    string level;  //1) morder, 2) morder y golpear con alas, 3) morder, golpear con alas y rasguñar, 4)  morder, golpear con alas, rasguñar y lanzar fuego
 
 public:
     ~cDragon();
@@ -46,6 +46,7 @@ public:
 
     void print() {
         cout << to_string() << endl;
+        faltanteNuevoNivel();
     }
 
     string get_nombre() { return this->nombre; }
@@ -53,6 +54,8 @@ public:
     void faltanteNuevoNivel() override;
 
     string get_level() { return this->level; }
+    
+    
 };
 
 #endif

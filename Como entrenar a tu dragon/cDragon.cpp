@@ -19,16 +19,16 @@ cDragon::cDragon(string nombre, string caracteristica, tamanio tamanyoDragon,
 void cDragon::nivel()
 {
     if (ataque <= 30) {
-        this->level = "Morder";
+        this->level = "1: morder";
     }
     if (ataque > 30 && ataque <= 60) {
-        this->level = "Alas";
+        this->level = "2: alas";
     }
     if (ataque > 60 && ataque<100) {
-        this->level = "Garras";
+        this->level = "3: garras";
     }
     if (ataque >= 100)
-        this->level = "Fuego";
+        this->level = "4: fuego";
 }
 
 
@@ -44,15 +44,14 @@ cDragon::cDragon() : cHabilidades() {//constructor nulo
 
 string cDragon::to_string() {
     stringstream ss;
-    ss << "Tu personaje: " <<nombre << "\t Salud: " << salud << 
-        "\t Ataque: " << ataque << "\t Defensa: " << defensa << endl;
-    faltanteNuevoNivel();
+    ss << "Tu dragon: " <<nombre << "\t Salud: " << salud << "\t Ataque: " << ataque << "\t Defensa: " << defensa << endl;
+    cout << "\n" << endl;
     return ss.str();
 }
 
 void cDragon::faltanteNuevoNivel()
 { 
-    std::cout << "Tu nivel actual es: " << level << std::endl;
+    cout << "Tu nivel actual es: " << this-> level << endl;
     int n = 0; 
     if (ataque < 100) {
         if (ataque <= 30) {
@@ -64,12 +63,13 @@ void cDragon::faltanteNuevoNivel()
         if (ataque > 60 && ataque < 100) {
             n = 100 - ataque;
         }
-        cout << "Te faltan aumentar tu ataque  " << n << " puntos para llegar al nuevo nivel " << endl;
+        cout << "Te faltan aumentar tu ataque en " << n << " puntos para llegar al siguiente nivel." << endl;
     }
     else {
         cout << "Ya estas en el maximo nivel!" << endl;
     }
 }
+
 
 
 

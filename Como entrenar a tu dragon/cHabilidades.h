@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <cstdlib>
 using namespace std;
 
 //declaro mi enum de combate, para utilizarlo en mi funcion entrenar
@@ -43,6 +44,8 @@ public:
 
     virtual void nivel() = 0;//funcion virtual pura
     virtual void faltanteNuevoNivel() = 0;
+    
+    int formaDeAtaque();
 };
 
 #endif

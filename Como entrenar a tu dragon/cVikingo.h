@@ -4,7 +4,7 @@
 #define CVIKINGO_H
 
 #include "cDragon.h"//cDragon tiene a cHabilidades, para q no nos pase como en IRI JAJAJ
-//typedef enum { nada = 0, Vpunyo = 1, Varco = 2, Vhacha = 3 } VformaDeAtaque;
+
 
 
 class cVikingo : public cHabilidades
@@ -62,6 +62,7 @@ class cVikingo : public cHabilidades
     string get_level() { return this->level; }
 
     void faltanteNuevoNivel() override;
+   
 };
 
 #endif

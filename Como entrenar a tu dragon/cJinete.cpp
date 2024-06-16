@@ -56,7 +56,10 @@ void cJinete::IncorporarDragon(cDragon* nuevoDragon) {
 void cJinete::entrenarDragon(bool habilidadAEntrenar)
 {
     MiDragon->entrenar(habilidadAEntrenar);
-    cout << "Dragon entrenado con exito";
+    MiDragon->nivel();
+    cout << "Dragon entrenado con exito. Los nuevos valores de tu dragon son:" << endl;
+    MiDragon->print();
+    cout << "\n" << endl;
 }
 
 void cJinete::curarDragon() {
@@ -65,7 +68,7 @@ void cJinete::curarDragon() {
 
 string cJinete::to_string() {
     stringstream ss;
-    ss << "Tu personaje: " << apodo << "\t Salud: " << salud << "\t Ataque: " << ataque << "\t Defensa: " << defensa << endl << endl;
+    ss << "Tu jinete: " << nombre << "\t Salud: " << salud << "\t Ataque: " << ataque << "\t Defensa: " << defensa << endl << endl;
     return ss.str();
 }
 
