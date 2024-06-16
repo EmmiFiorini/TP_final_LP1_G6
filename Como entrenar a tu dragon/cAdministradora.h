@@ -59,6 +59,8 @@ public:
 
 	void switch_menu(int opcion, cJinete* jinete);
 
+	bool VikingoMuertos();
 
+	void PrintGanaste(cJinete* tuPersonaje);
 };
 #endif

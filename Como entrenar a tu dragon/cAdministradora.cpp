@@ -21,13 +21,16 @@ int cAdministradora::CantidadVikingos()
 
 void cAdministradora::llamarATribu(cDragon* dragonAAtacar) //recorre la lista de vikingos y genera un combate con el mismo dragón
 {
-    bool flag = false;
+    bool flag;
     list <cVikingo*>::iterator it = this->listaDeEnemigos.begin();
 	while (it != listaDeEnemigos.end() && (*it)->get_salud()!=0 || dragonAAtacar->get_salud()!=0) {
         combate(dragonAAtacar, (*it));
         it++;
-        flag = true;
 	}
+    flag = VikingoMuertos();
+    if (flag == true) {
+        cout << "GANASTE EL JUEGO" << endl;
+    }
 }
 
 
@@ -345,6 +348,24 @@ int cAdministradora::print_menu(cJinete* jinete)
 
 }
 
+bool cAdministradora::VikingoMuertos()
+{
+ /*Que hace esta funcion: recorre la lista de los enemigos, y se fija su salud. en caso de que esten vivos retorna falso
+ si todos los vikingos estan muertos retorna verdadero*/
+    list <cVikingo*>::iterator it = this->listaDeEnemigos.begin();//me creo el iterator
+    while (it != listaDeEnemigos.end()) {
+        if ((*it)->get_salud() != 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void cAdministradora::PrintGanaste(cJinete* tuPersonaje)
+{
+    cout << "Felicidades " << tuPersonaje->get_nombre() << " Ganaste el juego! " << endl;
+}
+
 void cAdministradora::switch_menu(int opcion, cJinete* tuPersonaje)
 {
     do {
@@ -439,7 +460,7 @@ void cAdministradora::switch_menu(int opcion, cJinete* tuPersonaje)
 
                 if (tuPersonaje->get_salud() > 0) {
                     cout << "tuvieron piedad contigo, y tan solo te dejaron con " << tuPersonaje->get_salud() <<
-                        "de vida y te dejaron volver a tu aldea." << endl << endl << "Comienza nuevamente la historia con un nuevo dragon" << endl;
+                        " de vida y te dejaron volver a tu aldea." << endl << endl << "Comienza nuevamente la historia con un nuevo dragon" << endl;
                     
                     int op = print_menu(tuPersonaje);
                     switch_menu(op, tuPersonaje);
