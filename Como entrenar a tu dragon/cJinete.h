@@ -44,8 +44,6 @@ public:
         }
     }
 
-    cDragon* get_MiDragon() {
-        return this->MiDragon;
-    }
+    cDragon* get_MiDragon();
 };
 #endif

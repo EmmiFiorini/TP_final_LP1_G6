@@ -26,24 +26,22 @@ public:
 
     cHabilidades(unsigned int ataque, unsigned int defensa, unsigned int salud);
 
-    virtual ~cHabilidades() {}; //destructor virtual xq es una clase virtual pura
+    virtual ~cHabilidades() {}; //destructor virtual porque es una clase virtual pura
 
-    /*El usuario elige si entrenar defensa o ataque, dependiendo lo que elija se le suma +10 puntos por cada entrenamiento.
-    Sirve para dragon y/o vikingo*/
     void entrenar(bool habilidadaAentrenar);
 
     void curandero();
 
-    unsigned int get_salud() { return this->salud; }
-    unsigned int get_ataque() { return this->ataque; }
-    unsigned int get_defensa() { return this->defensa; }
+    unsigned int get_salud() { return this->salud; } //aparece en cAdministradora::combate
+    unsigned int get_ataque() { return this->ataque; } //aparece en cAdministradora::combate
+    unsigned int get_defensa() { return this->defensa; } //aparece en cAdministradora::combate
 
-    void set_salud(unsigned int nuevaSalud) {
+    void set_salud(unsigned int nuevaSalud) { //aparece en cAdministradora::combate
         this->salud = nuevaSalud;
     }
 
     virtual void nivel() = 0;//funcion virtual pura
-    virtual void faltanteNuevoNivel() = 0;
+    virtual void faltanteNuevoNivel() = 0; //funcion virtual pura
     
     int formaDeAtaque();
 };

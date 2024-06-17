@@ -1,18 +1,10 @@
 #include "cHabilidades.h"
-cHabilidades::cHabilidades(const cHabilidades& otrasHabilidades) {
-    this->ataque = otrasHabilidades.ataque;
-    this->defensa = otrasHabilidades.defensa;
-    this->salud = otrasHabilidades.salud;
-}
 
-cHabilidades::cHabilidades()
-{
-    this->ataque = 0;
-    this->defensa = 0;
-    this->salud = 100;
-}
 
-cHabilidades::cHabilidades(unsigned int ataque, unsigned int defensa, unsigned int salud)
+
+
+
+cHabilidades::cHabilidades(unsigned int ataque, unsigned int defensa, unsigned int salud) //al ser herencia, se usa cuando se crea al dragon y al vikingo en el main
 {
     this->ataque = ataque;
     this->defensa = defensa;
@@ -20,19 +12,16 @@ cHabilidades::cHabilidades(unsigned int ataque, unsigned int defensa, unsigned i
 }
 
 
-
-
-void cHabilidades::entrenar(bool habilidadaAentrenar)
+void cHabilidades::entrenar(bool habilidadaAentrenar) //se usa en el metodo cJinete::entrenarDragon
 {
-    if (habilidadaAentrenar == true) {
+    if (habilidadaAentrenar == true) { 
         ataque += 30;
     }
     else {
         defensa += 30;
     }
 }
-
-void cHabilidades::curandero()
+void cHabilidades::curandero() //se usa en el metodo cJinete::curarDragon
 {
     if (salud > 0 && salud < 100) {
         if (salud + 30 >= 100) {
@@ -44,7 +33,7 @@ void cHabilidades::curandero()
     }
 }
 
-int cHabilidades::formaDeAtaque()
+int cHabilidades::formaDeAtaque() //se usa en cAdministradora::combate
 {
     if (ataque <= 30) { //1: morder
         return 1;
@@ -61,4 +50,20 @@ int cHabilidades::formaDeAtaque()
         int ataque = 1 + rand() % 4; //1: morder, 2: alas, 3: garras, 4: fuego
         return ataque;
     }
+}
+
+
+
+
+cHabilidades::cHabilidades(const cHabilidades& otrasHabilidades) { //constructor por copia
+    this->ataque = otrasHabilidades.ataque;
+    this->defensa = otrasHabilidades.defensa;
+    this->salud = otrasHabilidades.salud;
+}
+
+cHabilidades::cHabilidades() //constructor nulo
+{
+    this->ataque = 0;
+    this->defensa = 0;
+    this->salud = 100;
 }

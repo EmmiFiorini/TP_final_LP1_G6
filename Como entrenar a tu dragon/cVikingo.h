@@ -15,29 +15,15 @@ class cVikingo : public cHabilidades
     string posicion;
     string apodo;
     string fecha_nac;
-    string level;
-
-    //VformaDeAtaque nivel;
+    string level; //puño, arco y flecha, hacha, espada
     int contadorDragonesTerminados;//Cuenta la cantidad de veces que se ejecutó la funcion "combate" de la clase cHabilidades y ganó
    
 
    public:
     static int contVikingos;
 
-   /* cVikingo() : cHabilidades(){ //constructor nulo
-        this->nombre = "";
-        this->apellido = "";
-        this->posicion = "";
-        this->apodo = "";
-        this->fecha_nac = "";
-        this->level = "";
-        //this->nivel = ;
-        this->contadorDragonesTerminados = 0;
-        //this->nivel = VformaDeAtaque::nada;
-        contVikingos++;
-    }*/
 
-    ~cVikingo(); //en cpp
+    ~cVikingo();
 
     cVikingo(string nombre, string apellido, string posicion, string apodo, string fecha_nac, 
         int contadorDragonesTerminados,string level, unsigned int ataque, unsigned int defensa, 
@@ -49,19 +35,20 @@ class cVikingo : public cHabilidades
     void set_trabajar(string posicion) {
         this->posicion = posicion;
     }
-
     string get_trabajar() {
         return this->posicion;
     }
 
+
     bool dragonesTerminados(); //true si mató a más de 1 dragón. false si no mato ninguno
 
     void nivel() override;
-
-    string get_nombre() { return this->nombre; }
-    string get_level() { return this->level; }
-
     void faltanteNuevoNivel() override;
+
+    string get_nombre() { return this->nombre; } //se usa en cAdministradora:: PrintPeleaImagen
+    string get_level() { return this->level; } //se usa en cAdministradora:: PrintPeleaImagen
+
+    
    
 };
 

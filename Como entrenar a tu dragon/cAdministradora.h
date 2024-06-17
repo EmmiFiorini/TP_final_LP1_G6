@@ -36,8 +36,12 @@ public:
     void enemigoEliminado(cVikingo* enemigo);
 
 	void vikingoEliminado(cVikingo* vikingo);
+	
+	void jineteEliminado(cJinete* jinete);
 
 	void AgregarVikingo(cVikingo* vikingo);
+
+	void AgregarJinete(cJinete* jinete);
 
 	void operator+=(cDragon* drago);
 

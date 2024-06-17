@@ -5,9 +5,7 @@ cVikingo::~cVikingo()
 {
 }
 
-cVikingo::cVikingo(string nombre, string apellido, string posicion, string apodo, string fecha_nac, 
-    int contadorDragonesTerminados, string level, unsigned int ataque, unsigned int defensa, 
-    unsigned int salud) : cHabilidades(ataque,defensa,salud)
+cVikingo::cVikingo(string nombre, string apellido, string posicion, string apodo, string fecha_nac, int contadorDragonesTerminados, string level, unsigned int ataque, unsigned int defensa, unsigned int salud) : cHabilidades(ataque,defensa,salud)
 {
     this->nombre = nombre;
     this->apellido = apellido;
@@ -19,6 +17,10 @@ cVikingo::cVikingo(string nombre, string apellido, string posicion, string apodo
     contVikingos++;
 }
 
+void cVikingo::print() {
+    cout << to_string() << endl;
+}
+
 string cVikingo::to_string() {
     stringstream ss;
     ss << "El nombre del Vikingo es: " << nombre << endl;
@@ -28,9 +30,8 @@ string cVikingo::to_string() {
     ss << "El nivel del Vikingo es: " << level << endl;
     return ss.str();
 }
-void cVikingo::print() {
-    cout << to_string() << endl;
-}
+
+
 bool cVikingo::dragonesTerminados() {
     if (contadorDragonesTerminados > 0)
         return true;
@@ -68,7 +69,7 @@ void cVikingo::faltanteNuevoNivel()
         if (ataque > 60 && ataque < 100) {
             n = 100 - ataque;
         }
-        std::cout << "Te faltan aumentar tu ataque  " << n << " puntos para llegar al nuevo nivel " << std::endl;
+        std::cout << "Te faltan aumentar tu ataque  " << n << " puntos para llegar al nuevo nivel. " << std::endl;
     }
     else {
         std::cout << "Ya estas en el maximo nivel!" << std::endl;

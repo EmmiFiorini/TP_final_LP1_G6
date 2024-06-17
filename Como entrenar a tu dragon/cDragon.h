@@ -32,28 +32,26 @@ public:
 
     void nivel() override;
 
-    void set_nombre(string nombre) { //se modifica el nombre del dragón
+    void set_nombre(string nombre) { 
         this->nombre = nombre;
     }
     bool domado(bool estado) {
         this->estado = estado; //true si está domado, false si no lo está
     }
+    
     void set_caracteristica(string caracteristica) {
         this->caracteristica = caracteristica;
     }
 
     string to_string();
 
-    void print() {
-        cout << to_string() << endl;
-        faltanteNuevoNivel();
-    }
+    void print();
 
-    string get_nombre() { return this->nombre; }
+    string get_nombre() { return this->nombre; } //se usa en cAdministradora::combate
 
     void faltanteNuevoNivel() override;
 
-    string get_level() { return this->level; }
+    string get_level() { return this->level; } //se usa en cAdministradora::combate
     
     
 };

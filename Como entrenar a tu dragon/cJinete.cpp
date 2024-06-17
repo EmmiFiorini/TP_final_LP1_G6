@@ -8,18 +8,27 @@
     this->MiDragon = NULL;
 }*/
 
-cJinete::~cJinete() {
-
-    delete MiDragon;//y la pedida en dragon!
+//aparece en el main
+cJinete::cJinete(string nombre, string apellido, string posicion, string apodo, string fecha_nac, int contadorDragonesTerminados, string level, unsigned int ataque, unsigned int defensa, unsigned int salud,string caracteristicaFisica, resultado result) : cVikingo(nombre, apellido, posicion, apodo, fecha_nac,contadorDragonesTerminados, level, ataque, defensa, salud)
+{
+    this->caracteristicaFisica = caracteristicaFisica;
+    this->MiDragon = NULL;
+    this->result = result;
 }
 
-void cJinete::set_result(resultado result)
+
+void cJinete::IncorporarDragon(cDragon* nuevoDragon) { //aparece en cAdministradora::buscarDragon
+    this->MiDragon = nuevoDragon;
+}
+
+
+void cJinete::set_result(resultado result) //aparece en cAdministradora::pruebaBocon
 {
     this->result = result;
 }
 
-void cJinete::printResultado() const
-{// noAsistio = 0, aprobado = 4, desaprobado = 3, primero = 10, ultimo = 1
+void cJinete::printResultado() const //aparece en cAdministradora::pruebaBocon
+{
     if (this->result == 0)
         cout << "No Asistio" << endl;
     if (this->result == 4) 
@@ -32,28 +41,23 @@ void cJinete::printResultado() const
         cout << "Ultimo: desaprobado y con la peor nota" << endl;
 }
 
-resultado cJinete::get_Result() const
+cDragon* cJinete::get_MiDragon() //aparece en cAdministradora::switch_menu
 {
-    return result;
+    return this->MiDragon;
+}
+
+void cJinete::print() { //aparece en cAdministradora::switch_menu
+    cout << to_string() << endl;
+}
+
+string cJinete::to_string() { //aparece en el metodo de arriba
+    stringstream ss;
+    ss << "Tu jinete: " << nombre << "\t Salud: " << salud << "\t Ataque: " << ataque << "\t Defensa: " << defensa << endl << endl;
+    return ss.str();
 }
 
 
-cJinete::cJinete(string nombre, string apellido, string posicion, string apodo, 
-    string fecha_nac, int contadorDragonesTerminados, string level,
-    unsigned int ataque, unsigned int defensa, unsigned int salud, 
-    string caracteristicaFisica, resultado result) : cVikingo(nombre, apellido, posicion, apodo, fecha_nac,
-        contadorDragonesTerminados, level, ataque, defensa, salud)
-{
-    this->caracteristicaFisica = caracteristicaFisica;
-    this->MiDragon = NULL;
-    this->result = result;// Inicializa los miembros específicos de cJinete aquí, si es necesario
-}
-
-void cJinete::IncorporarDragon(cDragon* nuevoDragon) {
-    this->MiDragon = nuevoDragon;
-}
-
-void cJinete::entrenarDragon(bool habilidadAEntrenar)
+void cJinete::entrenarDragon(bool habilidadAEntrenar) //true: se entrena ataque, false: se entrena defensa
 {
     MiDragon->entrenar(habilidadAEntrenar);
     MiDragon->nivel();
@@ -62,16 +66,18 @@ void cJinete::entrenarDragon(bool habilidadAEntrenar)
     cout << "\n" << endl;
 }
 
-void cJinete::curarDragon() {
+void cJinete::curarDragon() { //aparece en cAdministradora::switch_menu
     MiDragon->curandero();
 }
 
-string cJinete::to_string() {
-    stringstream ss;
-    ss << "Tu jinete: " << nombre << "\t Salud: " << salud << "\t Ataque: " << ataque << "\t Defensa: " << defensa << endl << endl;
-    return ss.str();
+
+resultado cJinete::get_Result() const
+{
+    return result;
 }
 
-void cJinete::print() {
-    cout << to_string() << endl;
+
+cJinete::~cJinete() {
+
+    delete MiDragon;//y la pedida en dragon!
 }
