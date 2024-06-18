@@ -15,7 +15,7 @@ int main()
     cVikingo* enemigo2 = new cVikingo("Ari", "Iversen", "Sub-Jefa de la tribu Draugr", "Ari", "14 de junio de 990", 3, "3: hacha", 60, 99, 100);
     cVikingo* enemigo3 = new cVikingo("Birger", "Nielsen", "Guerrero de la tribu Draugr", "carnicero", "30 de octubre de 988", 4, "2: arco", 80, 20, 100);
     Administradora.NuevoVikingoM(enemigo3);
-    Administradora.NuevoVikingoM(enemigo2);
+    //Administradora.NuevoVikingoM(enemigo2);
     Administradora.NuevoVikingoM(enemigo1);
     
     //defino algunos personajes de la pelicula y los agrego a las listas correspondientes
