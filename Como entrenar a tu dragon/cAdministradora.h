@@ -7,6 +7,7 @@
 
 #include <list> 
 class cAdministradora {
+
 public:
 	//agrego una lista de cjinete, una lista de cvikingo, una lista de cdragon
 	list <cVikingo*> listaDeVikingos;

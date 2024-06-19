@@ -3,6 +3,7 @@
 
 cAdministradora::cAdministradora() //constructor nulo, se usa en el main
 {
+   
 }
 
 void cAdministradora::NuevoVikingoM(cVikingo* nuevoVikM) // se usa en el main
@@ -100,6 +101,9 @@ int cAdministradora::print_menu(cJinete* jinete) //en el main y en otros metodos
         cout << "\t MENU:" << endl;
         cout << "2) Prueba de Bocon" << endl;
         cout << "6) Salir" << endl;
+    }else if(listaDeEnemigos.empty()){
+        cout << "\t MENU:" << endl;
+        cout << "6) Salir" << endl;
     }
     else {
         cout << "\t MENU:" << endl;
@@ -117,6 +121,7 @@ int cAdministradora::print_menu(cJinete* jinete) //en el main y en otros metodos
 
 void cAdministradora::switch_menu(int opcion, cJinete* tuPersonaje) //en el main y otros metodos
 {
+   
     do {
         switch (opcion) {
         case 1: {
@@ -216,56 +221,59 @@ void cAdministradora::switch_menu(int opcion, cJinete* tuPersonaje) //en el main
                 system("cls");
                 cout << "Empezo la pelea! Presiona 'enter' para ver como se desarrolla:" << endl;
                 llamarATribu(tuPersonaje->get_MiDragon());
-
             }
+
             catch (exception* e) {
                 system("cls");
                 baja_dragon(tuPersonaje->get_MiDragon());
-                tuPersonaje->IncorporarDragon(nullptr);//cambio el dragon a null, debe buscar uno nuevo
-                cout << tuPersonaje->get_MiDragon();//operador sobrecargado
+                cout << tuPersonaje->get_MiDragon(); // operador sobrecargado
+                tuPersonaje->IncorporarDragon(nullptr); // cambio el dragón a null, debe buscar uno nuevo
+                cout << "La tribu Draugr comenzó una pelea contigo tras unas golpizas." << endl;
+                tuPersonaje->set_salud(tuPersonaje->get_salud() - 50); // disminuyo la salud, dependiendo de cómo estaba antes...
 
-                cout << "La tribu Draugr comenzo una pelea contigo tras unas golpizas." << endl;
-                
-                tuPersonaje->set_salud(tuPersonaje->get_salud() - 50);//disminuyo la salud, dependiendo de como estaba antes...
-                
                 if (tuPersonaje->get_salud() > 0) {
                     cout << "\n" << endl;
-                    cout << "tuvieron piedad contigo, y tan solo te dejaron con " << tuPersonaje->get_salud() << " de vida y te dejaron volver a tu aldea." << endl; 
-                    cout << "Comienza nuevamente la historia con un nuevo dragon." << endl;
+                    cout << "tuvieron piedad contigo, y tan solo te dejaron con " << tuPersonaje->get_salud() << " de vida y te dejaron volver a tu aldea." << endl;
+                    cout << "Comienza nuevamente la historia con un nuevo dragón." << endl;
                     int op = print_menu(tuPersonaje);
                     switch_menu(op, tuPersonaje);
-                    break;
                 }
                 else {
                     cout << "te mataron." << endl << endl << "GAME OVER" << endl;
                     cin.get();
-                    int op = 6;
-                    switch_menu(op, tuPersonaje);
-                    break;
+                    opcion = 6; // Salir del menú
                 }
             }
 
-            //post conbate, me fijo si los vikingos estan vivos
-            list <cVikingo*>::iterator it = this->listaDeEnemigos.begin();
+            // Verificación si todos los vikingos están muertos después de la pelea
             int contSalud = 0;
-
-            while (it != listaDeEnemigos.end()) {
-                contSalud += (*it)->get_salud();
-                it++;
+            for (cVikingo* vikingo : listaDeEnemigos) {
+                if (vikingo->get_salud() > 0) {
+                    contSalud += vikingo->get_salud();
+                }
             }
 
-            if (contSalud == 0) { //si los vikingos malos estan todos muertos
-                cin.get();
+            if (contSalud == 0) { // si los vikingos malos están todos muertos
                 this->listaDeEnemigos.clear();
-                cout << "ganaste el juego" << endl;
-                opcion =6;
+                system("cls");
+                cin.get();
+                cin.get();
+                cin.get();
+                cout << "Ganaste el juego!" << endl;
+                break;
+
+                return;
+
             }
-            break;
         }
+              
+              break;
+
         default:
-            cin.get();
+            opcion = 6;
 
         }
+
     } while (opcion != 6);
 
 }
@@ -373,81 +381,84 @@ void cAdministradora::buscarDragon(cJinete* jinete) { //en swtich_menu
 }
 
 void cAdministradora::PruebaBocon(cJinete* jinete) { //aparece en switch_menu
-    system("cls");
-    cout << "'Bienvenido a mi prueba, soy Bocon. Buen dragon el tuyo, camarada!'" << endl;
-    cout << "'Estas listo para la prueba?'" << endl;
-    cout << "'Recuerda: el futuro de nuestra tribu esta en tus manos... Solo te lo recuerdo, sin presion!'" << endl;
-    cout << "\n" << endl;
-    cout << "LA PRUEBA DE BOCON:" << endl;
-    cout << "Responde las preguntas correctamente para tener la mejor nota de la clase!" << endl;
-
     float nota = 0;
-    bool flag = false;
-    cout << "\n" << endl;
-    cout << "\t" << "Quien es el novio de la dragona en la pelicula 'Shrek'?" << endl;
-    cout << "\t1) Burro\n \t2) Shrek\n \t3) El Gato con Botas" << endl;
-    cout << "\n" << endl;
-    cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
-    int respuesta1 = 0;
-    cin.get();
-    cin >> respuesta1;
-    if (respuesta1 == 1) {
-        nota += 10;
-    }
-    cout << "\n" << endl;
+    do {
+        system("cls");
+        cout << "'Bienvenido a mi prueba, soy Bocon. Buen dragon el tuyo, camarada!'" << endl;
+        cout << "'Estas listo para la prueba?'" << endl;
+        cout << "'Recuerda: el futuro de nuestra tribu esta en tus manos... Solo te lo recuerdo, sin presion!'" << endl;
+        cout << "\n" << endl;
+        cout << "LA PRUEBA DE BOCON:" << endl;
+        cout << "Responde las preguntas correctamente para tener la mejor nota de la clase!" << endl;
+        system("cls");
 
-    cout << "\t" << "Cuantos dragones tiene la protagonista Daenerys de la serie 'Games of thrones'?" << endl;
-    cout << "\t1) cero\n \t2) dos\n \t3) tres" << endl;
-    cout << "\n" << endl;
-    cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
-    int resp2;
-    cin.get();
-    cin >> resp2;
-    if (resp2 == 3) {
-        nota += 10;
-    }
+        bool flag = false;
+        cout << "\n" << endl;
+        cout << "\t" << "Quien es el novio de la dragona en la pelicula 'Shrek'?" << endl;
+        cout << "\t1) Burro\n \t2) Shrek\n \t3) El Gato con Botas" << endl;
+        cout << "\n" << endl;
+        cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
+        int respuesta1 = 0;
+        cin.get();
+        cin >> respuesta1;
+        if (respuesta1 == 1) {
+            nota += 10;
+        }
+        cout << "\n" << endl;
 
-    cout << "\n" << endl;
+        cout << "\t" << "Cuantos dragones tiene la protagonista Daenerys de la serie 'Games of thrones'?" << endl;
+        cout << "\t1) cero\n \t2) dos\n \t3) tres" << endl;
+        cout << "\n" << endl;
+        cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
+        int resp2;
+        cin.get();
+        cin >> resp2;
+        if (resp2 == 3) {
+            nota += 10;
+        }
 
-    cout << "\t" << "En la pelicula 'La Bella Durmiente', quien se trasforma en dragon?" << endl;
-    cout << "\t1) Aurora\n \t2) Malefica\n \t3) Ningun personaje" << endl;
-    cout << "\n" << endl;
-    cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
-    cin.get();
-    int resp3;
-    cin >> resp3;
+        cout << "\n" << endl;
 
-    if (resp3 == 2) {
-        nota += 10;
-    }
+        cout << "\t" << "En la pelicula 'La Bella Durmiente', quien se trasforma en dragon?" << endl;
+        cout << "\t1) Aurora\n \t2) Malefica\n \t3) Ningun personaje" << endl;
+        cout << "\n" << endl;
+        cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
+        cin.get();
+        int resp3;
+        cin >> resp3;
 
-    cout << "\n" << endl;
-    cout << "\n" << endl;
+        if (resp3 == 2) {
+            nota += 10;
+        }
 
-    cout << "Ya terminaste la prueba!" << endl << "Tu nota es: " << nota << " / 30" << endl << "Tu resultado es: ";
-    if (nota == 30) { // noAsistio/ultimo = 0 pts, desaprobado = 10 pts, aprobado = 20 pts, primero = 30 pts
-        jinete->set_result(primero); //metodo de cJinete
-        flag = true;
-    }
-    else if (nota == 20) {
-        jinete->set_result(aprobado);
-        flag = true;
-    }
-    else if (nota == 10) {
-        flag = false;
-        jinete->set_result(desaprobado);
-    }
-    else if (nota == 0) {
-        flag = false;
-        jinete->set_result(ultimo);
-    }
+        cout << "\n" << endl;
+        cout << "\n" << endl;
 
-    jinete->printResultado();
+        cout << "Ya terminaste la prueba!" << endl << "Tu nota es: " << nota << " / 30" << endl << "Tu resultado es: ";
+        if (nota == 30) { // noAsistio/ultimo = 0 pts, desaprobado = 10 pts, aprobado = 20 pts, primero = 30 pts
+            jinete->set_result(primero); //metodo de cJinete
+            flag = true;
+        }
+        else if (nota == 20) {
+            jinete->set_result(aprobado);
+            flag = true;
+        }
+        else if (nota == 10) {
+            flag = false;
+            jinete->set_result(desaprobado);
+        }
+        else if (nota == 0) {
+            flag = false;
+            jinete->set_result(ultimo);
+        }
+
+        jinete->printResultado();
 
 
-    if (!flag) {
-        throw new exception("Prueba desaprobada");
-    }
+        if (!flag) {
+            throw new exception("Prueba desaprobada");
+        }
+    } while (nota>=20 || jinete->get_Result() != aprobado || jinete->get_Result() != primero);
 
 
     cout << "Volvamos a la aldea y sigamos con la aventura!" << endl;
@@ -463,8 +474,9 @@ void cAdministradora::llamarATribu(cDragon* dragonAAtacar) //recorre la lista de
 {
     bool flag;
     list <cVikingo*>::iterator it = this->listaDeEnemigos.begin();
-
-
+    if (listaDeEnemigos.empty() == true) {//si la lista esta vacia voy al main
+        return;
+    }
     while (it != listaDeEnemigos.end() ) {
         combate(dragonAAtacar, (*it));
         it++;
