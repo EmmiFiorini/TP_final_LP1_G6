@@ -139,17 +139,19 @@ void cAdministradora::switch_menu(int opcion, cJinete* tuPersonaje) //en el main
             }
             break;
         }
-        case 2: {
-            try {
-                PruebaBocon(tuPersonaje);
+        case 2: 
+            while (tuPersonaje->get_Result()!=aprobado || tuPersonaje->get_Result() != primero) {
+                try {
+                    PruebaBocon(tuPersonaje);
+                }
+                catch (exception* e) {
+                    cout << "Vuelve a intentarlo!" << endl;
+                    int op = print_menu(tuPersonaje);
+                    switch_menu(op, tuPersonaje);
+                }
+                break;
             }
-            catch (exception* e) {
-                cout << "Vuelve a intentarlo!" << endl;
-                int op = print_menu(tuPersonaje);
-                switch_menu(op, tuPersonaje);
-            }
-            break;
-        }
+      
         case 3: {
             system("cls");
             cout << "valores actuales de tu jinete: ";
@@ -382,83 +384,86 @@ void cAdministradora::buscarDragon(cJinete* jinete) { //en swtich_menu
 
 void cAdministradora::PruebaBocon(cJinete* jinete) { //aparece en switch_menu
     float nota = 0;
-    do {
-        system("cls");
-        cout << "'Bienvenido a mi prueba, soy Bocon. Buen dragon el tuyo, camarada!'" << endl;
-        cout << "'Estas listo para la prueba?'" << endl;
-        cout << "'Recuerda: el futuro de nuestra tribu esta en tus manos... Solo te lo recuerdo, sin presion!'" << endl;
-        cout << "\n" << endl;
-        cout << "LA PRUEBA DE BOCON:" << endl;
-        cout << "Responde las preguntas correctamente para tener la mejor nota de la clase!" << endl;
-        system("cls");
-
-        bool flag = false;
-        cout << "\n" << endl;
-        cout << "\t" << "Quien es el novio de la dragona en la pelicula 'Shrek'?" << endl;
-        cout << "\t1) Burro\n \t2) Shrek\n \t3) El Gato con Botas" << endl;
-        cout << "\n" << endl;
-        cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
-        int respuesta1 = 0;
-        cin.get();
-        cin >> respuesta1;
-        if (respuesta1 == 1) {
-            nota += 10;
-        }
-        cout << "\n" << endl;
-
-        cout << "\t" << "Cuantos dragones tiene la protagonista Daenerys de la serie 'Games of thrones'?" << endl;
-        cout << "\t1) cero\n \t2) dos\n \t3) tres" << endl;
-        cout << "\n" << endl;
-        cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
-        int resp2;
-        cin.get();
-        cin >> resp2;
-        if (resp2 == 3) {
-            nota += 10;
-        }
-
-        cout << "\n" << endl;
-
-        cout << "\t" << "En la pelicula 'La Bella Durmiente', quien se trasforma en dragon?" << endl;
-        cout << "\t1) Aurora\n \t2) Malefica\n \t3) Ningun personaje" << endl;
-        cout << "\n" << endl;
-        cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
-        cin.get();
-        int resp3;
-        cin >> resp3;
-
-        if (resp3 == 2) {
-            nota += 10;
-        }
-
-        cout << "\n" << endl;
-        cout << "\n" << endl;
-
-        cout << "Ya terminaste la prueba!" << endl << "Tu nota es: " << nota << " / 30" << endl << "Tu resultado es: ";
-        if (nota == 30) { // noAsistio/ultimo = 0 pts, desaprobado = 10 pts, aprobado = 20 pts, primero = 30 pts
-            jinete->set_result(primero); //metodo de cJinete
-            flag = true;
-        }
-        else if (nota == 20) {
-            jinete->set_result(aprobado);
-            flag = true;
-        }
-        else if (nota == 10) {
-            flag = false;
-            jinete->set_result(desaprobado);
-        }
-        else if (nota == 0) {
-            flag = false;
-            jinete->set_result(ultimo);
-        }
-
-        jinete->printResultado();
+    cin.get();
+    cin.get();
+    system("cls");
+    cout << "'Bienvenido a mi prueba, soy Bocon. Buen dragon el tuyo, camarada!'" << endl;
+    cout << "'Estas listo para la prueba?'" << endl;
+    cout << "'Recuerda: el futuro de nuestra tribu esta en tus manos... Solo te lo recuerdo, sin presion!'" << endl;
+    cout << "\n" << endl;
+    cin.get();
+    cin.get();
+    system("cls");
+    cout << "LA PRUEBA DE BOCON:" << endl;
+    cout << "Responde las preguntas correctamente para tener la mejor nota de la clase!" << endl;
 
 
-        if (!flag) {
-            throw new exception("Prueba desaprobada");
-        }
-    } while (nota>=20 || jinete->get_Result() != aprobado || jinete->get_Result() != primero);
+    bool flag = false;
+    cout << "\n" << endl;
+    cout << "\t" << "Quien es el novio de la dragona en la pelicula 'Shrek'?" << endl;
+    cout << "\t1) Burro\n \t2) Shrek\n \t3) El Gato con Botas" << endl;
+    cout << "\n" << endl;
+    cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
+    int respuesta1 = 0;
+    cin.get();
+    cin >> respuesta1;
+    if (respuesta1 == 1) {
+        nota += 10;
+    }
+    cout << "\n" << endl;
+
+    cout << "\t" << "Cuantos dragones tiene la protagonista Daenerys de la serie 'Games of thrones'?" << endl;
+    cout << "\t1) cero\n \t2) dos\n \t3) tres" << endl;
+    cout << "\n" << endl;
+    cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
+    int resp2;
+    cin.get();
+    cin >> resp2;
+    if (resp2 == 3) {
+        nota += 10;
+    }
+
+    cout << "\n" << endl;
+
+    cout << "\t" << "En la pelicula 'La Bella Durmiente', quien se trasforma en dragon?" << endl;
+    cout << "\t1) Aurora\n \t2) Malefica\n \t3) Ningun personaje" << endl;
+    cout << "\n" << endl;
+    cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: ";
+    cin.get();
+    int resp3;
+    cin >> resp3;
+
+    if (resp3 == 2) {
+        nota += 10;
+    }
+
+    cout << "\n" << endl;
+    cout << "\n" << endl;
+
+    cout << "Ya terminaste la prueba!" << endl << "Tu nota es: " << nota << " / 30" << endl << "Tu resultado es: ";
+    if (nota == 30) { // noAsistio/ultimo = 0 pts, desaprobado = 10 pts, aprobado = 20 pts, primero = 30 pts
+        jinete->set_result(primero); //metodo de cJinete
+        flag = true;
+    }
+    else if (nota == 20) {
+        jinete->set_result(aprobado);
+        flag = true;
+    }
+    else if (nota == 10) {
+        flag = false;
+        jinete->set_result(desaprobado);
+    }
+    else if (nota == 0) {
+        flag = false;
+        jinete->set_result(ultimo);
+    }
+
+    jinete->printResultado();
+
+
+    if (!flag) {
+        throw new exception("Prueba desaprobada");
+    }
 
 
     cout << "Volvamos a la aldea y sigamos con la aventura!" << endl;
