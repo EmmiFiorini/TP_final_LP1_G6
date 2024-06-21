@@ -80,18 +80,125 @@ int main()
     cin.get();
 
     //una vez que se termina de crear, se limpia la consola y se llama a las funciones de menu
+    
     system("cls");
+    
     int opcion = Administradora.print_menu(tuPersonaje);
-    Administradora.switch_menu(opcion, tuPersonaje);
-   
-   //hicimos el codigo de tal forma que, una vez que el menu se llama desde el main, cualquier caso que pase en el juego el menu se llama
-   // dentro de otras funciones. 
+    bool caso = Administradora.switch_menu(opcion, tuPersonaje);
 
     
+        try {
+            Administradora.buscarDragon(tuPersonaje);
+        }
+        catch (exception* e) {
+            cout << "No encontraste al dragon! Volve a intentarlo" << endl;
+            cin.get();
+            cin.get();
+            system("cls");
+            opcion = Administradora.print_menu(tuPersonaje);
+        }
+
+        cout << "ya tenes a tu dragon. Prueba bocon:" << endl;
+        bool result = Administradora.PruebaBocon(tuPersonaje);
+
+        if (result == false) {
+            cout << "GAME OVER TONTO" << endl;
+            return 0;
+        }
+        else {
+            int op = 0;
+            do {
+
+                cout << "ingrese la opcion que le interesa:" << endl;
+                cout << "\t MENU:" << endl;
+                cout << "3) Entrenar Dragon" << endl;
+                cout << "4) Curandero" << endl;
+                cout << "5) Pelea contra todos los enemigos" << endl;
+
+                cin.get();
+                cin >> op;
+
+                if (op == 3) {
+                    cout << "valores actuales de tu jinete: ";
+                    tuPersonaje->print();
+                    cout << "valores actuales de tu dragon: ";
+                    tuPersonaje->get_MiDragon()->print(); //se imprimen los valores y lo que le falta para llegar a nuevo nivel de ataque
 
 
 
-   //manejo de objetos dinamicos:
+                    cout << endl << endl << "Ingrese 'a' si quiere entrenar ataque y 'b' si quiere entrenar defensa" << endl; //cuando se entrena al dragon, se entrena al jinete
+                    char c;
+                    cin >> c;
+                    if (c == 'A' || c == 'a') {
+                        system("cls");
+                        tuPersonaje->entrenarDragon(true);
+                        tuPersonaje->entrenar(true);
+                    }
+                    else if (c == 'B' || c == 'b') {
+                        system("cls");
+                        tuPersonaje->entrenarDragon(false);
+                        tuPersonaje->entrenar(false);
+                    }
+                    else {
+                        cout << "Opcion ingresada no valida" << endl;
+                    }
+                }
+
+                if (op == 4) {
+                    system("cls");
+                    cout << "Estos son los valores actuales de tus personajes:" << endl;
+                    tuPersonaje->print();
+                    tuPersonaje->get_MiDragon()->print();
+
+                    cout << "\n" << endl;
+                    cout << "Ingrese 'a' si quiere curar tu dragon y 'b' si quiere curarse a si mismo" << endl;
+                    char f;
+                    cin >> f;
+                    if (f == 'A' || f == 'a') {
+                        tuPersonaje->curarDragon();
+                        cout << "Dragon curado con exito! la salud de tu dragon ahora es de " << tuPersonaje->get_MiDragon()->get_salud() << "/100" << endl;
+                    }
+                    else if (f == 'B' || f == 'b') {
+                        tuPersonaje->curandero();
+                        cout << "Jinete curado con exito! la salud de " << tuPersonaje->get_nombre() << " ahora es de " << tuPersonaje->get_salud() << "/100" << endl;
+                    }
+                    else {
+                        cout << "Opcion ingresada no valida. Presiona 'enter' para volver al menu" << endl;
+                        cin.get();
+                    }
+                }
+
+            } while (op != 5);
+
+            system("cls");
+
+            cout << "Empezo la pelea! Presiona 'enter' para ver como se desarrolla:" << endl;
+            bool resultado = Administradora.llamarATribu(tuPersonaje);
+            if (resultado == false) {
+                if (tuPersonaje->get_salud() <= 0) {
+                    cout << "GAME OVER!" << endl;
+                    cin.get();
+                }
+            }
+            else {
+                system("cls");
+                cout << "Felicidades!" << endl << endl << "Ganaste el Juego!" << endl << endl;
+                cin.get();
+            }
+
+        }
+
+
+       
+
+        
+
+
+
+      
+    
+
+    //manejo de objetos dinamicos:
     delete enemigo1;
     delete enemigo2;
     delete enemigo3;

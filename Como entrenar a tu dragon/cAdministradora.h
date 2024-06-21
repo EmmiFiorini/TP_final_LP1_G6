@@ -26,8 +26,6 @@ public:
 
 	bool llamarATribu(cJinete* tuPersonaje);
 
-	void combate(cDragon* dragon, cVikingo* vikingo);
-	
 	void historia();
 
     void dragonEliminado(cDragon* dragon_muerto);
@@ -55,9 +53,9 @@ public:
 
 	void NuevoVikingoM(cVikingo* nuevoVikM);
 
-	void PruebaBocon(cJinete* jinete);
+	bool PruebaBocon(cJinete* jinete);
 
-	void RecuperatorioBocon(cJinete* tuPersonaje);
+	bool RecuperatorioBocon(cJinete* tuPersonaje);
 
 	void PrintPeleaImagen(cDragon* dragon, cVikingo* vikingo) const;
 	
@@ -65,10 +63,13 @@ public:
 
 	int print_menu(cJinete* jinete);
 
-	void switch_menu(int opcion, cJinete* jinete);
+	//bool switch_menu(int opcion, cJinete* jinete);
 
 	bool VikingoMuertos();
 
-	void PrintGanaste(cJinete* tuPersonaje);
+	//void PrintGanaste(cJinete* tuPersonaje);
+
+	void PrintPeleaVJ(cJinete* jinete, cVikingo* vikingo);
+	
 };
 #endif
