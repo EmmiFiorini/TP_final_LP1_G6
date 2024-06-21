@@ -56,6 +56,8 @@ public:
 
 	void PruebaBocon(cJinete* jinete);
 
+	void RecuperatorioBocon(cJinete* tuPersonaje);
+
 	void PrintPeleaImagen(cDragon* dragon, cVikingo* vikingo) const;
 	
 	void buscarDragon(cJinete* jinete);
