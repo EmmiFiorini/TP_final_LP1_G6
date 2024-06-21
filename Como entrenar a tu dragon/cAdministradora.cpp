@@ -119,124 +119,6 @@ int cAdministradora::print_menu(cJinete* jinete) //en el main y en otros metodos
 
 }
 
-/*
-bool cAdministradora::switch_menu(int opcion, cJinete* tuPersonaje) //en el main y otros metodos
-{
-    bool exit = false;
-    do {
-        switch (opcion) {
-        case 1: {
-            try {
-                buscarDragon(tuPersonaje);
-            }
-            catch (exception* e) {
-                cout << "No encontraste al dragon! Volve a intentarlo" << endl;
-                cin.get();
-                cin.get();
-                system("cls");
-                opcion = print_menu(tuPersonaje);
-            }
-            break;
-        }
-        case 2:
-            PruebaBocon(tuPersonaje);//prueba bocon verifica en caso de q desapruebes
-            break;
-
-        case 3: {
-            system("cls");
-            cout << "valores actuales de tu jinete: ";
-            tuPersonaje->print();
-
-            cout << "valores actuales de tu dragon: ";
-            tuPersonaje->get_MiDragon()->print(); //se imprimen los valores y lo que le falta para llegar a nuevo nivel de ataque
-
-
-
-            cout << endl << endl << "Ingrese 'a' si quiere entrenar ataque y 'b' si quiere entrenar defensa" << endl; //cuando se entrena al dragon, se entrena al jinete
-            char c;
-            cin >> c;
-            if (c == 'A' || c == 'a') {
-                system("cls");
-                tuPersonaje->entrenarDragon(true);
-                tuPersonaje->entrenar(true);
-            }
-            else if (c == 'B' || c == 'b') {
-                system("cls");
-                tuPersonaje->entrenarDragon(false);
-                tuPersonaje->entrenar(false);
-            }
-            else {
-                cout << "Opcion ingresada no valida" << endl;
-            }
-            opcion = print_menu(tuPersonaje);
-            break;
-        }
-
-        case 4: {
-            system("cls");
-            cout << "Estos son los valores actuales de tus personajes:" << endl;
-            tuPersonaje->print();
-            tuPersonaje->get_MiDragon()->print();
-            cout << "\n" << endl;
-            cout << "Ingrese 'a' si quiere curar tu dragon y 'b' si quiere curarse a si mismo" << endl;
-            char f;
-            cin >> f;
-            if (f == 'A' || f == 'a') {
-                tuPersonaje->curarDragon();
-                cout << "Dragon curado con exito! la salud de tu dragon ahora es de " << tuPersonaje->get_MiDragon()->get_salud() << "/100" << endl;
-            }
-            else if (f == 'B' || f == 'b') {
-                tuPersonaje->curandero();
-                cout << "Jinete curado con exito! la salud de " << tuPersonaje->get_nombre() << " ahora es de " << tuPersonaje->get_salud() << "/100" << endl;
-            }
-            else {
-                cout << "Opcion ingresada no valida. Presiona 'enter' para volver al menu" << endl;
-                cin.get();
-            }
-            opcion = print_menu(tuPersonaje);
-            break;
-        }
-
-        case 5: {
-            system("cls");
-            cout << "Empezo la pelea! Presiona 'enter' para ver como se desarrolla:" << endl;
-            bool resultado = llamarATribu(tuPersonaje);
-            if (resultado == false) {
-                if (tuPersonaje->get_salud() <= 0) {
-                    cout << "GAME OVER!" << endl;
-                    cin.get();
-                    exit = true;
-                    opcion = 6;
-                }
-                else {
-                    cout << "volve a buscar un dragon" << endl;
-                    cin.get();
-                    opcion = 1;
-                }
-            }
-            else {
-                system("cls");
-                cout << "Felicidades!" << endl << endl << "Ganaste el Juego!" << endl << endl;
-                cin.get();
-                exit = true;
-                opcion = 6;
-            }
-            break;
-        }
-        
-        
-        default:
-            exit = true;
-            break;
-
-        }
-
-    } while (!exit || opcion != 6);
-
-}
-*/
-
-
 void cAdministradora::buscarDragon(cJinete* jinete) { //en swtich_menu
     bool flag = false;
     system("cls");
@@ -329,8 +211,7 @@ void cAdministradora::buscarDragon(cJinete* jinete) { //en swtich_menu
                 cin.get();
                 system("cls");
                 //se llama al menu para que vuelva a elegir la opcion. Ahora aparece el menu con nuevas opciones desbloqueadas
-                int opcion = print_menu(jinete);
-                switch_menu(opcion, jinete);
+
             }
         }
     }
@@ -338,6 +219,111 @@ void cAdministradora::buscarDragon(cJinete* jinete) { //en swtich_menu
         throw new exception("No se encontro el dragon");
     }
 }
+
+bool cAdministradora::RECUbuscarDragon(cJinete* jinete, int nulo) { //en swtich_menu
+    bool flag = false;
+    system("cls");
+    ;
+    cout << "Con el primer rayo de sol, me adentre al bosque de los Susurros. Camine con cautela, siguiendo el camino que mis ancestros me habian indicado, hasta que se bifurco en dos:" << endl;
+    cout << "uno mostraba huellas peculiares... no podria decir de que animal en especifico. El otro era un camino llano, no mostraba signos de que habia sido recorrido" << endl;
+    cout << "Cual voy a elegir? " << endl;
+    cout << "\n" << endl;
+    cout << "\t" << "Ingrese 'a' si quiere ir por el camino con huellas; ingrese 'b' si quiere ir por el camino llano" << endl;
+    // la respuesta correcta es la A
+    char respuesta1;
+    cin.get();
+
+    cin >> respuesta1;
+    cout << "\n" << endl;
+    if (respuesta1 == 'B' || respuesta1 == 'b') { //si se selecciona la respuesta incorrecta, sale del if y la flag sigue false
+        cout << "Me adentre por el camino llano, confiado en que mis ancestros me guiarian. Sin embargo, aparecio una niebla densa y el paisaje se torno confuso. Me encontre desorientado, rodeado por la niebla" << endl;
+        cout << "\n" << endl;
+    }
+    else { //se selecciona la respuesta correcta
+        cout << "Decidi seguir las huellas, sin saber a que criatura pertenecian. Camine durante horas siguiendo este rastro. La vegetacion se hacia mas densa" << endl;
+        cout << "De repente, las huellas desaparecieron en una zona pantanosa, y frente a mi el camino se dividio en dos:" << endl;
+        cout << "uno llevaba hacia una colina empinada, cubierta de espinas, y el otro descendia hacia un valle oscuro." << endl;
+        cout << "Debia decidir: subir la colina espinosa o descender al valle sombrio? " << endl;
+        cout << "\n" << endl;
+        cout << "\t" << "Ingrese 'a' si quiere ir subir por la colina espinosa; ingrese 'b' si quiere descender por el valle sombrio" << endl;
+        char respuesta2;
+        cin.get();
+        cin >> respuesta2;
+        cout << "\n" << endl;
+        if (respuesta2 == 'A' || respuesta2 == 'a') { //respuesta incorrecta
+            cout << "Decidi enfrentar la colina espinosa. Sin embargo, las espinas eran mas traicioneras de lo que imagine" << endl;
+            cout << "Cada paso era una lucha, y pronto me encontre atrapado, con las espinas rasgando mi ropa" << endl;
+            cout << "Perdi mucho tiempo y, finalmente, tuve que retroceder, herido y frustrado." << endl;
+            cout << "\n" << endl;
+
+        }
+        else { //respuesta correcta
+            cout << "Tome el camino hacia el valle sombrio. La oscuridad era densa. Sin embargo, segui avanzando, sintiendo que estaba en el camino correcto." << endl;
+            cout << "De repente, el valle se abrio en un claro iluminado por una luz azulada." << endl;
+            cout << "En el centro, descansando majestuosamente, estaba el dragon. Me acerque con cautela, recitando las palabras que mis ancestros me habian mostrado." << endl;
+            cout << "El dragon levanto su cabeza y se quedo observandome." << endl;
+            cout << "Debia tomar una decision final: mostrarme respetuoso, esperando que el dragon aceptara mi presencia, o intentar imponerme, demostrando mi fuerza." << endl;
+            cout << "\n" << endl;
+            cout << "\t" << "Ingrese 'a' si quiere mostrarse respetuoso con el dragon; ingrese 'b' si quiere imponerse ante al dragon" << endl;
+            char respuesta3;
+            cin.get();
+            cin >> respuesta3;
+            cout << "\n" << endl;
+            if (respuesta3 == 'B' || respuesta3 == 'b') { //respuesta incorrecta
+                cout << "Opte por imponer mi fuerza. Me acerque al dragon con firmeza, levantando mi voz y mostrando una postura desafiante. Sin embargo, el dragon no se impresiono." << endl;
+                cout << "Rugio de tal forma que el suelo temblo bajo mis pies." << endl;
+                cout << "Luego, lanzo una rafaga de fuego que me obligo a retroceder rapidamente. Tropece y cai al suelo, comprendiendo mi error.La fuerza bruta no era el camino para ganar su respeto. Me retire hacia la aldea, sabiendo la oportunidad que habia perdido" << endl;
+                cout << "\n" << endl;
+
+            }
+            else { //respuesta correcta (final), la flag cambia a true y se encuentra al dragon
+                flag = true;
+                cout << "Me incline ante el dragon, mostrando respeto y humildad. Este, sorprendentemente, bajo su cabeza y me permitio tocar sus escamas." << endl;
+                cout << "Con cuidado, subi a su lomo y juntos volamos hacia la aldea." << endl;
+                cout << "\n" << endl;
+                cin.get();
+                system("cls");
+
+                cout << "\t" << "Felicitaciones! Domaste a tu dragon. A continuacion vamos a crearlo!" << endl;
+                cout << "\n" << endl;
+                cout << "Ingresa el nombre de tu nuevo dragon: " << endl;
+                string nombreD;
+                cin >> nombreD;
+
+                cin.get();
+                cout << "\n" << endl;
+                cout << "Que caracteristica fisica tiene?" << endl;
+                string caractD;
+                cin >> caractD;
+
+                cin.get();
+                cout << "\n" << endl;
+                cout << "Que color tiene?" << endl;
+                string colorD;
+                cin >> colorD;
+
+                cDragon* tuDragon = new cDragon(nombreD, caractD, mediano, colorD, true, "1: morder", 0, 0, 100);
+                jinete->IncorporarDragon(tuDragon); //metodo de cJinete
+                //tuDragon += ; se agrega al dragon en la lista de dragones CHEQUEAR OPERADOR PORQUE NO ME LO TOMA
+                cout << "\n" << endl;
+
+                cout << "\t" << "Dragon creado! Ingresa 'enter' para volver a la aldea y seguir con tu aventura" << endl;
+                cin.get();
+                cin.get();
+                system("cls");
+                //se llama al menu para que vuelva a elegir la opcion. Ahora aparece el menu con nuevas opciones desbloqueadas
+                int opcion = print_menu(jinete);
+
+            }
+        }
+    }
+    if (!flag) { //si la flag nunca cambió a true, retorna false
+        return false;
+    }
+
+    return true;
+}
+
 
 bool cAdministradora::PruebaBocon(cJinete* jinete) { //aparece en switch_menu
     float nota = 0;
@@ -563,61 +549,15 @@ bool cAdministradora::llamarATribu(cJinete* tuPersonaje) //recorre la lista de v
 
 
 
-        if (tuPersonaje->get_MiDragon()->get_salud() <= 0) {//PELEA JINETE CON VIKINGO
+        if (tuPersonaje->get_MiDragon()->get_salud() <= 0) {
             cout << "El vikingo " << (*it)->get_nombre() << " acabo con " << tuPersonaje->get_MiDragon()->get_nombre() << endl;
-            
-            tuPersonaje->set_salud(tuPersonaje->get_salud() - 50);
 
+            tuPersonaje->set_salud(tuPersonaje->get_salud() - 50);
             listaDragonesMuertos.push_back(tuPersonaje->get_MiDragon());
             tuPersonaje->IncorporarDragon(nullptr);//libero al dragon
-            
-            do {
-                if (tuPersonaje->get_defensa() >= (*it)->get_ataque() && tuPersonaje->get_ataque() >= (*it)->get_defensa()) { //gana el dragon
-                    (*it)->set_salud((*it)->get_salud() - 50);
 
-                    int opcion = tuPersonaje->formaDeAtaque();
-
-                    switch (opcion) {
-                    case 1:
-                        cout << tuPersonaje->get_nombre() << " ataco al vikingo con golpes!" << endl;
-                        break;
-                    case 2:
-                        cout << tuPersonaje->get_nombre() << " ataco al vikingo con arco y flechas!" << endl;
-                        break;
-                    case 3:
-                        cout << tuPersonaje->get_nombre() << " ataco al vikingo con su hacha!" << endl;
-                        break;
-                    case 4:
-                        cout << tuPersonaje->get_nombre() << " ataco al vikingo con su espada!" << endl;
-                        break;
-                    default:
-                        break;
-                    }
-                }
-                else {
-                    tuPersonaje->set_salud(tuPersonaje->get_salud() - 50);
-                    int opcion = (*it)->formaDeAtaque();
-                    switch (opcion) {
-                    case 1:
-                        cout << (*it)->get_nombre() << " ataco al jinete con golpes!" << endl;
-                        break;
-                    case 2:
-                        cout << (*it)->get_nombre() << " ataco al jinete con arco y flechas!" << endl;
-                        break;
-                    case 3:
-                        cout << (*it)->get_nombre() << " ataco al jinete con su hacha!" << endl;
-                        break;
-                    case 4:
-                        cout << (*it)->get_nombre() << " ataco al jinete con su espada!" << endl;
-                        break;
-                    default:
-                        break;
-                    }
-                }
-                cout << "Estado actual de los participantes: " << endl;
-                PrintPeleaVJ(tuPersonaje, (*it));
-
-            } while (tuPersonaje->get_salud() > 0 && (*it)->get_salud() > 0);
+            cout << "Te tomaron como prisionero chau" << endl;
+            return false;
         }
 
         if ((*it)->get_salud() <= 0) {

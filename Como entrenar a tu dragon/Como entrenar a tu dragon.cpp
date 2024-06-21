@@ -80,24 +80,32 @@ int main()
     cin.get();
 
     //una vez que se termina de crear, se limpia la consola y se llama a las funciones de menu
-    
+
     system("cls");
-    
+
     int opcion = Administradora.print_menu(tuPersonaje);
-    bool caso = Administradora.switch_menu(opcion, tuPersonaje);
 
-    
-        try {
-            Administradora.buscarDragon(tuPersonaje);
-        }
-        catch (exception* e) {
-            cout << "No encontraste al dragon! Volve a intentarlo" << endl;
-            cin.get();
-            cin.get();
-            system("cls");
-            opcion = Administradora.print_menu(tuPersonaje);
-        }
 
+
+    try {
+        Administradora.buscarDragon(tuPersonaje);
+    }
+    catch (exception* e) {
+        cout << "No encontraste al dragon! Volve a intentarlo" << endl;
+        cout << "Tenes un intento mas" << endl;
+        cin.get();
+        cin.get();
+        system("cls");
+
+        bool result = Administradora.RECUbuscarDragon(tuPersonaje, 0);
+        
+        if (result == false) {
+            cout << "GAME OVER" << endl;
+            return 0;
+        }
+    }
+
+    if (tuPersonaje->get_MiDragon() != nullptr) {
         cout << "ya tenes a tu dragon. Prueba bocon:" << endl;
         bool result = Administradora.PruebaBocon(tuPersonaje);
 
@@ -187,15 +195,8 @@ int main()
             }
 
         }
+    }
 
-
-       
-
-        
-
-
-
-      
     
 
     //manejo de objetos dinamicos:
