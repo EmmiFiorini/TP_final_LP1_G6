@@ -29,37 +29,37 @@ void cAdministradora :: operator+=(cDragon* drago) { //se usa en el main
 
 void cAdministradora::historia()
 {
-    cout << "COMO ENTRENAR A TU DRAGON 2.0, version de Pili y Emma" << endl;
-    cout << "Presiona 'enter' para empezar!" << endl;
-    cin.get();
+    std::cout << "COMO ENTRENAR A TU DRAGON 2.0, version de Pili y Emma" << std::endl;
+    std::cout << "Presiona 'enter' para empezar!" << endl;
+    std::cin.get();
 
-    cout << "En el anio 1010, la isla de Berk vivia en paz y armonia." << endl;
-    cout << "Hasta que un dia aparecieron los malvados vikingos de la tribu Draugr, que atacaron la aldea" << endl;
-    cout << "y asesinaron a muchos de sus aldeanos." << endl;
+    std::cout << "En el anio 1010, la isla de Berk vivia en paz y armonia." << endl;
+    std::cout << "Hasta que un dia aparecieron los malvados vikingos de la tribu Draugr, que atacaron la aldea" << endl;
+    std::cout << "y asesinaron a muchos de sus aldeanos." << endl;
 
-    cout << "\n" << endl;
-    cout << "\t" << "     _.-^^---....,,--       " << endl;
-    cout << "\t" << " _--                  --_  " << endl;
-    cout << "\t" << "<                        >)" << endl;
-    cout << "\t" << "|                         | " << endl;
-    cout << "\t" << " \._                   _./  " << endl;
-    cout << "\t" << "    ```--. . , ; .--'''       " << endl;
-    cout << "\t" << "         | |   |             " << endl;
-    cout << "\t" << "      .-=||  | |=-.   " << endl;
-    cout << "\t" << "      `-=#$%&%$#=-'   " << endl;
-    cout << "\t" << "         | ;  :|     " << endl;
-    cout << "\t" << "_____.,-#%&$@%#&#~,._____" << endl << endl;
+    std::cout << "\n" << endl;
+    std::cout << "\t" << "     _.-^^---....,,--       " << endl;
+    std::cout << "\t" << " _--                  --_  " << endl;
+    std::cout << "\t" << "<                        >)" << endl;
+    std::cout << "\t" << "|                         | " << endl;
+    std::cout << "\t" << " \._                   _./  " << endl;
+    std::cout << "\t" << "    ```--. . , ; .--'''       " << endl;
+    std::cout << "\t" << "         | |   |             " << endl;
+    std::cout << "\t" << "      .-=||  | |=-.   " << endl;
+    std::cout << "\t" << "      `-=#$%&%$#=-'   " << endl;
+    std::cout << "\t" << "         | ;  :|     " << endl;
+    std::cout << "\t" << "_____.,-#%&$@%#&#~,._____" << endl << endl;
 
-    cin.get();
-    cout << "\n" << endl;
+    std::cin.get();
+    std::cout << "\n" << endl;
 
-    cout << "Ese mismo dia, Estoico el Vasto, el jefe de la aldea, designo un grupo de jovenes valientes vikingos" << endl;
-    cout << "que domarian dragones." << endl;
-    cout << "Si logran pasar la prueba del jefe de seguridad Bocon, formaran parte de un grupo de elite encargado" << endl;
-    cout << "de defender a la aldea de las tribus enemigas." << endl;
-    cout << "\n" << endl;
+    std::cout << "Ese mismo dia, Estoico el Vasto, el jefe de la aldea, designo un grupo de jovenes valientes vikingos" << endl;
+    std::cout << "que domarian dragones." << endl;
+    std::cout << "Si logran pasar la prueba del jefe de seguridad Bocon, formaran parte de un grupo de elite encargado" << endl;
+    std::cout << "de defender a la aldea de las tribus enemigas." << endl;
+    std::cout << "\n" << endl;
 
-    cout << "\t" << " <>=======() " << endl;
+    std::cout << "\t" << " <>=======() " << endl;
     cout << "\t" << "(/\___   /|\\          ()==========<>_" << endl;
     cout << "\t" << "      \_/ | \\        //|\   ______/ \)" << endl;
     cout << "\t" << "        \_|  \\      // | \_/" << endl;
@@ -206,55 +206,20 @@ void cAdministradora::switch_menu(int opcion, cJinete* tuPersonaje) //en el main
         }
 
         case 5: {
-            try {
+            system("cls");
+            cout << "Empezo la pelea! Presiona 'enter' para ver como se desarrolla:" << endl;
+            bool resultado = llamarATribu(tuPersonaje);
+            if (resultado == false) {
                 system("cls");
-                cout << "Empezo la pelea! Presiona 'enter' para ver como se desarrolla:" << endl;
-                llamarATribu(tuPersonaje->get_MiDragon());
+                cout << "GAME OVER!" << endl;
+                opcion = 6;
             }
-
-            catch (exception* e) {
+            else {
                 system("cls");
-                baja_dragon(tuPersonaje->get_MiDragon());
-                cout << tuPersonaje->get_MiDragon(); // operador sobrecargado
-                tuPersonaje->IncorporarDragon(nullptr); // cambio el dragón a null, debe buscar uno nuevo
-                cout << "La tribu Draugr comenzó una pelea contigo tras unas golpizas." << endl;
-                tuPersonaje->set_salud(tuPersonaje->get_salud() - 50); // disminuyo la salud, dependiendo de cómo estaba antes...
-
-                if (tuPersonaje->get_salud() > 0) {
-                    cout << "\n" << endl;
-                    cout << "tuvieron piedad contigo, y tan solo te dejaron con " << tuPersonaje->get_salud() << " de vida y te dejaron volver a tu aldea." << endl;
-                    cout << "Comienza nuevamente la historia con un nuevo dragón." << endl;
-                    int op = print_menu(tuPersonaje);
-                    switch_menu(op, tuPersonaje);
-                }
-                else {
-                    cout << "te mataron." << endl << endl << "GAME OVER" << endl;
-                    cin.get();
-                    opcion = 6; // Salir del menú
-                }
+                cout << "Felicidades!" << endl << endl << "Ganaste el Juego!" << endl << endl;
+                opcion = 6;
             }
-
-            // Verificación si todos los vikingos están muertos después de la pelea
-            int contSalud = 0;
-            for (cVikingo* vikingo : listaDeEnemigos) {
-                if (vikingo->get_salud() > 0) {
-                    contSalud += vikingo->get_salud();
-                }
-            }
-
-            if (contSalud == 0) { // si los vikingos malos están todos muertos
-                this->listaDeEnemigos.clear();
-                system("cls");
-                cin.get();
-                cin.get();
-                cin.get();
-                cout << "Ganaste el juego!" << endl;
-                break;
-
-                return;
-
-            }
-        }
+            
               
               break;
 
@@ -510,6 +475,7 @@ void cAdministradora::RecuperatorioBocon(cJinete* tuPersonaje) {
     if (nota < 20) {
         cout << "Desaprobaste." << endl<<"Lo lamento pero no estas calificado para ser un jinete" << endl;
         cout << "Tengo que liberar a " << tuPersonaje->get_MiDragon()->get_nombre() << endl;
+        tuPersonaje->get_MiDragon()->set_estado(false);
         tuPersonaje->IncorporarDragon(nullptr);//libero al dragon
         switch_menu(6, tuPersonaje);
 
@@ -527,88 +493,148 @@ void cAdministradora::RecuperatorioBocon(cJinete* tuPersonaje) {
 }
 
 //en switch_menu
-void cAdministradora::llamarATribu(cDragon* dragonAAtacar) //recorre la lista de vikingos y genera un combate con el mismo dragón
+bool cAdministradora::llamarATribu(cJinete* tuPersonaje) //recorre la lista de vikingos y genera un combate con el mismo dragón
 {
-    bool flag;
-    list <cVikingo*>::iterator it = this->listaDeEnemigos.begin();
-    if (listaDeEnemigos.empty() == true) {//si la lista esta vacia voy al main
-        return;//esta va a tener q ser mi exception
-    }
-    while (it != listaDeEnemigos.end() ) {
-        combate(dragonAAtacar, (*it));
-        it++;
-    }
 
+    list <cVikingo*>::iterator it = this->listaDeEnemigos.begin();
+    
+    while (it != listaDeEnemigos.end()) {
+        do {
+            PrintPeleaImagen(tuPersonaje->get_MiDragon(), (*it));
+            if (tuPersonaje->get_MiDragon()->get_defensa() > (*it)->get_ataque() && tuPersonaje->get_MiDragon()->get_ataque() > (*it)->get_defensa()) { //gana el dragon
+                (*it)->set_salud((*it)->get_salud() - 50);
+
+                int opcion = tuPersonaje->get_MiDragon()->formaDeAtaque();
+
+                switch (opcion) {
+                case 1:
+                    cout << tuPersonaje->get_MiDragon()->get_nombre() << " ataco al enemigo con sus dientes!" << endl;
+                    break;
+                case 2:
+                    cout << tuPersonaje->get_MiDragon()->get_nombre() << " ataco al enemigo con sus alas!" << endl;
+                    break;
+                case 3:
+                    cout << tuPersonaje->get_MiDragon()->get_nombre() << " ataco al enemigo con sus garras!" << endl;
+                    break;
+                case 4:
+                    cout << tuPersonaje->get_MiDragon()->get_nombre() << " ataco al enemigo lanzandole fuego!" << endl;
+                    break;
+                default:
+                    break;
+                }
+            }
+            else if (tuPersonaje->get_MiDragon()->get_defensa() < (*it)->get_ataque() && tuPersonaje->get_MiDragon()->get_ataque() < (*it)->get_defensa()) { //gana el vikingo
+                tuPersonaje->get_MiDragon()->set_salud(tuPersonaje->get_MiDragon()->get_salud() - 50);
+                int opcion = (*it)->formaDeAtaque();
+                switch (opcion) {
+                case 1:
+                    cout << (*it)->get_nombre() << " ataco al dragon con golpes!" << endl;
+                    break;
+                case 2:
+                    cout << (*it)->get_nombre() << " ataco al dragon con arco y flechas!" << endl;
+                    break;
+                case 3:
+                    cout << (*it)->get_nombre() << " ataco al dragon con su hacha!" << endl;
+                    break;
+                case 4:
+                    cout << (*it)->get_nombre() << " ataco al dragon con su espada!" << endl;
+                    break;
+                default:
+                    break;
+                }
+            }
+            else { //empate
+                tuPersonaje->get_MiDragon()->set_salud(tuPersonaje->get_MiDragon()->get_salud() - 25);
+                (*it)->set_salud((*it)->get_salud() - 25);
+                cout << "La pelea fue muy complicada y no se pudo saber quien gano! ambos resultaron heridos." << endl;
+            }
+            //ya habiendo sido la pelea, vuelvo a imprimir los nuevos datos de cada uno
+            cout << "Estado actual de los participantes: " << endl;
+            PrintPeleaImagen(tuPersonaje->get_MiDragon(), (*it));
+        } while (tuPersonaje->get_MiDragon()->get_salud() > 0 && (*it)->get_salud() > 0);
+
+
+        if (tuPersonaje->get_MiDragon()->get_salud() <= 0) {//PELEA JINETE CON VIKINGO
+            cout << "El vikingo " << (*it)->get_nombre() << " acabo con " << tuPersonaje->get_MiDragon()->get_nombre() << endl;
+            cout << "Pelea cuerpo a cuerpo con los vikingos" << endl;
+            listaDragonesMuertos.push_back(tuPersonaje->get_MiDragon());
+            tuPersonaje->IncorporarDragon(nullptr);//libero al dragon
+
+            if (tuPersonaje->get_defensa() > (*it)->get_ataque() && tuPersonaje->get_ataque() > (*it)->get_defensa()) { //gana el dragon
+                (*it)->set_salud((*it)->get_salud() - 50);
+
+                int opcion = tuPersonaje->formaDeAtaque();
+
+                switch (opcion) {
+                case 1:
+                    cout << tuPersonaje->get_nombre() << " ataco al vikingo con golpes!" << endl;
+                    break;
+                case 2:
+                    cout << tuPersonaje->get_nombre() << " ataco al vikingo con arco y flechas!" << endl;
+                    break;
+                case 3:
+                    cout << tuPersonaje->get_nombre() << " ataco al vikingo con su hacha!" << endl;
+                    break;
+                case 4:
+                    cout << tuPersonaje->get_nombre() << " ataco al vikingo con su espada!" << endl;
+                    break;
+                default:
+                    break;
+                }
+            }
+            else if (tuPersonaje->get_defensa() < (*it)->get_ataque() && tuPersonaje->get_ataque() < (*it)->get_defensa()) { //gana el vikingo
+                tuPersonaje->set_salud(tuPersonaje->get_salud() - 50);
+                int opcion = (*it)->formaDeAtaque();
+                switch (opcion) {
+                case 1:
+                    cout << (*it)->get_nombre() << " ataco al jinete con golpes!" << endl;
+                    break;
+                case 2:
+                    cout << (*it)->get_nombre() << " ataco al jinete con arco y flechas!" << endl;
+                    break;
+                case 3:
+                    cout << (*it)->get_nombre() << " ataco al jinete con su hacha!" << endl;
+                    break;
+                case 4:
+                    cout << (*it)->get_nombre() << " ataco al jinete con su espada!" << endl;
+                    break;
+                default:
+                    break;
+                }
+            }
+            else { //empate
+                tuPersonaje->set_salud(tuPersonaje->get_salud() - 25);
+                (*it)->set_salud((*it)->get_salud() - 25);
+                cout << "La pelea fue muy complicada y no se pudo saber quien gano! ambos resultaron heridos." << endl;
+            }
+
+        }
+
+        if ((*it)->get_salud() <= 0) {
+            cout << "Felicidades! acabaste con el vikingo: " << (*it)->get_nombre() << endl;
+            //enemigoEliminado(*it); FUNCION Q PONGA NULOS LOS ATRIBUTOS DE VIKINGO
+            it++;
+        }
+
+        if (tuPersonaje->get_salud() <= 0) {
+            cout << "El vikingo " << (*it)->get_nombre() << " acabo con " << tuPersonaje->get_nombre() << endl;
+            return false;
+        }
+    }
+    return VikingoMuertos();//si es true mato a todos los malos, si es false
+
+    /**/
 }
 
 //en llamarATribu
 void cAdministradora::combate(cDragon* dragon, cVikingo* vikingo)
 {
-    do {
-        PrintPeleaImagen(dragon, vikingo);
-        if (dragon->get_defensa() > vikingo->get_ataque() && dragon->get_ataque() > vikingo->get_defensa()) { //gana el dragon
-            vikingo->set_salud(vikingo->get_salud() - 50);
-
-            int opcion = dragon->formaDeAtaque();
-
-            switch (opcion) {
-            case 1:
-                cout << dragon->get_nombre() << " ataco al enemigo con sus dientes!" << endl;
-                break;
-            case 2:
-                cout << dragon->get_nombre() << " ataco al enemigo con sus alas!" << endl;
-                break;
-            case 3:
-                cout << dragon->get_nombre() << " ataco al enemigo con sus garras!" << endl;
-                break;
-            case 4:
-                cout << dragon->get_nombre() << " ataco al enemigo lanzandole fuego!" << endl;
-                break;
-            default:
-                break;
-            }
-        }
-        else if (dragon->get_defensa() < vikingo->get_ataque() && dragon->get_ataque() < vikingo->get_defensa()) { //gana el vikingo
-            dragon->set_salud(dragon->get_salud() - 50);
-            int opcion = vikingo->formaDeAtaque();
-            switch (opcion) {
-            case 1:
-                cout << vikingo->get_nombre() << " ataco al dragon con golpes!" << endl;
-                break;
-            case 2:
-                cout << vikingo->get_nombre() << " ataco al dragon con arco y flechas!" << endl;
-                break;
-            case 3:
-                cout << vikingo->get_nombre() << " ataco al dragon con su hacha!" << endl;
-                break;
-            case 4:
-                cout << vikingo->get_nombre() << " ataco al dragon con su espada!" << endl;
-                break;
-            default:
-                break;
-            }
-        }
-        else { //empate
-            dragon->set_salud(dragon->get_salud() - 25);
-            vikingo->set_salud(vikingo->get_salud() - 25);
-            cout << "La pelea fue muy complicada y no se pudo saber quien gano! ambos resultaron heridos." << endl;
-        }
-        //ya habiendo sido la pelea, vuelvo a imprimir los nuevos datos de cada uno
-        cout << "Estado actual de los participantes: " << endl;
-        PrintPeleaImagen(dragon, vikingo);
-    } while (dragon->get_salud() > 0 && vikingo->get_salud() > 0);
+    
     //manejo de los casos bordes:
 
-    if (vikingo->get_salud() <= 0) {
-        cout << "Felicidades! acabaste con el vikingo: " << vikingo->get_nombre() << endl;
-        //enemigoEliminado(vikingo);
-    }
+    
 
-    if (dragon->get_salud() <= 0) {
-        cout << "El vikingo " << vikingo->get_nombre() << " acabo con " << dragon->get_nombre() << endl;
-        return;//podemos aca ponerlo como nulo o se muere el programa??
-        //hay q hacer algo para q aca se termine todooo!!!
-    }
+   
 }
 
 void cAdministradora::PrintPeleaImagen(cDragon* dragon, cVikingo* vikingo) const
@@ -741,10 +767,10 @@ int cAdministradora::CantidadVikingos()
 
 
 
-/*bool cAdministradora::VikingoMuertos()
+bool cAdministradora::VikingoMuertos()
 {
- Que hace esta funcion: recorre la lista de los enemigos, y se fija su salud. en caso de que esten vivos retorna falso
- si todos los vikingos estan muertos retorna verdadero
+ //Que hace esta funcion: recorre la lista de los enemigos, y se fija su salud. en caso de que esten vivos retorna falso
+ //si todos los vikingos estan muertos retorna verdadero
     list <cVikingo*>::iterator it = this->listaDeEnemigos.begin();//me creo el iterator
     while (it != listaDeEnemigos.end()) {
         if ((*it)->get_salud() != 0) {
@@ -754,7 +780,7 @@ int cAdministradora::CantidadVikingos()
     }
     return true;
 }
-*/
+
 
 
 

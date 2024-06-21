@@ -2,7 +2,7 @@
 #pragma once
 #ifndef CADMINISTRADORA_H
 #define CADMINISTRADORA_H
-#include "cVikingo.h"
+using namespace std;
 #include "cJinete.h"
 
 #include <list> 
@@ -13,6 +13,7 @@ public:
 	list <cVikingo*> listaDeVikingos;
 	list <cJinete*> listaDeJinetes;
 	list <cDragon*> listaDeDragones;
+	list <cDragon*> listaDragonesMuertos;
 	list <cVikingo*> listaDeEnemigos;
 
 	cAdministradora();//constructor
@@ -23,7 +24,7 @@ public:
 
 	int CantidadVikingos();
 
-	void llamarATribu(cDragon* dragonAAtacar);
+	bool llamarATribu(cJinete* tuPersonaje);
 
 	void combate(cDragon* dragon, cVikingo* vikingo);
 	

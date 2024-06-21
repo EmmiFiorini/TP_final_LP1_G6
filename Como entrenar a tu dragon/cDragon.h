@@ -52,7 +52,9 @@ public:
     void faltanteNuevoNivel() override;
 
     string get_level() { return this->level; } //se usa en cAdministradora::combate
-    
+    void set_estado(bool estado) {
+        this->estado = estado;
+    }
     
 };
 
