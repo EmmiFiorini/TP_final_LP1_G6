@@ -92,34 +92,44 @@ void cAdministradora::historia()
 int cAdministradora::print_menu(cJinete* jinete) //en el main y en otros metodos
 {
     int option;//creo la opcion q va a elegir el usuario
+    
+    cout << "       ###            ###            ###             " << endl;
+    cout << "      #o###          #o###          #o###            " << endl;
+    cout << "     ####o###       ####o###       ####o###          " << endl;
+    cout << "   #o###|#/###    #o###|#/###    #o###|#/###         " << endl;
+    cout << "    ####|/#o#      ####|/#o#      ####|/#o#          " << endl;
+    cout << "   #  } | {  #    #  } | {  #    #  } | {  #         " << endl;
+    cout << "      } | {          } | {          } | {            " << endl;
+    
+    cout << "\n" << endl;
     if (jinete->get_MiDragon() == nullptr) {//si no tiene dragon, solamente le aparece estas opciones:
-        cout << "\t MENU:" << endl;
+        cout << "                     MENU:                " << endl;
         cout << "1) Buscar Dragon" << endl;
         cout << "6) Salir" << endl;
     }
     else if (jinete->get_Result() == noAsistio || jinete->get_Result() == desaprobado || jinete->get_Result() == 0 || jinete->get_Result() == 3 ||jinete->get_Result() == ultimo || jinete->get_Result() == 1) {
-        cout << "\t MENU:" << endl;
+        cout << "                     MENU:" << endl;
         cout << "2) Prueba de Bocon" << endl;
         cout << "6) Salir" << endl;
     }else if(listaDeEnemigos.empty()){
-        cout << "\t MENU:" << endl;
+        cout <<"                      MENU:" << endl;
         cout << "6) Salir" << endl;
     }
     else {
         cout << "\t MENU:" << endl;
-        cout << "3) Entrenar Dragon" << endl;
+        cout << "3) Entrenar " << endl;
         cout << "4) Curandero" << endl;
         cout << "5) Pelea contra todos los enemigos" << endl;
         cout << "6) Salir" << endl;
     }
     cout << "\n" << endl;
-    cout << "Ingrese la opcion:" << endl;
+    cout << "A donde vamos? Ingresa el numero que corresponda a tu opcion: " << endl;
     cin >> option;
     return option;
 
 }
 
-void cAdministradora::buscarDragon(cJinete* jinete) { //en swtich_menu
+void cAdministradora::buscarDragon(cJinete* jinete) { 
     bool flag = false;
     system("cls");
     ;
@@ -220,10 +230,10 @@ void cAdministradora::buscarDragon(cJinete* jinete) { //en swtich_menu
     }
 }
 
-bool cAdministradora::RECUbuscarDragon(cJinete* jinete, int nulo) { //en swtich_menu
+bool cAdministradora::RECUbuscarDragon(cJinete* jinete) { //en swtich_menu
     bool flag = false;
     system("cls");
-    ;
+
     cout << "Con el primer rayo de sol, me adentre al bosque de los Susurros. Camine con cautela, siguiendo el camino que mis ancestros me habian indicado, hasta que se bifurco en dos:" << endl;
     cout << "uno mostraba huellas peculiares... no podria decir de que animal en especifico. El otro era un camino llano, no mostraba signos de que habia sido recorrido" << endl;
     cout << "Cual voy a elegir? " << endl;
@@ -317,22 +327,19 @@ bool cAdministradora::RECUbuscarDragon(cJinete* jinete, int nulo) { //en swtich_
             }
         }
     }
-    if (!flag) { //si la flag nunca cambió a true, retorna false
-        return false;
-    }
-
-    return true;
+    return flag; //si retorna false, no se encontró al dragon. Si retorna true, sí se encontró
 }
 
 
 bool cAdministradora::PruebaBocon(cJinete* jinete) { //aparece en switch_menu
     float nota = 0;
-    system("cls");
-    cout << "Bienvenido a mi prueba, soy Bocon. Buen dragon el tuyo, camarada!" << endl;
-    cout << "Estas listo para la prueba?" << endl;
-    cout << "Recuerda: tienes tan solo dos intentos"<<endl<<"El futuro de nuestra tribu esta en tus manos... Solo te lo recuerdo, sin presion!" << endl;
     cout << "\n" << endl;
-    system("cls");
+
+    cout << "'Bienvenido a mi prueba, soy Bocon. Buen dragon el tuyo, camarada!'" << endl;
+    cout << "'Estas listo para la prueba?'" << endl;
+    cout << "'Recuerda: tienes tan solo dos intentos'"<<endl<<"'El futuro de nuestra tribu esta en tus manos... Solo te lo recuerdo, sin presion!'" << endl;
+    cout << "\n" << endl;
+    
     cout << "LA PRUEBA DE BOCON:" << endl;
     cout << "Responde las preguntas correctamente para tener la mejor nota de la clase!" << endl;
 
@@ -391,11 +398,13 @@ bool cAdministradora::PruebaBocon(cJinete* jinete) { //aparece en switch_menu
     jinete->printResultado();
     
     if (nota < 20) {
-        cout << "Desaprobaste, intentalo nuevamente en el recuperatorio!" << endl << endl;
+        cout << "Desaprobaste, intentalo nuevamente en el recuperatorio!" << endl;
+        cout << "Presiona 'Enter' para ir al recuperatorio de Bocon. " << endl;
+        cin.get();
         bool result2 = RecuperatorioBocon(jinete);
     }
     else {
-        cout << "Felicitaciones!" << endl << "Eres oficialmente un Jinete!" << endl << endl;
+        cout << "'Felicitaciones!" << endl << "Eres oficialmente un Jinete!'" << endl << endl;
         cout << "Regresa a la aldea y prueba las nuevas opciones desbloqueadas!" << endl << endl;
         cin.get();
         cin.get();
@@ -407,14 +416,19 @@ bool cAdministradora::PruebaBocon(cJinete* jinete) { //aparece en switch_menu
 bool cAdministradora::RecuperatorioBocon(cJinete* tuPersonaje) {
     system("cls");
     int nota = 0;
-    cout << "Bueno, " << tuPersonaje->get_nombre() << " este es tu ultimo intento. " << endl;
-    cout<< "En caso de desaprobar, tendremos que dejar ir a " << tuPersonaje->get_MiDragon()->get_nombre() << endl;
-    cout << "Muchisima Suerte!" << endl<<endl<<endl;
-    cout << "RECUPERATORIO DE BOCON:" << endl;
-    cout << "Responde las preguntas correctamente para tener la mejor nota de la clase!" << endl;
+    cout << "'Bueno, " << tuPersonaje->get_nombre() << " este es tu ultimo intento'." << endl;
+    cout<< "'En caso de desaprobar, tendremos que dejar ir a " << tuPersonaje->get_MiDragon()->get_nombre() << " '." << endl;
+    cout << "'Muchisima Suerte!'" << endl;
+    
+    cout << "\n" << endl;
+    cout << "\n" << endl;
+
+    cout << "RECUPERATORIO DE BOCON: " << endl;
+    cout << "Responde las preguntas correctamente para tener la mejor nota de la clase y convertirte en jinete!" << endl;
 
     cout << "\n" << endl;
-    cout << "\t" << "Que tipo de dragon enfrenta Harry en el Torneo de los Tres Magos?" << endl;
+
+    cout << "\t" << "Que tipo de dragon enfrenta Harry, personaje de 'Harry Potter', en el 'Torneo de los Tres Magos'?" << endl;
     cout << "\t1) Colacuerno Hungaro\n \t2) Bola de Fuego Chino\n \t3) Ninguno de los anteriores" << endl;
     cout << "\n" << endl;
     cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: " << endl;
@@ -425,7 +439,7 @@ bool cAdministradora::RecuperatorioBocon(cJinete* tuPersonaje) {
     }
 
     cout << "\n" << endl;
-    cout << "\t" << "Como se llama el  dragon guardian de Mulan en la pelicula de Disney?" << endl;
+    cout << "\t" << "Como se llama el dragon guardian de Mulan en la pelicula de Disney?" << endl;
     cout << "\t1) Smaug\n \t2) Mushu\n \t3) Falkor" << endl;
     cout << "\n" << endl;
     cout << "\t" << "Ingresa el numero (1, 2 o 3) de tu respuesta: " << endl;
@@ -447,6 +461,8 @@ bool cAdministradora::RecuperatorioBocon(cJinete* tuPersonaje) {
     }
 
     cin.get();
+    cout << "\n" << endl;
+    cout << "\n" << endl;
 
     cout << "Ya terminaste la prueba!" << endl << "Tu nota es: " << nota << " / 30" << endl << "Tu resultado es: ";
     if (nota == 30) { // noAsistio/ultimo = 0 pts, desaprobado = 10 pts, aprobado = 20 pts, primero = 30 pts
@@ -465,6 +481,8 @@ bool cAdministradora::RecuperatorioBocon(cJinete* tuPersonaje) {
     tuPersonaje->printResultado();//imprimo el resultado
     //manejo ambos casos
     if (nota < 20) {
+        cout << "\n" << endl;
+        cout << "\n" << endl;
         cout << "Desaprobaste." << endl << "Lo lamento pero no estas calificado para ser un jinete" << endl;
         cout << "No estas calificado para montar a " << tuPersonaje->get_MiDragon()->get_nombre() << endl;
         cout << "GAME OVER" << endl;
@@ -474,8 +492,11 @@ bool cAdministradora::RecuperatorioBocon(cJinete* tuPersonaje) {
         return false;
 
     }else {
-        cout << "Felicitaciones!" << endl << "Eres oficialmente un Jinete!" << endl << endl;
-        cout << "Regresa a la aldea y prueba las nuevas opciones desbloqueadas!" << endl << endl;
+        cout << "\n" << endl;
+        cout << "\n" << endl;
+        cout << "Felicitaciones " << tuPersonaje->get_nombre() << " !" << endl;
+        cout << "Oficialmente te convertiste en jinete!" << endl;
+        cout << "Regresa a la aldea y continua con la aventura. Presiona 'Enter' para volver: " << endl << endl;
         cin.get();
         cin.get();
         system("cls");
@@ -497,7 +518,11 @@ bool cAdministradora::llamarATribu(cJinete* tuPersonaje) //recorre la lista de v
 
     while (it != listaDeEnemigos.end()) {
         do {
+            cout << "Valores actuales de los participantes: " << endl;
             PrintPeleaImagen(tuPersonaje->get_MiDragon(), (*it));
+            cout << "\n" << endl;
+            cout << "\t ------------------PELEA------------------" << endl;
+
             if (tuPersonaje->get_MiDragon()->get_defensa() >= (*it)->get_ataque() && tuPersonaje->get_MiDragon()->get_ataque() >= (*it)->get_defensa()) { //gana el dragon
                 (*it)->set_salud((*it)->get_salud() - 50);
 
@@ -543,27 +568,32 @@ bool cAdministradora::llamarATribu(cJinete* tuPersonaje) //recorre la lista de v
             }
 
             //ya habiendo sido la pelea, vuelvo a imprimir los nuevos datos de cada uno
-            cout << "Estado actual de los participantes: " << endl;
+            cin.get();
+            cout << "Valores de los participantes despues de la pelea: " << endl;
             PrintPeleaImagen(tuPersonaje->get_MiDragon(), (*it));
         } while (tuPersonaje->get_MiDragon()->get_salud() > 0 && (*it)->get_salud() > 0);
 
 
 
-        if (tuPersonaje->get_MiDragon()->get_salud() <= 0) {
-            cout << "El vikingo " << (*it)->get_nombre() << " acabo con " << tuPersonaje->get_MiDragon()->get_nombre() << endl;
+        if (tuPersonaje->get_MiDragon()->get_salud() <= 0) { //si el dragon se muere, te toman como prisionero
+            cout << "El vikingo " << (*it)->get_nombre() << " acabo con " << tuPersonaje->get_MiDragon()->get_nombre() << " ." << endl;
 
             tuPersonaje->set_salud(tuPersonaje->get_salud() - 50);
+
             listaDragonesMuertos.push_back(tuPersonaje->get_MiDragon());
             tuPersonaje->IncorporarDragon(nullptr);//libero al dragon
-
-            cout << "Te tomaron como prisionero chau" << endl;
+            
+            cout << "\n" << endl;
+            cout << "Los vikingos de la tribu de Draugr te han tomado como prisionero! Esto te debilito tanto que termino con tu vida." << endl;
+            cout << "\n" << endl;
             return false;
         }
 
         if ((*it)->get_salud() <= 0) {
             cout << "Felicidades! acabaste con el vikingo: " << (*it)->get_nombre() << endl;
+            cout << "Presiona 'enter' para seguir luchando. " << endl;
+            cin.get();
             system("cls");
-            //enemigoEliminado(*it); FUNCION Q PONGA NULOS LOS ATRIBUTOS DE VIKINGO
             it++;
         }
    
@@ -575,8 +605,6 @@ bool cAdministradora::llamarATribu(cJinete* tuPersonaje) //recorre la lista de v
 
 void cAdministradora::PrintPeleaVJ(cJinete* jinete, cVikingo* vikingo) 
 {
-    cin.get();
-    cout << "\t ------------------PELEA------------------" << endl;
     cout << "\n" << endl;
     jinete->print();
     cout << "\t vs" << endl;

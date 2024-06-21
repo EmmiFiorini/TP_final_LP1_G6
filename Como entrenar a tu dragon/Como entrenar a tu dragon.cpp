@@ -10,12 +10,11 @@ int main()
     cAdministradora Administradora;//me creo una clase administradora, las listas se inicializan vacias
 
     //defino los enemigos del juego (para el combate) y los agrego a la lista de vikingos enemigos
-
     cVikingo* enemigo1 = new cVikingo("Ulf", "Iversen", "Jefa de la tribu Draugr", "Ulf", "14 de junio de 990", 5, "4: espada", 100, 70, 100);
     cVikingo* enemigo2 = new cVikingo("Ari", "Iversen", "Sub-Jefa de la tribu Draugr", "Ari", "14 de junio de 990", 3, "3: hacha", 60, 99, 100);
     cVikingo* enemigo3 = new cVikingo("Birger", "Nielsen", "Guerrero de la tribu Draugr", "carnicero", "30 de octubre de 988", 4, "2: arco", 80, 20, 100);
     Administradora.NuevoVikingoM(enemigo3);
-    //Administradora.NuevoVikingoM(enemigo2);
+    Administradora.NuevoVikingoM(enemigo2);
     Administradora.NuevoVikingoM(enemigo1);
 
     //defino algunos personajes de la pelicula y los agrego a las listas correspondientes
@@ -27,11 +26,10 @@ int main()
     Administradora.AgregarVikingo(Bocon);
     Administradora.AgregarVikingo(Estoico);
     Administradora.AgregarJinete(Hipo);
+    Administradora.listaDeDragones.push_back(Chimuelo);
 
-    //Administradora.listaDeDragones+=Chimuelo; CHEQUEAR ESTO!! me da error
-
-
-    Administradora.historia();//se imprime la historia de nuestro juego (introduccion)
+    //Se imprime la introduccion del juego
+    Administradora.historia();
 
     //se crea al jinete
     string nombre, apellido, apodo, fecha, caract;
@@ -79,64 +77,174 @@ int main()
     cin.get();
     cin.get();
 
-    //una vez que se termina de crear, se limpia la consola y se llama a las funciones de menu
-
+    //una vez que se termina de crear, se limpia la consola
     system("cls");
 
+    //se llama al menu (texto), ignorar lo que devuelve!!
     int opcion = Administradora.print_menu(tuPersonaje);
 
 
 
     try {
-        Administradora.buscarDragon(tuPersonaje);
+        Administradora.buscarDragon(tuPersonaje); //minijuego de opciones que, si se elijen las correctas, se doma a un dragon 
     }
     catch (exception* e) {
-        cout << "No encontraste al dragon! Volve a intentarlo" << endl;
-        cout << "Tenes un intento mas" << endl;
+        cout << "\n" << endl;
+        cout << "No encontraste al dragon! Tenes un intento mas para encontrarlo..." << endl;
+        cout << "Presiona 'Enter' para volver al bosque. " << endl;
+ 
         cin.get();
         cin.get();
-        system("cls");
+        system("cls"); //se limpia la consola
 
-        bool result = Administradora.RECUbuscarDragon(tuPersonaje, 0);
+        //se llama a la funcion "recuperatorio" de buscarDragon (misma historia, cambia en el tipo de retorno para poder salir del juego)
+        bool result = Administradora.RECUbuscarDragon(tuPersonaje);
         
-        if (result == false) {
+        if (result == false) { //false --> no encontró al dragón
+            system("cls");
+
+            cout << "Despues de dos intentos fallidos, te perdiste en el bosque. " << endl;
+            cout << "Tu cansancio de tanto recorrerlo te jugo en contra y moriste esperando que uno de tus hermanos te encuentre algun dia..." << endl;
+            
+            cout << "\n" << endl;
             cout << "GAME OVER" << endl;
+            cout << "\n" << endl;
+
+            cout << "               uuuuuuu" << endl;
+            cout << "           uu$$$$$$$$$$$uu " << endl;
+            cout << "        uu$$$$$$$$$$$$$$$$$uu " << endl;
+            cout << "       u$$$$$$$$$$$$$$$$$$$$$u" << endl;
+            cout << "      u$$$$$$$$$$$$$$$$$$$$$$$u " << endl;
+            cout << "      u$$$$$$$$$$$$$$$$$$$$$$$$$u " << endl;
+            cout << "      u$$$$$$$$$$$$$$$$$$$$$$$$$u " << endl;
+            cout << "      u$$$$$$'   '$$$'   '$$$$$$u " << endl;
+            cout << "      '$$$$'      u$u       $$$$' " << endl;
+            cout << "       $$$u       u$u       u$$$ " << endl;
+            cout << "       $$$u      u$$$u      u$$$ " << endl;
+            cout << "        '$$$$uu$$$   $$$uu$$$$' " << endl;
+            cout << "         '$$$$$$$'   '$$$$$$$' " << endl;
+            cout << "           u$$$$$$$u$$$$$$$u " << endl;
+            cout << "            u$'$'$'$'$'$'$u " << endl;
+            cout << "   uuu      $$u$ $ $ $ $u$$     uuu " << endl;
+            cout << "  u$$$$       $$$$$u$u$u$$$       u$$$$ " << endl;
+            cout << "   $$$$$uu     '$$$$$$$$$'     uu$$$$$$ " << endl;
+            cout << " u$$$$$$$$$$$uu   ''''    uuuu$$$$$$$$$$ " << endl;
+            cout << " $$$$'''$$$$$$$$$$uuu   uu$$$$$$$$$'''$$$''' " << endl;
+            cout << " '''      ''$$$$$$$$$$$uu ''$''' " << endl;
+            cout << "            uuuu '''$$$$$$$$$$uuu " << endl;
+            cout << " u$$$uuu$$$$$$$$$uu ''$$$$$$$$$$$uuu$$$ " << endl;
+            cout << " $$$$$$$$$$''''           '''$$$$$$$$$$$' " << endl;
+            cout << "  '$$$$$'                      ''''$$$$''' " << endl;
+            cout <<"     $$$                           $$$$ "<< endl;
+
+
+            cout << "Gracias por jugar!!" << endl;
+            
+            delete enemigo1;
+            delete enemigo2;
+            delete enemigo3;
+            delete Bocon;
+            delete Estoico;
+            delete Hipo;
+            delete Chimuelo;
+            delete tuPersonaje;
+
             return 0;
         }
     }
 
     if (tuPersonaje->get_MiDragon() != nullptr) {
-        cout << "ya tenes a tu dragon. Prueba bocon:" << endl;
+        cout << "Ahora que ya tenes a tu dragon, vamos a superar la prueba de Bocon y a convertirnos en verdaderos jinetes!" << endl;
+        cout << "Presiona 'Enter' para empezar la prueba: " << endl;
+        cin.get();
         bool result = Administradora.PruebaBocon(tuPersonaje);
 
         if (result == false) {
-            cout << "GAME OVER TONTO" << endl;
+            system("cls");
+
+            cout << "Despues de dos intentos fallidos, Bocon hablo con Estoico sobre tus habilidades para ser jinete." << endl;
+            cout << "Ambos llegaron a la conclusion de que no eres apto para semejante rol." << endl;
+            cout << "En cambio, te designaron como limpiador de jaulas de dragones... Buena suerte con eso!" << endl;
+
+            cout << "\n" << endl;
+            cout << "GAME OVER" << endl;
+            cout << "\n" << endl;
+
+            cout << "               uuuuuuu" << endl;
+            cout << "           uu$$$$$$$$$$$uu " << endl;
+            cout << "        uu$$$$$$$$$$$$$$$$$uu " << endl;
+            cout << "       u$$$$$$$$$$$$$$$$$$$$$u" << endl;
+            cout << "      u$$$$$$$$$$$$$$$$$$$$$$$u " << endl;
+            cout << "      u$$$$$$$$$$$$$$$$$$$$$$$$$u " << endl;
+            cout << "      u$$$$$$$$$$$$$$$$$$$$$$$$$u " << endl;
+            cout << "      u$$$$$$'   '$$$'   '$$$$$$u " << endl;
+            cout << "      '$$$$'      u$u       $$$$' " << endl;
+            cout << "       $$$u       u$u       u$$$ " << endl;
+            cout << "       $$$u      u$$$u      u$$$ " << endl;
+            cout << "        '$$$$uu$$$   $$$uu$$$$' " << endl;
+            cout << "         '$$$$$$$'   '$$$$$$$' " << endl;
+            cout << "           u$$$$$$$u$$$$$$$u " << endl;
+            cout << "            u$'$'$'$'$'$'$u " << endl;
+            cout << "   uuu      $$u$ $ $ $ $u$$     uuu " << endl;
+            cout << "  u$$$$       $$$$$u$u$u$$$       u$$$$ " << endl;
+            cout << "   $$$$$uu     '$$$$$$$$$'     uu$$$$$$ " << endl;
+            cout << " u$$$$$$$$$$$uu   ''''    uuuu$$$$$$$$$$ " << endl;
+            cout << " $$$$'''$$$$$$$$$$uuu   uu$$$$$$$$$'''$$$''' " << endl;
+            cout << " '''      ''$$$$$$$$$$$uu ''$''' " << endl;
+            cout << "            uuuu '''$$$$$$$$$$uuu " << endl;
+            cout << " u$$$uuu$$$$$$$$$uu ''$$$$$$$$$$$uuu$$$ " << endl;
+            cout << " $$$$$$$$$$''''           '''$$$$$$$$$$$' " << endl;
+            cout << "  '$$$$$'                      ''''$$$$''' " << endl;
+            cout << "     $$$                         $$$$ " << endl;
+
+
+            delete enemigo1;
+            delete enemigo2;
+            delete enemigo3;
+            delete Bocon;
+            delete Estoico;
+            delete Hipo;
+            delete Chimuelo;
+            delete tuPersonaje;
+
             return 0;
         }
         else {
             int op = 0;
             do {
+                cout << "       ###            ###            ###             " << endl;
+                cout << "      #o###          #o###          #o###            " << endl;
+                cout << "     ####o###       ####o###       ####o###          " << endl;
+                cout << "   #o###|#/###    #o###|#/###    #o###|#/###         " << endl;
+                cout << "    ####|/#o#      ####|/#o#      ####|/#o#          " << endl;
+                cout << "   #  } | {  #    #  } | {  #    #  } | {  #         " << endl;
+                cout << "      } | {          } | {          } | {            " << endl;
 
-                cout << "ingrese la opcion que le interesa:" << endl;
-                cout << "\t MENU:" << endl;
-                cout << "3) Entrenar Dragon" << endl;
+                cout << "\n" << endl;
+                cout << "                     MENU:" << endl;
+                cout << "3) Entrenar" << endl;
                 cout << "4) Curandero" << endl;
                 cout << "5) Pelea contra todos los enemigos" << endl;
-
+                cout << "\n" << endl;
+                cout << "A donde vamos? Ingresa el numero que corresponda a tu opcion: " << endl;
                 cin.get();
                 cin >> op;
 
-                if (op == 3) {
+                if (op == 3) { //se selecciona "entrenar" 
+                    system("cls");
                     cout << "valores actuales de tu jinete: ";
+                    cout << "\n" << endl;
                     tuPersonaje->print();
+
                     cout << "valores actuales de tu dragon: ";
-                    tuPersonaje->get_MiDragon()->print(); //se imprimen los valores y lo que le falta para llegar a nuevo nivel de ataque
+                    tuPersonaje->get_MiDragon()->print(); 
+                   
+                    cout << "\n" << endl;
 
-
-
-                    cout << endl << endl << "Ingrese 'a' si quiere entrenar ataque y 'b' si quiere entrenar defensa" << endl; //cuando se entrena al dragon, se entrena al jinete
+                    cout << "Ingrese 'a' si quiere entrenar ataque y 'b' si quiere entrenar defensa" << endl; //cuando se entrena al dragon, se entrena al jinete
                     char c;
                     cin >> c;
+                    
                     if (c == 'A' || c == 'a') {
                         system("cls");
                         tuPersonaje->entrenarDragon(true);
@@ -148,17 +256,23 @@ int main()
                         tuPersonaje->entrenar(false);
                     }
                     else {
-                        cout << "Opcion ingresada no valida" << endl;
+                        cout << "Opcion ingresada no valida." << endl;
                     }
                 }
 
-                if (op == 4) {
+                if (op == 4) { //se selecciona "curandero"
                     system("cls");
                     cout << "Estos son los valores actuales de tus personajes:" << endl;
+                    cout << "\n" << endl;
+
                     tuPersonaje->print();
+                    
+                    cout << "\n" << endl;
+                    
                     tuPersonaje->get_MiDragon()->print();
 
                     cout << "\n" << endl;
+
                     cout << "Ingrese 'a' si quiere curar tu dragon y 'b' si quiere curarse a si mismo" << endl;
                     char f;
                     cin >> f;
@@ -179,19 +293,83 @@ int main()
             } while (op != 5);
 
             system("cls");
-
-            cout << "Empezo la pelea! Presiona 'enter' para ver como se desarrolla:" << endl;
+            cout << "Empezo la pelea! Presiona 'enter' para ver como se desarrolla." << endl;
+            cout << "\n" << endl;
             bool resultado = Administradora.llamarATribu(tuPersonaje);
+            
             if (resultado == false) {
+                
                 if (tuPersonaje->get_salud() <= 0) {
-                    cout << "GAME OVER!" << endl;
-                    cin.get();
+                    cout << "\n" << endl;
+                    cout << "GAME OVER" << endl;
+                    cout << "\n" << endl;
+
+                    cout << "               uuuuuuu" << endl;
+                    cout << "           uu$$$$$$$$$$$uu " << endl;
+                    cout << "        uu$$$$$$$$$$$$$$$$$uu " << endl;
+                    cout << "       u$$$$$$$$$$$$$$$$$$$$$u" << endl;
+                    cout << "      u$$$$$$$$$$$$$$$$$$$$$$$u " << endl;
+                    cout << "      u$$$$$$$$$$$$$$$$$$$$$$$$$u " << endl;
+                    cout << "      u$$$$$$$$$$$$$$$$$$$$$$$$$u " << endl;
+                    cout << "      u$$$$$$'   '$$$'   '$$$$$$u " << endl;
+                    cout << "      '$$$$'      u$u       $$$$' " << endl;
+                    cout << "       $$$u       u$u       u$$$ " << endl;
+                    cout << "       $$$u      u$$$u      u$$$ " << endl;
+                    cout << "        '$$$$uu$$$   $$$uu$$$$' " << endl;
+                    cout << "         '$$$$$$$'   '$$$$$$$' " << endl;
+                    cout << "           u$$$$$$$u$$$$$$$u " << endl;
+                    cout << "            u$'$'$'$'$'$'$u " << endl;
+                    cout << "   uuu      $$u$ $ $ $ $u$$     uuu " << endl;
+                    cout << "  u$$$$       $$$$$u$u$u$$$       u$$$$ " << endl;
+                    cout << "   $$$$$uu     '$$$$$$$$$'     uu$$$$$$ " << endl;
+                    cout << " u$$$$$$$$$$$uu   ''''    uuuu$$$$$$$$$$ " << endl;
+                    cout << " $$$$'''$$$$$$$$$$uuu   uu$$$$$$$$$'''$$$''' " << endl;
+                    cout << " '''      ''$$$$$$$$$$$uu ''$''' " << endl;
+                    cout << "            uuuu '''$$$$$$$$$$uuu " << endl;
+                    cout << " u$$$uuu$$$$$$$$$uu ''$$$$$$$$$$$uuu$$$ " << endl;
+                    cout << " $$$$$$$$$$''''           '''$$$$$$$$$$$' " << endl;
+                    cout << "  '$$$$$'                      ''''$$$$''' " << endl;
+                    cout << "     $$$                            $$$$ " << endl;
+
+                    
+                    cout << "\n" << endl;
+                    cout << "Gracias por jugar!!" << endl;
+                    
+                    delete enemigo1;
+                    delete enemigo2;
+                    delete enemigo3;
+                    delete Bocon;
+                    delete Estoico;
+                    delete Hipo;
+                    delete Chimuelo;
+                    delete tuPersonaje;
+
+                    return 0;
                 }
             }
             else {
                 system("cls");
-                cout << "Felicidades!" << endl << endl << "Ganaste el Juego!" << endl << endl;
-                cin.get();
+                
+                cout << "\n" << endl;
+               
+                cout << "Felicidades! Ganaste el Juego!";
+                cout << "Gracias a tu valentia y destreza, la isla de Berk volvio a tener la paz que tanto la caracteriza, y la tribu Draugr ya no los molesta mas." << endl;
+   
+
+                cout << "\n" << endl;
+                cout << "    ___________ " << endl;
+                cout << "   '._==_==_=_.' " << endl;
+                cout << " . - :        / -. " << endl;
+                cout << " | (| :.      | ) | " << endl;
+                cout << "  '-|:.       |-' " << endl;
+                cout << "     ::.      / " << endl;
+                cout << "     '::. .' " << endl;
+                cout << "        ) ( " << endl;
+                cout << "      _.' '._ " << endl;
+                cout << "     `''''''` " << endl;
+                
+                cout << "\n" << endl;
+                cout << "Gracias por jugar!!" << endl;
             }
 
         }

@@ -60,7 +60,7 @@ public:
 	void PrintPeleaImagen(cDragon* dragon, cVikingo* vikingo) const;
 	
 	void  buscarDragon(cJinete* jinete); //historia
-	bool RECUbuscarDragon(cJinete* jinete, int nulo); //historia 2
+	bool RECUbuscarDragon(cJinete* jinete); //historia 2
 
 	int print_menu(cJinete* jinete);
 

@@ -29,7 +29,7 @@ string cDragon::to_string() { //aparece en el metodo de arriba
 
 void cDragon::faltanteNuevoNivel() //aparece en el metodo print()
 {
-    cout << "Tu nivel actual es: " << this->level << endl;
+    cout << "El nivel actual de tu dragon es: " << this->level << endl;
     int n = 0;
     if (ataque < 100) {
         if (ataque <= 30) {
@@ -41,7 +41,7 @@ void cDragon::faltanteNuevoNivel() //aparece en el metodo print()
         if (ataque > 60 && ataque < 100) {
             n = 100 - ataque;
         }
-        cout << "Te faltan aumentar tu ataque en " << n << " puntos para llegar al siguiente nivel." << endl;
+        cout << "Le falta aumentar su ataque en " << n << " puntos para llegar al siguiente nivel!" << endl;
     }
     else {
         cout << "Ya estas en el maximo nivel!" << endl;

@@ -52,7 +52,7 @@ void cJinete::print() { //aparece en cAdministradora::switch_menu
 
 string cJinete::to_string() { //aparece en el metodo de arriba
     stringstream ss;
-    ss << "Tu jinete: " << nombre << "\t Salud: " << salud << "\t Ataque: " << ataque << "\t Defensa: " << defensa << endl << endl;
+    ss << "Tu jinete: " << nombre << "\t Salud: " << salud << "\t Ataque: " << ataque << "\t Defensa: " << defensa << endl;
     return ss.str();
 }
 
@@ -64,6 +64,11 @@ void cJinete::entrenarDragon(bool habilidadAEntrenar) //true: se entrena ataque,
     cout << "Dragon entrenado con exito. Los nuevos valores de tu dragon son:" << endl;
     MiDragon->print();
     cout << "\n" << endl;
+    cout << "Presiona 'Enter' para volver a la aldea. " << endl;
+    cin.get();
+    cin.get();
+    system("cls");
+ 
 }
 
 void cJinete::curarDragon() { //aparece en cAdministradora::switch_menu
