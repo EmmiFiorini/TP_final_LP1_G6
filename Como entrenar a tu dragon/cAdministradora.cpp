@@ -511,15 +511,18 @@ void cAdministradora::RecuperatorioBocon(cJinete* tuPersonaje) {
         cout << "Desaprobaste." << endl<<"Lo lamento pero no estas calificado para ser un jinete" << endl;
         cout << "Tengo que liberar a " << tuPersonaje->get_MiDragon()->get_nombre() << endl;
         tuPersonaje->IncorporarDragon(nullptr);//libero al dragon
+        switch_menu(6, tuPersonaje);
+
     }else {
         cout << "Felicitaciones!" << endl << "Eres oficialmente un Jinete!" << endl << endl;
         cout << "Regresa a la aldea y prueba las nuevas opciones desbloqueadas!" << endl << endl;
+        cin.get();
+        cin.get();
+        system("cls");
+        int opcion = print_menu(tuPersonaje); //si aprobo, el menu aparece con nuevas opciones desbloqueadas
+        switch_menu(opcion, tuPersonaje);
     }
-    cin.get();
-    cin.get();
-    system("cls");
-    int opcion = print_menu(tuPersonaje); //si aprobo, el menu aparece con nuevas opciones desbloqueadas
-    switch_menu(opcion, tuPersonaje);
+    
 
 }
 
